@@ -52,23 +52,58 @@ const photos = [
 
 // University projects data - CUSTOMIZE WITH YOUR PROJECTS
 const universityProjects = {
+  "room-bsc": {
+    title: "BSc. INFORMATICS",
+    projects: [
+      {
+        name: "Competences",
+        description:
+          "Gained foundational knowledge in data structures & algorithms, math, operating systems, distributed systems. I developed programming skills during small projects in Java, C, Python, and R.",
+      },
+      {
+        name: "Specialisation: Intelligent & Interactive Systems",
+        description:
+          "I specialised in the Interactive Graphics and Simulation group, focusing on machine learning and computer vision. During my studies, I also obtained the NVIDIA CUDA Deep Learning Certificate.",
+      },
+      {
+        name: "Bachelor Thesis",
+        description:
+          "In my Thesis 'Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks' I applied GANs to intuitively create 3D worlds by sketching out the area of play. <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>View this repo on GitHub</a>",
+      },
+    ],
+  },
+  "room-userresearch": {
+    title: "USER RESEARCH",
+    projects: [
+      {
+        name: "Vienna Cycling Infrastrcture",
+        description:
+          "Conducted a mixed-methods analysis of Vienna’s cycling infrastructure by combining forum discourse, quantitative infrastructure data, and Strava sensor data to evaluate cyclist experiences, identify improvement areas, and propose a transferable framework for urban mobility research.",
+      },
+      {
+        name: "HCI in Health Care",
+        description:
+          "Empowering Patients through research towards a roadmap for developing an interactive patient-centered EHR system. Conducted Interviews and desiged a framework.",
+      },
+      {
+        name: "Technology Integration in Cognitive Behavioural Therapy",
+        description:
+          "Scoping review to evaluate the implications of assisting technologies in CBT to explore potential strategies to address identified limitations.",
+      },
+    ],
+  },
   "room-interactive": {
     title: "INTERACTIVE MEDIA",
     projects: [
       {
-        name: "VR Experience Design",
+        name: "Interactive Design Projects",
         description:
-          "Created immersive virtual reality environments exploring spatial interaction and user engagement in 3D spaces.",
+          "<strong>PresentWrist:</strong> Hands-free presentation slide control using a M5StackC as a smartwatch. Project included IMU data processing and handheld design. <br/><br/><strong>Open Source Smart Thermostat Project:</strong> Using 3D prints and PCB boards to create a personal thermostat that can be programmed to individual likings. Included prototyping and publishing models. <br/><br/><strong>Bike Intent Signalling:</strong> Prototyping an intent signalling technology for bicycles. Features an app plus a microcontroller with buttons, vibration and sound to communicate turn signals and warn of dangers.",
       },
       {
-        name: "Interactive Installation",
+        name: "Emergent Technologies",
         description:
-          "Developed a multi-sensory installation combining touch, sound, and visuals to create engaging user experiences.",
-      },
-      {
-        name: "Game Design Project",
-        description:
-          "Designed and prototyped an educational game focusing on environmental awareness and sustainability.",
+          "<strong>Text2Image:</strong> lets users scan content they are reading (e.g. books or newspaper) and automatically generates an image that corresponds to the content. Using LLMs and image generation APIs. <br/><br /><strong>VR:</strong> Two player collaborative puzzle game in virtual reality. <br /><br/><strong>AR:</strong> Geography country guessing app in augmented reality.",
       },
     ],
   },
@@ -76,19 +111,14 @@ const universityProjects = {
     title: "CRITICAL REFLECTION",
     projects: [
       {
-        name: "Media Theory Research",
+        name: "Socio-Technical-Systems",
         description:
-          "Analyzed contemporary digital media through critical theory frameworks, examining power structures and cultural impact.",
+          "Studied critical theory, socio-technical systems, and media communication to understand how technology, culture, and power interact. Gained tools to critically assess digital systems, social narratives, and their real-world impacts.",
       },
       {
-        name: "Design Ethics Study",
+        name: "Master Thesis: AI Ethics Auditing",
         description:
-          "Investigated ethical implications of persuasive design and dark patterns in digital interfaces.",
-      },
-      {
-        name: "Cultural Analysis",
-        description:
-          "Explored representation and inclusivity in digital media through intersectional feminist perspectives.",
+          "Employed in a research project at TU Wien to develop a stakeholder-centred approach in evaluation the ethics of AI. Created a methodology featuring a workshop and a webtool to elicit and translate ethical concerns from stakeholders into auditable artefacts, viewable in a prototype dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>View this repo on GitHub</a><br/>Co-authored a workshop paper at CHI25 workshop, attended conferences and reviewed academic paper. ",
       },
     ],
   },
@@ -112,11 +142,37 @@ const universityProjects = {
       },
     ],
   },
+  "room-automation": {
+    title: "TEST AUTOMATION",
+    projects: [
+      {
+        name: "Manual and Automated Testing",
+        description:
+          "Gained hands-on experience during a four-month internship as a <strong>Test Automation Engineer</strong> at a medical technology company. <br /> Worked in an agile Scrum team on end-to-end tests for safety-critical infusion pump software. Responsibilities included manual system testing as well as developing and maintaining automated tests using <strong>C#</strong> and <strong>Cypress</strong> in a regulated environment.",
+      },
+      {
+        name: "CI/CD DevOps",
+        description:
+          "Integrated automated tests into CI pipelines using GitHub Actions and managed test planning, documentation, and traceability with <strong>Azure DevOps</strong>. Participated in a formal verification phase where all test cases were systematically executed and documented, gaining insights into structured test concepts, defect analysis, CI/CD workflows, and DevOps processes.",
+      },
+    ],
+  },
+  "room-diversity": {
+    title: "GENDER & DIVERSITY COMPETENCES",
+    projects: [
+      {
+        name: "Courses",
+        description:
+          "Trained through courses on <strong>diversity skills and management, feminist technology studies, impacts of technology, and technology assessment,</strong> with an STS-based approach to analyzing how technologies shape social structures, organizations, and users.",
+      },
+    ],
+  },
 };
 
 // DOM Elements - will be initialized after DOM loads
 let navButtons, character, backgroundLayers, contentSections;
 let photobookModal, openPhotobookBtn, closePhotobookBtn;
+let experienceModal, openExperienceBtn, closeExperienceBtn;
 let prevPageBtn, nextPageBtn;
 let leftPhoto1El, leftPhoto2El, rightPhoto1El, rightPhoto2El;
 let leftCaption1El, leftCaption2El, rightCaption1El, rightCaption2El;
@@ -155,6 +211,11 @@ function init() {
   rightCaption2El = document.getElementById("right-caption-2");
   currentPageEl = document.getElementById("current-page");
   totalPagesEl = document.getElementById("total-pages");
+
+  // Experience modal elements
+  experienceModal = document.getElementById("experience-modal");
+  openExperienceBtn = document.getElementById("open-experience");
+  closeExperienceBtn = document.getElementById("close-experience");
 
   // Room modal elements
   roomModal = document.getElementById("room-modal");
@@ -202,6 +263,15 @@ function init() {
     closePhotobookBtn.addEventListener("click", closePhotobook);
   }
 
+  // Experience modal event listeners
+  if (openExperienceBtn) {
+    openExperienceBtn.addEventListener("click", openExperience);
+  }
+
+  if (closeExperienceBtn) {
+    closeExperienceBtn.addEventListener("click", closeExperience);
+  }
+
   if (prevPageBtn) {
     prevPageBtn.addEventListener("click", prevPhoto);
   }
@@ -224,6 +294,10 @@ function init() {
     if (e.target === photobookModal) closePhotobook();
   });
 
+  experienceModal.addEventListener("click", (e) => {
+    if (e.target === experienceModal) closeExperience();
+  });
+
   roomModal.addEventListener("click", (e) => {
     if (e.target === roomModal) closeRoomModal();
   });
@@ -234,6 +308,9 @@ function init() {
       if (e.key === "ArrowLeft") prevPhoto();
       if (e.key === "ArrowRight") nextPhoto();
       if (e.key === "Escape") closePhotobook();
+    }
+    if (experienceModal.classList.contains("active")) {
+      if (e.key === "Escape") closeExperience();
     }
     if (roomModal.classList.contains("active")) {
       if (e.key === "Escape") closeRoomModal();
@@ -449,7 +526,7 @@ function initializeBackground() {
 
   // Position so the character starts in the first area (offset by one background width to the right)
   const sectionWidth = 320 * scaleFactor;
-  const initialPosition = -scaledWidth - (sectionWidth / 2) + viewportWidth / 2;
+  const initialPosition = -scaledWidth - sectionWidth / 2 + viewportWidth / 2;
 
   // Disable transition for instant positioning
   layerContent.style.transition = "transform 0ms linear";
@@ -505,6 +582,15 @@ function openPhotobook() {
 
 function closePhotobook() {
   photobookModal.classList.remove("active");
+}
+
+// Experience Modal Functions
+function openExperience() {
+  experienceModal.classList.add("active");
+}
+
+function closeExperience() {
+  experienceModal.classList.remove("active");
 }
 
 function displayPhotoSpread() {

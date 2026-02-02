@@ -145,7 +145,7 @@ body {
 /* Character - Always Centered */
 .character {
   position: absolute;
-  bottom: 200px; /* Fixed pixel value from bottom - adjust to align with grass */
+  bottom: 180px; /* Fixed pixel value from bottom - adjust to align with grass */
   left: 50%;
   transform: translateX(-50%);
   width: 256px;
@@ -155,10 +155,10 @@ body {
   pointer-events: none;
 }
 
-/* Speech Bubble - Only visible when idling */
+/* Speech Bubble - Positioned independently from character */
 .speech-bubble {
   position: absolute;
-  top: 50px;
+  bottom: 340px; /* Position above the character */
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -168,10 +168,24 @@ body {
   border-radius: 0;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
   white-space: nowrap;
   z-index: 101;
+}
+
+/* Show speech bubble when character is idle (using sibling selector) */
+.character.idle + .speech-bubble {
+  opacity: 1;
+  visibility: visible;
+  animation: bubble-float 2s ease-in-out infinite;
+}
+
+/* Hide when walking (sibling selector) */
+.character.walking + .speech-bubble {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
 }
 
 /* Speech bubble tail - pixel art style triangle */
@@ -208,20 +222,14 @@ body {
   text-align: center;
 }
 
-/* Show speech bubble only when character is idle */
-.character.idle .speech-bubble {
-  opacity: 1;
-  animation: bubble-float 2s ease-in-out infinite;
-}
-
-/* Subtle floating animation for speech bubble */
+/* Simple float animation - just vertical bob */
 @keyframes bubble-float {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    margin-top: 0;
   }
   50% {
-    transform: translateX(-50%) translateY(-3px);
+    margin-top: -3px;
   }
 }
 
@@ -375,7 +383,7 @@ body {
   width: 100%;
   height: calc(100% - 80px);
   pointer-events: none;
-  z-index: 50;
+  z-index: 150; /* Above character (100) and speech bubble (101) */
 }
 
 .content-section {
@@ -390,7 +398,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 50px 40px 40px 40px; /* Less top padding to move content up */
+  padding: 20px 40px 40px 40px; /* Less top padding to move content up */
 }
 
 .content-section.active {
@@ -523,10 +531,167 @@ body {
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* University Grid */
+/* Experience Button */
+.experience-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  padding: 30px 40px;
+  background: #2e7d32;
+  color: #fff;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.1s;
+  margin-top: 200px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.experience-btn:hover {
+  background: #43a047;
+  transform: translate(2px, 2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.experience-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Experience Modal */
+#experience-modal {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+#experience-modal .experience-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+}
+
+.experience-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: #4caf50;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+/* Education Grid - New Layout */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* BSc Box - Red (top left) */
+.edu-bsc {
+  background: rgba(211, 47, 47, 0.9) !important;
+}
+
+.edu-bsc:hover {
+  background: rgba(255, 82, 82, 0.9) !important;
+}
+
+.edu-bsc h3 {
+  color: #ffeb3b !important;
+}
+
+/* MSc Container - spans right column */
+.edu-msc-container {
+  background: rgba(30, 60, 114, 0.95);
+  border: 4px solid #fff;
+  padding: 20px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  grid-row: span 2;
+}
+
+.msc-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  color: #ffeb3b;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.msc-description {
+  font-family: "Press Start 2P", cursive;
+  font-size: 8px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.msc-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* MSc Module Boxes - Blue */
+.edu-msc {
+  background: rgba(25, 118, 210, 0.9) !important;
+  padding: 12px 15px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-msc h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.edu-msc:hover {
+  background: rgba(66, 165, 245, 0.9) !important;
+}
+
+/* Internship Box - Green (bottom left) */
+.edu-internship {
+  background: rgba(46, 125, 50, 0.9) !important;
+}
+
+.edu-internship:hover {
+  background: rgba(76, 175, 80, 0.9) !important;
+}
+
+.edu-internship h3 {
+  color: #ff8c00 !important;
+}
+
+/* Certificate Box - Purple, spans both columns */
+.edu-certificate {
+  grid-column: span 2;
+  background: rgba(106, 27, 154, 0.9) !important;
+}
+
+.edu-certificate:hover {
+  background: rgba(142, 36, 170, 0.9) !important;
+}
+
+.edu-certificate h3 {
+  color: #ff8c00 !important;
+}
+
+/* University Grid (legacy) */
 .university-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   max-width: 900px;
   width: 100%;
@@ -560,6 +725,17 @@ body {
   color: #fff;
   line-height: 1.6;
   text-align: center;
+}
+
+/* Mobile summary - hidden by default on desktop */
+.room-summary,
+.msc-description-mobile {
+  display: none;
+  font-family: "Press Start 2P", cursive;
+  font-size: 7px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* Contact Section */
@@ -819,6 +995,16 @@ body {
   line-height: 1.6;
 }
 
+.project-item a {
+  color: #40e0d0;
+  text-decoration: none;
+}
+
+.project-item a:hover {
+  color: #7fffd4;
+  text-decoration: underline;
+}
+
 /* Responsive Design */
 
 /* Tablet and smaller - scale down photobook */
@@ -877,16 +1063,110 @@ body {
   }
 
   .nav-btn {
-    font-size: 8px;
-    padding: 10px;
+    font-size: 10px; /* 2px larger on small devices */
+    padding: 7px;
   }
 
   .pixel-title {
-    font-size: 14px;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .content-section {
+    padding: 20px 15px;
+    padding-top: 60px;
+  }
+
+  .pixel-box {
+    padding: 15px;
+    max-width: 90%;
+    border: 3px solid #fff;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .pixel-avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .bio-content p {
+    font-size: 8px;
+    margin-bottom: 10px;
+  }
+
+  .bio-text {
+    padding: 10px;
+    font-size: 7px;
+  }
+
+  .stats {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .stat-item {
+    font-size: 7px;
+    margin-bottom: 6px;
   }
 
   .university-grid {
     grid-template-columns: 1fr;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .edu-msc-container {
+    grid-row: auto;
+  }
+
+  .edu-certificate {
+    grid-column: span 1; /* Single column on mobile */
+  }
+
+  .msc-title {
+    font-size: 10px;
+  }
+
+  .msc-description {
+    display: none;
+  }
+
+  .msc-description-mobile {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .room-summary {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .uni-room .room-content {
+    display: none;
+  }
+
+  .photobook-btn {
+    font-size: 20px; /* 2px larger on small devices */
+    padding: 25px 50px;
+  }
+
+  .experience-btn {
+    font-size: 12px;
+    padding: 20px 30px;
+    margin-top: 150px;
+  }
+
+  .experience-title {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .experience-content {
+    padding: 20px;
   }
 
   .photobook-page {
@@ -918,6 +1198,50 @@ body {
 
 /* Very small mobile */
 @media (max-width: 600px) {
+  .content-section {
+    padding: 10px 10px;
+    padding-top: 50px;
+  }
+
+  .pixel-box {
+    padding: 12px;
+    max-width: 95%;
+    border: 2px solid #fff;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .pixel-title {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .pixel-avatar {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  .bio-content p {
+    font-size: 7px;
+    margin-bottom: 8px;
+  }
+
+  .bio-text {
+    padding: 8px;
+    font-size: 6px;
+    line-height: 1.6;
+  }
+
+  .stats {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .stat-item {
+    font-size: 7px;
+    margin-bottom: 5px;
+  }
+
   .photobook-page {
     width: 260px;
     height: 400px;

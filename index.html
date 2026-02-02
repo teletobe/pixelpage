@@ -15,9 +15,9 @@
   <body>
     <!-- Navigation Menu -->
     <nav class="pixel-nav">
-      <button class="nav-btn" data-scene="about">ABOUT ME</button>
-      <button class="nav-btn" data-scene="photography">PHOTOGRAPHY</button>
-      <button class="nav-btn" data-scene="university">UNIVERSITY</button>
+      <button class="nav-btn" data-scene="about">ABOUT</button>
+      <button class="nav-btn" data-scene="photography">PHOTOBOOK</button>
+      <button class="nav-btn" data-scene="university">EXPERIENCE</button>
       <button class="nav-btn" data-scene="contact">CONTACT</button>
     </nav>
 
@@ -39,9 +39,11 @@
       <!-- Character - Always Centered -->
       <div class="character" id="character">
         <div class="character-sprite"></div>
-        <div class="speech-bubble" id="speech-bubble">
-          <div class="bubble-text">Hello!</div>
-        </div>
+      </div>
+
+      <!-- Speech Bubble - Positioned independently so it doesn't flip with character -->
+      <div class="speech-bubble" id="speech-bubble">
+        <div class="bubble-text">Hello!</div>
       </div>
 
       <!-- Content Overlay -->
@@ -52,21 +54,25 @@
             <h2 class="pixel-title">WELCOME!</h2>
             <div class="bio-content">
               <div class="pixel-avatar"></div>
-              <p>Hi! I'm [Your Name]</p>
+              <p>Hi! I'm Tobi</p>
               <p class="bio-text">
-                Welcome to my pixel portfolio! Navigate through different areas
-                to explore my work and interests. Use the buttons above to
-                travel to different locations!
+                Welcome to my website! Navigate through different areas to
+                explore my work and interests. Use the buttons above to travel
+                to different locations!
               </p>
               <div class="stats">
                 <div class="stat-item">
                   <span class="stat-label">LEVEL:</span>
-                  <span class="stat-value">Graduate Student</span>
+                  <span class="stat-value"
+                    >Recently graduated MSc. Media & Human-Centred
+                    Computing</span
+                  >
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">INTERESTS:</span>
                   <span class="stat-value"
-                    >Photography, AI Ethics, Interactive Media</span
+                    >Interactive & Immersive Media, AI, Ethics,
+                    Photography</span
                   >
                 </div>
               </div>
@@ -81,36 +87,11 @@
           </button>
         </div>
 
-        <!-- University Content -->
+        <!-- University/Experience Content -->
         <div class="content-section" id="content-university">
-          <div class="university-grid">
-            <div class="uni-room" id="room-interactive">
-              <h3>INTERACTIVE MEDIA</h3>
-              <div class="room-content">
-                <p>
-                  Click to explore projects in interactive experiences and
-                  digital media.
-                </p>
-              </div>
-            </div>
-            <div class="uni-room" id="room-critical">
-              <h3>CRITICAL REFLECTION</h3>
-              <div class="room-content">
-                <p>
-                  Explore work in critical analysis and theoretical frameworks.
-                </p>
-              </div>
-            </div>
-            <div class="uni-room" id="room-ai">
-              <h3>AI ETHICS</h3>
-              <div class="room-content">
-                <p>
-                  Projects and research in ethical AI and responsible
-                  technology.
-                </p>
-              </div>
-            </div>
-          </div>
+          <button class="pixel-button experience-btn" id="open-experience">
+            EXPLORE EDUCATION & EXPERIENCE
+          </button>
         </div>
 
         <!-- Contact Content -->
@@ -185,6 +166,93 @@
 
       <div class="page-counter">
         <span id="current-page">1-2</span> / <span id="total-pages">5</span>
+      </div>
+    </div>
+
+    <!-- Education & Experience Modal -->
+    <div class="modal" id="experience-modal">
+      <button class="close-btn experience-close" id="close-experience">
+        ×
+      </button>
+      <div class="experience-content">
+        <h2 class="experience-title">EDUCATION & EXPERIENCE</h2>
+        <div class="education-grid">
+          <!-- BSc. Informatics - Red -->
+          <div class="uni-room edu-bsc" id="room-bsc">
+            <h3>BSc. INFORMATICS</h3>
+            <p class="room-summary">
+              Computer sciences foundation. (University Innsbruck, 2022).
+            </p>
+            <div class="room-content">
+              <p>
+                I completed my bachelor's degree in Computer Science at the
+                University Innsbruck in 2022.<br />
+              </p>
+              <p>
+                It provided a solid foundation in programming, algorithms, and
+                software development.
+              </p>
+              <br />
+              <p>Click to explore what it thought me!</p>
+            </div>
+          </div>
+
+          <!-- MSc. Container - Blue themed -->
+          <div class="edu-msc-container">
+            <h3 class="msc-title">MSc. HUMAN-CENTRED COMPUTING</h3>
+            <p class="msc-description-mobile">
+              Graduated from TU Wien, 2026. Specialisations:
+            </p>
+            <p class="msc-description">
+              I graduated from this multidisciplinary master's program at TU
+              Wien in 2026.
+            </p>
+            <div class="msc-modules">
+              <div class="uni-room edu-msc" id="room-userresearch">
+                <h3>USER RESEARCH</h3>
+              </div>
+              <div class="uni-room edu-msc" id="room-interactive">
+                <h3>INTERACTIVE MEDIA</h3>
+              </div>
+              <div class="uni-room edu-msc" id="room-critical">
+                <h3>CRITICAL REFLECTION</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Test Automation Internship - Green -->
+          <div class="uni-room edu-internship" id="room-automation">
+            <h3>TEST AUTOMATION</h3>
+            <p class="room-summary">
+              Internship at Becton Dickinson. Tap to explore.
+            </p>
+            <div class="room-content">
+              <p>
+                Click to see where I obtained professional work experience in
+                IT.
+              </p>
+              <br />
+              <p>
+                Experience in automated testing frameworks and quality assurance
+                during an internship at a medical technology company.
+              </p>
+            </div>
+          </div>
+
+          <!-- Gender & Diversity Certificate - Purple, spans both columns -->
+          <div class="uni-room edu-certificate" id="room-diversity">
+            <h3>GENDER & DIVERSITY COMPETENCES</h3>
+            <p class="room-summary">
+              Certificate at TU Wien with STS related classes.
+            </p>
+            <div class="room-content">
+              <p>
+                A Certificate in gender and diversity competences. Attended
+                classes on STS. Click to learn what it encompassed.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

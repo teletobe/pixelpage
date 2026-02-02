@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Pixel Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="pixel-nav">
+      <button class="nav-btn" data-scene="about">ABOUT ME</button>
+      <button class="nav-btn" data-scene="photography">PHOTOGRAPHY</button>
+      <button class="nav-btn" data-scene="university">UNIVERSITY</button>
+      <button class="nav-btn" data-scene="contact">CONTACT</button>
+    </nav>
+
+    <!-- Main Game Container -->
+    <div class="game-container">
+      <!-- Parallax Background Layers -->
+      <div class="parallax-container">
+        <!-- Main Background Layer - Shows different sections per scene -->
+        <div class="parallax-layer background-layer" id="background-layer">
+          <div class="layer-content"></div>
+        </div>
+
+        <!-- Grass Layer - Discrete tiles -->
+        <div class="parallax-layer grass-container" id="grass-container">
+          <!-- Grass tiles will be dynamically created here -->
+        </div>
+      </div>
+
+      <!-- Character - Always Centered -->
+      <div class="character" id="character">
+        <div class="character-sprite"></div>
+        <div class="speech-bubble" id="speech-bubble">
+          <div class="bubble-text">Hello!</div>
+        </div>
+      </div>
+
+      <!-- Content Overlay -->
+      <div class="content-overlay">
+        <!-- About Me Content -->
+        <div class="content-section active" id="content-about">
+          <div class="pixel-box bio-box">
+            <h2 class="pixel-title">WELCOME!</h2>
+            <div class="bio-content">
+              <div class="pixel-avatar"></div>
+              <p>Hi! I'm [Your Name]</p>
+              <p class="bio-text">
+                Welcome to my pixel portfolio! Navigate through different areas
+                to explore my work and interests. Use the buttons above to
+                travel to different locations!
+              </p>
+              <div class="stats">
+                <div class="stat-item">
+                  <span class="stat-label">LEVEL:</span>
+                  <span class="stat-value">Graduate Student</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">INTERESTS:</span>
+                  <span class="stat-value"
+                    >Photography, AI Ethics, Interactive Media</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photography Content -->
+        <div class="content-section" id="content-photography">
+          <button class="pixel-button photobook-btn" id="open-photobook">
+            OPEN PHOTOBOOK
+          </button>
+        </div>
+
+        <!-- University Content -->
+        <div class="content-section" id="content-university">
+          <div class="university-grid">
+            <div class="uni-room" id="room-interactive">
+              <h3>INTERACTIVE MEDIA</h3>
+              <div class="room-content">
+                <p>
+                  Click to explore projects in interactive experiences and
+                  digital media.
+                </p>
+              </div>
+            </div>
+            <div class="uni-room" id="room-critical">
+              <h3>CRITICAL REFLECTION</h3>
+              <div class="room-content">
+                <p>
+                  Explore work in critical analysis and theoretical frameworks.
+                </p>
+              </div>
+            </div>
+            <div class="uni-room" id="room-ai">
+              <h3>AI ETHICS</h3>
+              <div class="room-content">
+                <p>
+                  Projects and research in ethical AI and responsible
+                  technology.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Content -->
+        <div class="content-section" id="content-contact">
+          <div class="pixel-box contact-box">
+            <h2 class="pixel-title">GET IN TOUCH</h2>
+            <div class="contact-content">
+              <p>Let's connect!</p>
+              <div class="contact-links">
+                <a href="mailto:your.email@example.com" class="contact-link"
+                  >EMAIL</a
+                >
+                <a href="#" class="contact-link">LINKEDIN</a>
+                <a href="#" class="contact-link">GITHUB</a>
+                <a href="#" class="contact-link">TWITTER</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photobook Modal -->
+    <div class="modal" id="photobook-modal">
+      <button class="close-btn photobook-close" id="close-photobook">×</button>
+      <button class="page-nav-side prev-page" id="prev-page">◄</button>
+      <button class="page-nav-side next-page" id="next-page">►</button>
+
+      <div class="photobook-spread">
+        <div class="photobook-page left-page">
+          <div class="photo-frame">
+            <img
+              src="player.png"
+              alt="Photo"
+              class="portfolio-photo"
+              id="left-photo-1"
+            />
+            <div class="photo-caption" id="left-caption-1">Caption</div>
+          </div>
+          <div class="photo-frame">
+            <img
+              src="player.png"
+              alt="Photo"
+              class="portfolio-photo"
+              id="left-photo-2"
+            />
+            <div class="photo-caption" id="left-caption-2">Caption</div>
+          </div>
+        </div>
+        <div class="photobook-spine"></div>
+        <div class="photobook-page right-page">
+          <div class="photo-frame">
+            <img
+              src="player.png"
+              alt="Photo"
+              class="portfolio-photo"
+              id="right-photo-1"
+            />
+            <div class="photo-caption" id="right-caption-1">Caption</div>
+          </div>
+          <div class="photo-frame">
+            <img
+              src="player.png"
+              alt="Photo"
+              class="portfolio-photo"
+              id="right-photo-2"
+            />
+            <div class="photo-caption" id="right-caption-2">Caption</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-counter">
+        <span id="current-page">1-2</span> / <span id="total-pages">5</span>
+      </div>
+    </div>
+
+    <!-- Room Detail Modal -->
+    <div class="modal" id="room-modal">
+      <div class="modal-content room-detail">
+        <button class="close-btn" id="close-room">×</button>
+        <h2 id="room-title">Room Title</h2>
+        <div class="room-projects" id="room-projects">
+          <!-- Projects will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

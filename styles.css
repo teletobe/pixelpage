@@ -1,0 +1,979 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+body {
+  font-family: "Press Start 2P", cursive;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* Navigation */
+.pixel-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border-bottom: 4px solid #0f3460;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 0 #16213e;
+}
+
+.nav-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  padding: 12px 20px;
+  background: #e94560;
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #16213e;
+}
+
+.nav-btn:hover {
+  background: #ff6b6b;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16213e;
+}
+
+.nav-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #16213e;
+}
+
+.nav-btn.active {
+  background: #ffa500;
+  border-color: #ffeb3b;
+}
+
+/* Game Container */
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #87ceeb url("img/sky.png") center center no-repeat;
+  background-size: 1700px auto; /* Adjust first value to change width, 'auto' maintains aspect ratio */
+  image-rendering: pixelated;
+  animation: sky-bounce 0.8s ease-in-out infinite;
+}
+
+/* Parallax Container */
+.parallax-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+/* Parallax Layers */
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.parallax-layer .layer-content {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 0;
+}
+
+/* Main Background Layer - Shows different sections based on scene */
+.background-layer {
+  z-index: 1;
+  height: 100%;
+  top: 28%; /* Adjust this value to move background up (lower %) or down (higher %) */
+}
+
+.background-layer .layer-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-image: url("img/background1280p.png");
+  background-size: 100% 100%;
+  background-repeat: repeat-x; /* Repeat horizontally */
+  background-position: 0 0;
+  image-rendering: pixelated;
+  /* Width will be set by JavaScript based on scaled dimensions */
+  transform: translateX(0);
+  transition: transform 3s ease-out;
+}
+
+/* Grass Container - Holds discrete grass tiles */
+.grass-container {
+  z-index: 3;
+  bottom: auto;
+  top: calc(
+    80vh + 300px
+  ); /* Moves slightly with viewport - adjust vh % to control movement rate */
+  height: 0px;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 3s ease-out;
+  will-change: transform;
+}
+
+/* Individual grass tiles */
+.grass-tile {
+  position: absolute;
+  width: 384px; /* Adjust width to scale grass */
+  height: 384px; /* Adjust height to scale grass */
+  bottom: 60px; /* More negative = grass moves higher. Adjust this value to move grass up or down */
+  background-image: url("img/grass.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+/* Character - Always Centered */
+.character {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 256px;
+  height: 256px;
+  z-index: 100;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Speech Bubble - Only visible when idling */
+.speech-bubble {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 12px 18px;
+  border: 4px solid #000;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  white-space: nowrap;
+  z-index: 101;
+}
+
+/* Speech bubble tail - pixel art style triangle */
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #000;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fff;
+  z-index: 1;
+}
+
+.bubble-text {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* Show speech bubble only when character is idle */
+.character.idle .speech-bubble {
+  opacity: 1;
+  animation: bubble-float 2s ease-in-out infinite;
+}
+
+/* Subtle floating animation for speech bubble */
+@keyframes bubble-float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+/* Character facing directions */
+.character.face-left {
+  transform: translateX(-50%) scaleX(-1);
+}
+
+.character.face-right {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.character.idle {
+  animation: idle 2s ease-in-out infinite;
+}
+
+/* Walking animations - Normal Speed */
+.character.walking.face-left.speed-normal {
+  animation: walk-left 0.8s steps(9) infinite;
+}
+
+.character.walking.face-right.speed-normal {
+  animation: walk-right 0.8s steps(9) infinite;
+}
+
+/* Walking animations - Fast Speed (2x faster) */
+.character.walking.face-left.speed-fast {
+  animation: walk-left 0.4s steps(9) infinite;
+}
+
+.character.walking.face-right.speed-fast {
+  animation: walk-right 0.4s steps(9) infinite;
+}
+
+@keyframes walk-right {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@keyframes walk-left {
+  0% {
+    transform: translateX(-50%) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(-1);
+  }
+}
+
+@keyframes idle {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+/* Sky bounce animation - old-school idle effect */
+@keyframes sky-bounce {
+  0%,
+  100% {
+    background-position: center center;
+  }
+  50% {
+    background-position: center calc(50% - 2px); /* Adjust this value to change bounce height */
+  }
+}
+
+/* Background bounce animation - old-school idle effect */
+@keyframes background-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px); /* Adjust this value to change bounce height */
+  }
+}
+
+/* Idle sprite shows first frame with subtle bob */
+.character.idle .character-sprite {
+  background-position: 0% 0%;
+}
+
+.character-sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url("img/player/Walk.png");
+  background-size: 1000% 100%;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+/* Running sprite - use Run.png for longer distances */
+.character.running .character-sprite {
+  background-image: url("img/player/Run.png");
+}
+
+/* Sprite animation when walking - Normal Speed */
+.character.walking.speed-normal .character-sprite {
+  animation: sprite-walk 1.2s steps(9) infinite;
+}
+
+/* Sprite animation when walking - Fast Speed */
+.character.walking.speed-fast .character-sprite {
+  animation: sprite-walk 0.8s steps(9) infinite;
+}
+
+/* Sprite animation when running - Normal Speed */
+.character.running.speed-normal .character-sprite {
+  animation: sprite-run 1.2s steps(9) infinite;
+}
+
+/* Sprite animation when running - Fast Speed */
+.character.running.speed-fast .character-sprite {
+  animation: sprite-run 0.8s steps(9) infinite;
+}
+
+/* Sprite walk animation - cycles through 10 frames */
+@keyframes sprite-walk {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 0%;
+  }
+}
+
+/* Sprite run animation - cycles through 10 frames */
+@keyframes sprite-run {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 0%;
+  }
+}
+
+/* Content Overlay */
+.content-overlay {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.content-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 40px 40px 40px; /* Less top padding to move content up */
+}
+
+.content-section.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ensure inactive sections don't block clicks */
+.content-section:not(.active) * {
+  pointer-events: none !important;
+}
+
+/* Pixel Box Styling */
+.pixel-box {
+  background: rgba(26, 26, 46, 0.95);
+  border: 4px solid #fff;
+  padding: 30px;
+  box-shadow:
+    8px 8px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px #0f3460;
+  max-width: 600px;
+  position: relative;
+}
+
+.pixel-box::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: repeating-linear-gradient(
+    0deg,
+    #fff 0px,
+    #fff 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.pixel-title {
+  font-size: 18px;
+  color: #ffa500;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+/* Bio Box */
+.bio-content {
+  color: #fff;
+  line-height: 1.8;
+}
+
+.pixel-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(
+    to bottom,
+    #ffd4a3 0%,
+    #ffd4a3 40%,
+    #e94560 40%,
+    #e94560 70%,
+    #2c3e50 70%
+  );
+  border: 3px solid #fff;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.bio-content p {
+  font-size: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.bio-text {
+  text-align: left !important;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #ffa500;
+}
+
+.stats {
+  margin-top: 20px;
+  border-top: 2px solid #ffa500;
+  padding-top: 15px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 8px;
+}
+
+.stat-label {
+  color: #ffa500;
+}
+
+.stat-value {
+  color: #fff;
+  text-align: right;
+}
+
+/* Photography Button */
+.photobook-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px; /* Adjust font size */
+  padding: 30px 60px; /* Adjust padding for button size */
+  background: #8b4513;
+  color: #fff;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.1s;
+  margin-top: 200px; /* Adjust this value to move button up or down */
+}
+
+.photobook-btn:hover {
+  background: #a0522d;
+  transform: translate(2px, 2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.photobook-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* University Grid */
+.university-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.uni-room {
+  background: rgba(211, 47, 47, 0.9);
+  border: 4px solid #fff;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.uni-room:hover {
+  background: rgba(255, 82, 82, 0.9);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.uni-room h3 {
+  font-size: 12px;
+  color: #ffeb3b;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.uni-room .room-content {
+  font-size: 8px;
+  color: #fff;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Contact Section */
+.contact-box {
+  max-width: 500px;
+}
+
+.contact-content {
+  color: #fff;
+  text-align: center;
+}
+
+.contact-content p {
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.contact-link {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  padding: 15px 30px;
+  background: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border: 3px solid #fff;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  text-align: center;
+}
+
+.contact-link:hover {
+  background: #5ba3ff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.contact-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #1a1a2e;
+  border: 6px solid #fff;
+  padding: 40px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 40px rgba(255, 165, 0, 0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  background: #e94560;
+  color: #fff;
+  border: 3px solid #fff;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.1s;
+  z-index: 2001;
+}
+
+.close-btn:hover {
+  background: #ff6b6b;
+}
+
+/* Photobook Modal - Full Screen Overlay */
+#photobook-modal {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+#photobook-modal .photobook-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+/* Photobook Spread - Open Book Layout */
+.photobook-spread {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.photobook-page {
+  width: 450px;
+  height: 700px;
+  background: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.photobook-page.left-page {
+  border: 12px solid #8b4513;
+  border-right: 6px solid #8b4513;
+}
+
+.photobook-page.right-page {
+  border: 12px solid #8b4513;
+  border-left: 6px solid #8b4513;
+}
+
+/* Book Spine in the middle */
+.photobook-spine {
+  width: 8px;
+  height: 700px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.photo-frame {
+  width: 100%;
+  height: 50%;
+  background: #e8e8e8;
+  padding: 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-photo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.photo-caption {
+  display: none;
+}
+
+/* Side Navigation Buttons - Narrower */
+.page-nav-side {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  padding: 40px 15px;
+  background: rgba(74, 144, 226, 0.8);
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 2001;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.page-nav-side.prev-page {
+  left: 20px;
+}
+
+.page-nav-side.next-page {
+  right: 20px;
+}
+
+.page-nav-side:hover {
+  background: rgba(91, 163, 255, 0.9);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.page-nav-side:disabled {
+  background: rgba(102, 102, 102, 0.5);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.page-counter {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 12px;
+  color: #ffa500;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border: 2px solid #ffa500;
+  z-index: 2001;
+}
+
+/* Room Detail Modal */
+.room-detail h2 {
+  font-size: 18px;
+  color: #ffa500;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.room-projects {
+  display: grid;
+  gap: 20px;
+}
+
+.project-item {
+  background: rgba(74, 144, 226, 0.2);
+  border: 3px solid #4a90e2;
+  padding: 20px;
+  border-radius: 0;
+}
+
+.project-item h3 {
+  font-size: 12px;
+  color: #ffeb3b;
+  margin-bottom: 10px;
+}
+
+.project-item p {
+  font-size: 9px;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+
+/* Tablet and smaller - scale down photobook */
+@media (max-width: 1100px) {
+  .photobook-page {
+    width: 380px;
+    height: 590px;
+  }
+
+  .photobook-spine {
+    height: 590px;
+  }
+
+  .page-nav-side {
+    font-size: 18px;
+    padding: 30px 12px;
+  }
+}
+
+/* Mobile landscape and smaller tablets */
+@media (max-width: 900px) {
+  .photobook-page {
+    width: 320px;
+    height: 500px;
+  }
+
+  .photobook-spine {
+    height: 500px;
+  }
+
+  .page-nav-side {
+    font-size: 16px;
+    padding: 25px 10px;
+  }
+
+  .page-nav-side.prev-page {
+    left: 10px;
+  }
+
+  .page-nav-side.next-page {
+    right: 10px;
+  }
+
+  .page-counter {
+    font-size: 10px;
+    padding: 8px 15px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 768px) {
+  .pixel-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .nav-btn {
+    font-size: 8px;
+    padding: 10px;
+  }
+
+  .pixel-title {
+    font-size: 14px;
+  }
+
+  .university-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photobook-page {
+    width: 260px;
+    height: 400px;
+  }
+
+  .photobook-spine {
+    height: 400px;
+  }
+
+  .photo-frame {
+    padding: 4px 10px;
+  }
+
+  .page-nav-side {
+    font-size: 14px;
+    padding: 20px 8px;
+  }
+
+  .page-nav-side.prev-page {
+    left: 5px;
+  }
+
+  .page-nav-side.next-page {
+    right: 5px;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 600px) {
+  .photobook-page {
+    width: 260px;
+    height: 400px;
+  }
+
+  .photobook-spine {
+    height: 310px;
+  }
+
+  .photo-frame {
+    padding: 3px 8px;
+  }
+
+  .page-nav-side {
+    font-size: 12px;
+    padding: 15px 6px;
+  }
+
+  .page-counter {
+    font-size: 8px;
+    padding: 6px 12px;
+    bottom: 15px;
+  }
+
+  .photobook-close {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+/* Pixel Button Generic */
+.pixel-button {
+  font-family: "Press Start 2P", cursive;
+  background: #e94560;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.pixel-button:hover {
+  background: #ff6b6b;
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.pixel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}

@@ -103,21 +103,19 @@ body {
 /* Main Background Layer - Shows different sections based on scene */
 .background-layer {
   z-index: 1;
-  height: 100%;
-  top: 28%; /* Adjust this value to move background up (lower %) or down (higher %) */
 }
 
 .background-layer .layer-content {
   position: absolute;
   left: 0;
-  top: 0;
-  height: 100%;
+  bottom: 256px; /* Position above the grass */
+  top: auto;
+  height: 300px; /* Fixed height for background - adjust as needed */
   background-image: url("img/background1280p.png");
-  background-size: 100% 100%;
-  background-repeat: repeat-x; /* Repeat horizontally */
-  background-position: 0 0;
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: left bottom; /* Anchor to bottom */
   image-rendering: pixelated;
-  /* Width will be set by JavaScript based on scaled dimensions */
   transform: translateX(0);
   transition: transform 3s ease-out;
 }
@@ -125,11 +123,6 @@ body {
 /* Grass Container - Holds discrete grass tiles */
 .grass-container {
   z-index: 3;
-  bottom: auto;
-  top: calc(
-    80vh + 300px
-  ); /* Moves slightly with viewport - adjust vh % to control movement rate */
-  height: 0px;
   pointer-events: none;
   transform: translateX(0);
   transition: transform 3s ease-out;
@@ -140,18 +133,19 @@ body {
 .grass-tile {
   position: absolute;
   width: 384px; /* Adjust width to scale grass */
-  height: 384px; /* Adjust height to scale grass */
-  bottom: 60px; /* More negative = grass moves higher. Adjust this value to move grass up or down */
+  height: 285px; /* Visible grass height from top of image */
+  bottom: 0; /* Anchor to bottom of container */
   background-image: url("img/grass.png");
-  background-size: 100% 100%;
+  background-size: 100% auto; /* Width fills tile, height scales proportionally */
   background-repeat: no-repeat;
+  background-position: center top; /* Show top portion of grass image (where the blades are) */
   image-rendering: pixelated;
 }
 
 /* Character - Always Centered */
 .character {
   position: absolute;
-  bottom: 20%;
+  bottom: 200px; /* Fixed pixel value from bottom - adjust to align with grass */
   left: 50%;
   transform: translateX(-50%);
   width: 256px;

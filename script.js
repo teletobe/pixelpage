@@ -188,6 +188,11 @@ const TILES_PER_SCENE = 5; // Each scene is exactly 10 tiles apart
 
 // Initialize
 function init() {
+  // Force scroll to top on page load (fixes mobile starting at bottom)
+  window.scrollTo(0, 0);
+  // Backup scroll after a brief delay for mobile browsers
+  setTimeout(() => window.scrollTo(0, 0), 100);
+
   // Get all DOM elements
   navButtons = document.querySelectorAll(".nav-btn");
   character = document.getElementById("character");
@@ -659,14 +664,41 @@ function openRoomModal(roomId) {
   // Clear previous projects
   roomProjectsEl.innerHTML = "";
 
+  // Check if this room should have all items expanded (Gender & Diversity)
+  const alwaysExpanded = roomId === "room-diversity";
+
   // Add projects
   roomData.projects.forEach((project) => {
     const projectEl = document.createElement("div");
-    projectEl.className = "project-item";
+    // All collapsed by default, except room-diversity which stays expanded
+    projectEl.className = `project-item${alwaysExpanded ? " expanded" : ""}`;
     projectEl.innerHTML = `
             <h3>${project.name}</h3>
-            <p>${project.description}</p>
+            <div class="project-description">
+              <p>${project.description}</p>
+            </div>
         `;
+
+    // Add click handler for accordion (not for always-expanded rooms)
+    if (!alwaysExpanded) {
+      projectEl.addEventListener("click", () => {
+        const isExpanded = projectEl.classList.contains("expanded");
+
+        // Collapse all other items
+        roomProjectsEl.querySelectorAll(".project-item").forEach((item) => {
+          item.classList.remove("expanded");
+        });
+
+        // Toggle this item (if it was collapsed, expand it; if expanded, leave collapsed)
+        if (!isExpanded) {
+          projectEl.classList.add("expanded");
+        }
+      });
+    } else {
+      // For always-expanded rooms, add a class to disable accordion styling
+      projectEl.classList.add("no-accordion");
+    }
+
     roomProjectsEl.appendChild(projectEl);
   });
 

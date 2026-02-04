@@ -188,8 +188,20 @@ let grassContainer = null;
 const GRASS_TILE_WIDTH = 384;
 const TILES_PER_SCENE = 5; // Each scene is exactly 10 tiles apart
 
+// Preload critical images to prevent flashing
+function preloadImages() {
+  const images = ["img/grass.png", "img/player/Walk.png", "img/player/Run.png"];
+  images.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
 // Initialize
 function init() {
+  // Preload images first
+  preloadImages();
+
   // Force scroll to top on page load (fixes mobile starting at bottom)
   window.scrollTo(0, 0);
   // Backup scroll after a brief delay for mobile browsers
@@ -355,7 +367,7 @@ function initGrassTiles() {
   // Calculate how many tiles we need to cover the viewport PLUS max travel distance (3 scenes)
   const viewportWidth = window.innerWidth;
   const maxTravelDistance = 3 * TILES_PER_SCENE * GRASS_TILE_WIDTH; // Max distance for 3 scene jump
-  const tilesNeeded = Math.ceil((viewportWidth + maxTravelDistance * 2) / GRASS_TILE_WIDTH) + 8; // Extra buffer
+  const tilesNeeded = Math.ceil((viewportWidth + maxTravelDistance * 2) / GRASS_TILE_WIDTH) + 16; // Extra large buffer for mobile
 
   // Create tiles centered around position 0
   const centerIndex = Math.floor(tilesNeeded / 2);
@@ -380,43 +392,14 @@ function initGrassTiles() {
 function animateGrassTransition(direction, distance) {
   // Calculate total distance to travel in pixels
   // distance = number of scenes (1, 2, or 3)
-  // Each scene = 10 tiles = 1280px
+  // Each scene = 5 tiles
   const totalDistance = distance * TILES_PER_SCENE * GRASS_TILE_WIDTH;
 
   // Direction: right = negative translateX (tiles move left), left = positive translateX (tiles move right)
   const translateAmount =
     direction === "right" ? -totalDistance : totalDistance;
 
-  // Before animating, add more tiles in the direction of travel if needed
-  const viewportWidth = window.innerWidth;
-  const tilesNeeded =
-    Math.ceil((viewportWidth + totalDistance) / GRASS_TILE_WIDTH) + 6;
-  const currentTiles = grassContainer.children.length;
-
-  if (tilesNeeded > currentTiles) {
-    const tilesToAdd = tilesNeeded - currentTiles;
-    const centerIndex = Math.floor(currentTiles / 2);
-
-    // Add tiles in the direction of travel
-    for (let i = 0; i < tilesToAdd; i++) {
-      const tile = document.createElement("div");
-      tile.className = "grass-tile";
-
-      if (direction === "right") {
-        // Add to the right
-        const offset = (currentTiles + i - centerIndex) * GRASS_TILE_WIDTH;
-        tile.style.left = `calc(50% + ${offset}px - 64px)`;
-      } else {
-        // Add to the left
-        const offset = (-(i + 1) - centerIndex) * GRASS_TILE_WIDTH;
-        tile.style.left = `calc(50% + ${offset}px - 64px)`;
-      }
-
-      grassContainer.appendChild(tile);
-    }
-  }
-
-  // Animate the container
+  // Just animate - tiles are already created with enough buffer in initGrassTiles
   grassContainer.style.transition = "transform 3000ms ease-out";
   grassContainer.style.transform = `translateX(${translateAmount}px)`;
 }

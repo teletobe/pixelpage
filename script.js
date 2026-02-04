@@ -1,6 +1,7 @@
 // State Management
 let currentScene = "about";
 let currentPhotoIndex = 0;
+let isTransitioning = false;
 
 // Speech bubble messages for each scene
 const speechBubbleMessages = {
@@ -437,6 +438,11 @@ function updateSpeechBubble(sceneName) {
 // Scene Navigation
 function navigateToScene(sceneName) {
   if (sceneName === currentScene) return;
+  if (isTransitioning) return;
+
+  // Lock navigation during transition
+  isTransitioning = true;
+  navButtons.forEach((btn) => btn.classList.add("disabled"));
 
   // Calculate distance and direction
   const currentIndex = sceneOrder[currentScene];
@@ -505,6 +511,10 @@ function navigateToScene(sceneName) {
     updateSpeechBubble(sceneName);
 
     currentScene = sceneName;
+
+    // Unlock navigation
+    isTransitioning = false;
+    navButtons.forEach((btn) => btn.classList.remove("disabled"));
   }, transitionTime);
 }
 

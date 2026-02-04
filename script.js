@@ -2,6 +2,7 @@
 let currentScene = "about";
 let currentPhotoIndex = 0;
 let isTransitioning = false;
+let speechBubbleTimeout = null;
 
 // Speech bubble messages for each scene
 const speechBubbleMessages = {
@@ -242,6 +243,10 @@ function init() {
   // Set initial speech bubble text
   updateSpeechBubble(currentScene);
 
+  // Character click handler for speech bubble
+  const clickTarget = document.getElementById("character-click-target");
+  clickTarget.addEventListener("click", showSpeechBubble);
+
   // Initialize background size and position
   initializeBackground();
 
@@ -342,14 +347,15 @@ function init() {
 
 // Grass Tile System Functions
 
-// Initialize grass tiles - create enough to fill viewport plus extras
+// Initialize grass tiles - create enough to fill viewport plus extras for longest transition
 function initGrassTiles() {
   // Clear any existing tiles
   grassContainer.innerHTML = "";
 
-  // Calculate how many tiles we need to cover the viewport
+  // Calculate how many tiles we need to cover the viewport PLUS max travel distance (3 scenes)
   const viewportWidth = window.innerWidth;
-  const tilesNeeded = Math.ceil(viewportWidth / GRASS_TILE_WIDTH) + 4; // Extra tiles for smooth edges
+  const maxTravelDistance = 3 * TILES_PER_SCENE * GRASS_TILE_WIDTH; // Max distance for 3 scene jump
+  const tilesNeeded = Math.ceil((viewportWidth + maxTravelDistance * 2) / GRASS_TILE_WIDTH) + 8; // Extra buffer
 
   // Create tiles centered around position 0
   const centerIndex = Math.floor(tilesNeeded / 2);
@@ -417,14 +423,16 @@ function animateGrassTransition(direction, distance) {
 
 // Reset grass after animation completes
 function resetGrassPosition() {
-  // Disable transition for instant reset
-  grassContainer.style.transition = "transform 0ms linear";
+  // Don't reinitialize tiles - just reset the transform instantly
+  // Since grass tiles are uniform, the visual result is the same
+  grassContainer.style.transition = "none";
   grassContainer.style.transform = "translateX(0)";
 
-  // Reinitialize tiles to center position
-  setTimeout(() => {
-    initGrassTiles();
-  }, 50);
+  // Force a reflow to apply the instant reset before re-enabling transitions
+  grassContainer.offsetHeight;
+
+  // Re-enable transitions for next animation
+  grassContainer.style.transition = "transform 3000ms ease-out";
 }
 
 // Update speech bubble text based on current scene
@@ -435,6 +443,24 @@ function updateSpeechBubble(sceneName) {
   }
 }
 
+// Show speech bubble when character is clicked
+function showSpeechBubble() {
+  if (isTransitioning) return;
+
+  // Clear any existing timeout
+  if (speechBubbleTimeout) {
+    clearTimeout(speechBubbleTimeout);
+  }
+
+  // Show the speech bubble
+  speechBubble.classList.add("visible");
+
+  // Hide after 3 seconds
+  speechBubbleTimeout = setTimeout(() => {
+    speechBubble.classList.remove("visible");
+  }, 3000);
+}
+
 // Scene Navigation
 function navigateToScene(sceneName) {
   if (sceneName === currentScene) return;
@@ -443,6 +469,12 @@ function navigateToScene(sceneName) {
   // Lock navigation during transition
   isTransitioning = true;
   navButtons.forEach((btn) => btn.classList.add("disabled"));
+
+  // Hide speech bubble during transition
+  if (speechBubbleTimeout) {
+    clearTimeout(speechBubbleTimeout);
+  }
+  speechBubble.classList.remove("visible");
 
   // Calculate distance and direction
   const currentIndex = sceneOrder[currentScene];

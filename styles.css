@@ -156,9 +156,29 @@ body {
   transform: translateX(-50%);
   width: 256px;
   height: 256px;
-  z-index: 100;
+  z-index: 200;
   transition: transform 0.2s ease;
   pointer-events: none;
+}
+
+/* Click target - smaller clickable area within the character */
+.character-click-target {
+  position: absolute;
+  bottom: 0px; /* Adjust to position within sprite */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px; /* Adjust width of clickable area */
+  height: 145px; /* Adjust height of clickable area */
+  cursor: pointer;
+  pointer-events: auto;
+  /* Uncomment to debug: */
+  /* background: rgba(255, 0, 0, 0.3); */
+}
+
+.character.walking .character-click-target,
+.character.running .character-click-target {
+  pointer-events: none;
+  cursor: default;
 }
 
 /* Speech Bubble - Positioned independently from character */
@@ -177,21 +197,14 @@ body {
   visibility: hidden;
   pointer-events: none;
   white-space: nowrap;
-  z-index: 101;
+  z-index: 201;
 }
 
-/* Show speech bubble when character is idle (using sibling selector) */
-.character.idle + .speech-bubble {
+/* Show speech bubble when it has the 'visible' class */
+.speech-bubble.visible {
   opacity: 1;
   visibility: visible;
   animation: bubble-float 2s ease-in-out infinite;
-}
-
-/* Hide when walking (sibling selector) */
-.character.walking + .speech-bubble {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  animation: none !important;
 }
 
 /* Speech bubble tail - pixel art style triangle */

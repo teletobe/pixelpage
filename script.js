@@ -190,7 +190,7 @@ const TILES_PER_SCENE = 5; // Each scene is exactly 10 tiles apart
 
 // Preload critical images to prevent flashing
 function preloadImages() {
-  const images = ["img/grass.png", "img/player/Walk.png", "img/player/Run.png"];
+  const images = ["img/grass.png", "img/player/Walk.png", "img/player/Run.png", "img/player/Idle.png"];
   images.forEach((src) => {
     const img = new Image();
     img.src = src;

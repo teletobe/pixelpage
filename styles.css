@@ -262,7 +262,7 @@ body {
 }
 
 .character.idle {
-  animation: idle 2s ease-in-out infinite;
+  animation: idle 0.5s ease-in-out infinite;
 }
 
 /* Walking animations - Normal Speed */
@@ -333,9 +333,24 @@ body {
   }
 }
 
-/* Idle sprite shows first frame with subtle bob */
+/* Idle sprite - use Idle.png with 2 frames (standing and waving) */
 .character.idle .character-sprite {
-  background-position: 0% 0%;
+  background-image: url("img/player/Idle.png");
+  background-size: 200% 100%; /* 2 frames side by side */
+  animation: sprite-idle 6s step-end infinite;
+}
+
+/* Idle animation - alternates between standing (frame 1) and waving (frame 2) */
+/* 1.5s standing, 1.5s waving */
+@keyframes sprite-idle {
+  0%,
+  49.99% {
+    background-position: 0% 0%; /* Standing */
+  }
+  50%,
+  100% {
+    background-position: 100% 0%; /* Waving */
+  }
 }
 
 .character-sprite {

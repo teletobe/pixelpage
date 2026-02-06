@@ -880,6 +880,7 @@ body {
   overflow-y: auto;
   position: relative;
   box-shadow: 0 0 40px rgba(255, 165, 0, 0.5);
+  box-sizing: border-box;
 }
 
 .close-btn {
@@ -1335,6 +1336,42 @@ body {
     display: none;
   }
 
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+    border-width: 4px;
+  }
+
+  .close-btn {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+  }
+
+  #experience-modal .experience-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .room-detail h2 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .project-item {
+    padding: 10px 12px;
+  }
+
+  .project-item h3 {
+    font-size: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .project-item p {
+    font-size: 8px;
+  }
+
   .photobook-btn {
     font-size: 20px; /* 2px larger on small devices */
     padding: 25px 50px;
@@ -1530,6 +1567,44 @@ body {
   .msc-description-mobile {
     font-size: 5px;
     margin-bottom: 8px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+    border-width: 3px;
+  }
+
+  .close-btn {
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+
+  #experience-modal .experience-close {
+    top: 8px;
+    right: 8px;
+  }
+
+  .room-detail h2 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .project-item {
+    padding: 8px 10px;
+    border-width: 2px;
+  }
+
+  .project-item h3 {
+    font-size: 9px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .project-item p {
+    font-size: 7px;
   }
 }
 

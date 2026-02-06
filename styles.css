@@ -65,6 +65,34 @@ body {
   pointer-events: none;
 }
 
+/* Language Toggle */
+.lang-toggle {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  padding: 12px 16px;
+  background: #533483;
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #16213e;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lang-toggle:hover {
+  background: #7b4db5;
+  transform: translateY(-50%) translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16213e;
+}
+
+.lang-toggle:active {
+  transform: translateY(-50%) translate(4px, 4px);
+  box-shadow: 0 0 0 #16213e;
+}
+
 /* Game Container */
 .game-container {
   position: relative;
@@ -1163,6 +1191,23 @@ body {
     padding: 7px;
   }
 
+  .lang-toggle {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transform: none;
+    font-size: 8px;
+    padding: 6px 10px;
+  }
+
+  .lang-toggle:hover {
+    transform: translate(2px, 2px);
+  }
+
+  .lang-toggle:active {
+    transform: translate(4px, 4px);
+  }
+
   .pixel-title {
     font-size: 12px;
     margin-bottom: 15px;
@@ -1323,6 +1368,13 @@ body {
 
 /* Very small mobile */
 @media (max-width: 600px) {
+  .lang-toggle {
+    font-size: 7px;
+    padding: 5px 8px;
+    right: 5px;
+    top: 5px;
+  }
+
   .content-section {
     padding: 10px 10px;
     padding-top: 50px;
@@ -1467,4 +1519,241 @@ body {
 .pixel-button:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 #000;
+}
+
+/* Large / 4K Displays */
+@media (min-width: 2000px) {
+  /* Language toggle */
+  .lang-toggle {
+    font-size: 14px;
+    padding: 16px 22px;
+    border-width: 4px;
+    right: 25px;
+  }
+
+  /* Pixel boxes / content cards */
+  .pixel-box {
+    max-width: 900px;
+    padding: 45px;
+    border-width: 6px;
+  }
+
+  .pixel-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .bio-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .bio-text {
+    padding: 22px;
+  }
+
+  .stat-item {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .pixel-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Modal content */
+  .modal-content {
+    max-width: 1100px;
+    padding: 60px;
+    border-width: 8px;
+  }
+
+  .close-btn {
+    font-size: 30px;
+    width: 65px;
+    height: 65px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .room-detail h2 {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  .room-projects {
+    gap: 28px;
+  }
+
+  .project-item {
+    padding: 22px 28px;
+    border-width: 4px;
+  }
+
+  .project-item h3 {
+    font-size: 16px;
+  }
+
+  .project-item p {
+    font-size: 12px;
+  }
+
+  /* Education grid */
+  .education-grid {
+    max-width: 1400px;
+    gap: 40px;
+  }
+
+  .experience-title {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+
+  .edu-msc-container {
+    padding: 30px;
+    border-width: 6px;
+  }
+
+  .msc-title {
+    font-size: 16px;
+  }
+
+  .msc-description {
+    font-size: 11px;
+  }
+
+  .edu-msc h3 {
+    font-size: 14px;
+  }
+
+  /* University grid */
+  .university-grid {
+    max-width: 1200px;
+    gap: 40px;
+  }
+
+  .uni-room {
+    padding: 28px;
+    border-width: 6px;
+  }
+
+  .room-title {
+    font-size: 14px;
+  }
+
+  .room-summary {
+    font-size: 10px;
+  }
+
+  /* Contact box */
+  .contact-box {
+    max-width: 850px;
+    padding: 55px 70px;
+  }
+
+  .contact-content p {
+    font-size: 18px;
+  }
+
+  .contact-link {
+    font-size: 16px;
+    padding: 28px 50px;
+    border-width: 4px;
+  }
+
+  /* Buttons */
+  .photobook-btn {
+    font-size: 24px;
+    padding: 40px 80px;
+    border-width: 6px;
+  }
+
+  .experience-btn {
+    font-size: 18px;
+    padding: 40px 55px;
+    border-width: 6px;
+  }
+
+  /* Photobook pages */
+  .photobook-page {
+    width: 600px;
+    height: 900px;
+  }
+
+  /* Speech bubble */
+  .speech-bubble {
+    font-size: 12px;
+    padding: 16px 24px;
+    border-width: 5px;
+  }
+}
+
+/* Ultra-wide 4K+ */
+@media (min-width: 3000px) {
+  .pixel-box {
+    max-width: 1200px;
+    padding: 60px;
+  }
+
+  .pixel-title {
+    font-size: 34px;
+  }
+
+  .bio-content p {
+    font-size: 18px;
+  }
+
+  .stat-item {
+    font-size: 15px;
+  }
+
+  .modal-content {
+    max-width: 1500px;
+    padding: 80px;
+  }
+
+  .close-btn {
+    font-size: 36px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .room-detail h2 {
+    font-size: 34px;
+  }
+
+  .project-item h3 {
+    font-size: 20px;
+  }
+
+  .project-item p {
+    font-size: 15px;
+  }
+
+  .education-grid {
+    max-width: 1800px;
+  }
+
+  .university-grid {
+    max-width: 1600px;
+  }
+
+  .contact-box {
+    max-width: 1100px;
+  }
+
+  .contact-content p {
+    font-size: 22px;
+  }
+
+  .contact-link {
+    font-size: 20px;
+    padding: 35px 60px;
+  }
+
+  .photobook-page {
+    width: 750px;
+    height: 1100px;
+  }
 }

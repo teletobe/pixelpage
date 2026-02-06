@@ -3,14 +3,124 @@ let currentScene = "about";
 let currentPhotoIndex = 0;
 let isTransitioning = false;
 let speechBubbleTimeout = null;
+let currentLang = localStorage.getItem("pixpage-lang") || "en";
+
+// Static translations for HTML content
+const translations = {
+  en: {
+    "nav.about": "ABOUT",
+    "nav.photobook": "PHOTOBOOK",
+    "nav.experience": "EXPERIENCE",
+    "nav.contact": "CONTACT",
+    "lang.toggle": "DE",
+    "about.title": "WELCOME!",
+    "about.greeting": "Hi! I'm Tobi :) (he/him)",
+    "about.description":
+      "Welcome to my website! Navigate through different areas to explore my work and interests. Use the buttons above to travel to different locations!",
+    "about.level.label": "LEVEL:",
+    "about.level.value":
+      "Recently graduated MSc. Media & Human-Centred Computing",
+    "about.interests.label": "INTERESTS:",
+    "about.interests.value":
+      "Interactive & Immersive Media, AI, Ethics, Photography",
+    "photography.button": "OPEN PHOTOBOOK",
+    "experience.button": "EXPLORE EDUCATION & EXPERIENCE",
+    "experience.title": "EDUCATION & EXPERIENCE",
+    "room.bsc.title": "BSc. INFORMATICS",
+    "room.bsc.summary":
+      "Computer sciences foundation. (University Innsbruck, 2022).",
+    "room.bsc.desc1":
+      "I completed my bachelor's degree in Computer Science at the University Innsbruck in 2022.<br />",
+    "room.bsc.desc2":
+      "It provided a solid foundation in programming, algorithms, and software development.",
+    "room.bsc.desc3": "Click to explore what it thought me!",
+    "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
+    "room.msc.desc.mobile": "Graduated from TU Wien, 2026:",
+    "room.msc.desc":
+      "I graduated from this multidisciplinary master's program at TU Wien in 2026.",
+    "room.userresearch.title": "USER RESEARCH",
+    "room.interactive.title": "INTERACTIVE MEDIA",
+    "room.critical.title": "CRITICAL REFLECTION",
+    "room.automation.title": "TEST AUTOMATION",
+    "room.automation.summary": "Internship at Becton Dickinson.",
+    "room.automation.desc1":
+      "Click to see where I obtained professional work experience in IT.",
+    "room.automation.desc2":
+      "Experience in automated testing frameworks and quality assurance during an internship at a medical technology company.",
+    "room.diversity.title": "GENDER & DIVERSITY COMPETENCES",
+    "room.diversity.summary": "Certificate at TU Wien with STS classes.",
+    "room.diversity.desc":
+      "A Certificate in gender and diversity competences. Attended classes on STS. Click to learn what it encompassed.",
+    "contact.title": "GET IN TOUCH",
+    "contact.text": "Let's connect!",
+    "contact.email": "EMAIL",
+  },
+  de: {
+    "nav.about": "\u00dcBER MICH",
+    "nav.photobook": "FOTOBUCH",
+    "nav.experience": "ERFAHRUNG",
+    "nav.contact": "KONTAKT",
+    "lang.toggle": "EN",
+    "about.title": "WILLKOMMEN!",
+    "about.greeting": "Hi! Ich bin Tobi :)",
+    "about.description":
+      "Willkommen auf meiner Website! Navigiere durch verschiedene Bereiche, um meine Arbeiten zu erkunden. Benutze die Buttons oben!",
+    "about.level.label": "STUFE:",
+    "about.level.value":
+      "K\u00fcrzlich abgeschlossen: MSc. Media & Human-Centred Computing",
+    "about.interests.label": "INTERESSEN:",
+    "about.interests.value":
+      "Interaktive & Immersive Medien, KI, Ethik, Fotografie",
+    "photography.button": "FOTOBUCH \u00d6FFNEN",
+    "experience.button": "AUSBILDUNG & ERFAHRUNG ENTDECKEN",
+    "experience.title": "AUSBILDUNG & ERFAHRUNG",
+    "room.bsc.title": "BSc. INFORMATIK",
+    "room.bsc.summary":
+      "Informatik-Grundlagen. (Universit\u00e4t Innsbruck, 2022).",
+    "room.bsc.desc1":
+      "Ich habe meinen Bachelor in Informatik an der Universit\u00e4t Innsbruck im Jahr 2022 abgeschlossen.<br />",
+    "room.bsc.desc2":
+      "Er bot eine solide Grundlage in Programmierung, Algorithmen und Softwareentwicklung.",
+    "room.bsc.desc3": "Klicke, um zu entdecken, was ich gelernt habe!",
+    "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
+    "room.msc.desc.mobile": "Abschluss an der TU Wien, 2026:",
+    "room.msc.desc":
+      "Ich habe dieses interdisziplin\u00e4re Masterprogramm an der TU Wien im Jahr 2026 abgeschlossen.",
+    "room.userresearch.title": "NUTZERFORSCHUNG",
+    "room.interactive.title": "INTERAKTIVE MEDIEN",
+    "room.critical.title": "KRITISCHE REFLEXION",
+    "room.automation.title": "TESTAUTOMATISIERUNG",
+    "room.automation.summary": "Praktikum bei Becton Dickinson.",
+    "room.automation.desc1":
+      "Klicke, um zu sehen, wo ich professionelle Berufserfahrung in der IT gesammelt habe.",
+    "room.automation.desc2":
+      "Erfahrung in automatisierten Test-Frameworks und Qualit\u00e4tssicherung w\u00e4hrend eines Praktikums bei einem Medizintechnik-Unternehmen.",
+    "room.diversity.title": "GENDER & DIVERSIT\u00c4TSKOMPETENZEN",
+    "room.diversity.summary": "Zertifikat an der TU Wien mit STS-Kursen.",
+    "room.diversity.desc":
+      "Ein Zertifikat in Gender- und Diversit\u00e4tskompetenzen. Kurse zu STS besucht. Klicke, um mehr dar\u00fcber zu erfahren.",
+    "contact.title": "KONTAKT",
+    "contact.text": "Schreib mir gern! :)",
+    "contact.email": "E-MAIL",
+  },
+};
 
 // Speech bubble messages for each scene
-const speechBubbleMessages = {
+const speechBubbleMessages_en = {
   about: "Hi! I'm Tobi :)",
   photography: "Check out my photos!",
   university: "My professional experiences",
   contact: "Let's connect!",
 };
+
+const speechBubbleMessages_de = {
+  about: "Hi! Ich bin Tobi :)",
+  photography: "Schau dir meine Fotos an!",
+  university: "Meine beruflichen Erfahrungen :)",
+  contact: "Schreib mir gern! :)",
+};
+
+let speechBubbleMessages = speechBubbleMessages_en;
 
 // Scene order for calculating distance
 const sceneOrder = {
@@ -53,7 +163,7 @@ const photos = [
 ];
 
 // University projects data - CUSTOMIZE WITH YOUR PROJECTS
-const universityProjects = {
+const universityProjects_en = {
   "room-bsc": {
     title: "BSc. INFORMATICS",
     projects: [
@@ -171,6 +281,126 @@ const universityProjects = {
   },
 };
 
+const universityProjects_de = {
+  "room-bsc": {
+    title: "BSc. INFORMATIK",
+    projects: [
+      {
+        name: "Kompetenzen",
+        description:
+          "Grundlegende Kenntnisse in Datenstrukturen & Algorithmen, Mathematik, Betriebssystemen, verteilten Systemen erworben. Programmierf\u00e4higkeiten in kleinen Projekten in Java, C, Python und R entwickelt.",
+      },
+      {
+        name: "Spezialisierung: Intelligente & Interaktive Systeme",
+        description:
+          "Ich hab meine Spezialisierung in der Gruppe f\u00fcr Interaktive Grafik und Simulation gemacht, mit Fokus auf maschinelles Lernen und Computer Vision. W\u00e4hrend meines Studiums habe ich auch das NVIDIA CUDA Deep Learning Zertifikat erworben.",
+      },
+      {
+        name: "Bachelorarbeit",
+        description:
+          "In meiner Bachelorarbeit 'Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks' habe ich GANs angewendet, um intuitiv 3D-Welten durch Skizzieren des Spielbereichs zu erstellen. <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>Dieses Repo auf GitHub ansehen</a>",
+      },
+    ],
+  },
+  "room-userresearch": {
+    title: "NUTZER:INNENFORSCHUNG",
+    projects: [
+      {
+        name: "Wiener Radinfrastruktur",
+        description:
+          "Eine Mixed-Methods-Analyse der Wiener Radinfrastruktur durchgef\u00fchrt, durch Kombination von Forumsdiskursen, quantitativen Infrastrukturdaten und Strava-Sensordaten zur Bewertung von Radfahrerlebnissen, Identifizierung von Verbesserungsbereichen und Vorschlag eines \u00fcbertragbaren Frameworks f\u00fcr urbane Mobilit\u00e4tsforschung.",
+      },
+      {
+        name: "HCI im Gesundheitswesen",
+        description:
+          "Das Projekt sollte Patient:innen st\u00e4rken, durch Forschung an einer Roadmap zur Entwicklung eines interaktiven, patient:innenzentrierten EHR-Systems. Interviews durchgef\u00fchrt und ein Framework entworfen.",
+      },
+      {
+        name: "Technologieintegration in Kognitiver Verhaltenstherapie",
+        description:
+          "Scoping Review zur Bewertung der Auswirkungen unterst\u00fctzender Technologien in der KVT, um potenzielle Strategien zur Bew\u00e4ltigung identifizierter Einschr\u00e4nkungen zu erforschen.",
+      },
+    ],
+  },
+  "room-interactive": {
+    title: "INTERAKTIVE MEDIEN",
+    projects: [
+      {
+        name: "Interaktive Designprojekte",
+        description:
+          "<strong>PresentWrist:</strong> Freih\u00e4ndige Pr\u00e4sentationssteuerung mit einem M5StackC als Smartwatch. Projekt umfasste IMU-Datenverarbeitung und Handheld-Design. <br/><br/><strong>Open Source Smart Thermostat Projekt:</strong> Mit 3D-Drucken und PCB-Platinen einen pers\u00f6nlichen Thermostat erstellt, der individuell programmiert werden kann. Prototyping und Ver\u00f6ffentlichung der Modelle. <br/><br/><strong>Fahrrad-Absichtssignalisierung:</strong> Prototyping einer Absichtssignalisierungstechnologie f\u00fcr Fahrr\u00e4der. Mit App plus Mikrocontroller mit Tasten, Vibration und Sound zur Kommunikation von Abbiegesignalen und Gefahrenwarnungen.",
+      },
+      {
+        name: "Aufkommende Technologien",
+        description:
+          "<strong>Text2Image:</strong> Erm\u00f6glicht Nutzern, gelesene Inhalte (z.B. B\u00fccher oder Zeitungen) zu scannen und automatisch ein passendes Bild zu generieren. Mit LLMs und Bildgenerierungs-APIs. <br/><br/><strong>VR:</strong> Kooperatives Zwei-Spieler-Puzzlespiel in virtueller Realit\u00e4t. <br/><br/><strong>AR:</strong> Geografie-L\u00e4nder-Ratespiel in erweiterter Realit\u00e4t.",
+      },
+    ],
+  },
+  "room-critical": {
+    title: "KRITISCHE REFLEXION",
+    projects: [
+      {
+        name: "Sozio-Technische-Systeme",
+        description:
+          "Auseinandersetzung mit Critical Theory, sozio-technische Systeme und Medienkommunikation, um zu verstehen, wie Technologie, Kultur und Macht interagieren. Dabei konnte ich Skills erlernen, um digitale Systeme, soziale Narrative und deren reale Auswirkungen kritisch zu bewerten.",
+      },
+      {
+        name: "Masterarbeit: KI-Ethik-Auditing",
+        description:
+          "Ich war in einem Forschungsprojekt an der TU Wien angestellt, um einen stakeholder-zentrierten Ansatz zur Bewertung der Ethik von KI zu entwickeln. Eine Methodik mit Workshop und Webtool erstellt, um ethische Bedenken von Stakeholdern zu erheben und in \u00fcberpr\u00fcfbare Artefakte zu \u00fcbersetzen, darstellbar in einem Prototyp-Dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>Dieses Repo auf GitHub ansehen</a><br/>Co-Autor eines Workshop-Papers bei CHI25, Konferenzteilnahme und akademische Paper-Reviews.",
+      },
+    ],
+  },
+  "room-ai": {
+    title: "KI-ETHIK",
+    projects: [
+      {
+        name: "Forschung zu algorithmischer Voreingenommenheit",
+        description:
+          "Untersuchung von Bias in Machine-Learning-Modellen und Vorschlag von Frameworks f\u00fcr gerechtere KI-Systeme.",
+      },
+      {
+        name: "KI-Transparenzprojekt",
+        description:
+          "Visualisierungstools entwickelt, um KI-Entscheidungsprozesse interpretierbarer und nachvollziehbarer zu machen.",
+      },
+      {
+        name: "Ethik-Richtlinien",
+        description:
+          "Co-Autor ethischer Richtlinien f\u00fcr verantwortungsvolle KI-Entwicklung im Bildungskontext.",
+      },
+    ],
+  },
+  "room-automation": {
+    title: "TESTAUTOMATISIERUNG",
+    projects: [
+      {
+        name: "Manuelles und Automatisiertes Testen",
+        description:
+          "Praktische Erfahrung w\u00e4hrend eines viermonatigen Praktikums als <strong>Test Automation Engineer</strong> bei einem Medizintechnik-Unternehmen gesammelt. <br /> In einem agilen Scrum-Team an End-to-End-Tests f\u00fcr sicherheitskritische Infusionspumpen-Software gearbeitet. Aufgaben umfassten manuelles Systemtesten sowie Entwicklung und Wartung automatisierter Tests mit <strong>C#</strong> und <strong>Cypress</strong> in einer regulierten Umgebung.",
+      },
+      {
+        name: "CI/CD DevOps",
+        description:
+          "Automatisierte Tests in CI-Pipelines mit GitHub Actions integriert und Testplanung, Dokumentation und R\u00fcckverfolgbarkeit mit <strong>Azure DevOps</strong> verwaltet. An einer formalen Verifikationsphase teilgenommen, bei der alle Testf\u00e4lle systematisch ausgef\u00fchrt und dokumentiert wurden. Einblicke in strukturierte Testkonzepte, Fehleranalyse, CI/CD-Workflows und DevOps-Prozesse gewonnen.",
+      },
+    ],
+  },
+  "room-diversity": {
+    title: "GENDER & DIVERSIT\u00c4TSKOMPETENZEN",
+    projects: [
+      {
+        name: "Lehrveranstaltungen:",
+        description:
+          "Ich habe Kurse belegt in <strong>Diversit\u00e4tskompetenzen und -management, feministischen Technologiestudien, Auswirkungen von Technologie und Technikfolgenabsch\u00e4tzung,</strong> mit einem STS-basierten Ansatz zur Analyse, wie Technologien soziale Strukturen, Organisationen und Nutzer:innen pr\u00e4gen.",
+      },
+    ],
+  },
+};
+
+let universityProjects = universityProjects_en;
+
 // DOM Elements - will be initialized after DOM loads
 let navButtons, character, backgroundLayers, contentSections;
 let photobookModal, openPhotobookBtn, closePhotobookBtn;
@@ -190,11 +420,58 @@ const TILES_PER_SCENE = 5; // Each scene is exactly 10 tiles apart
 
 // Preload critical images to prevent flashing
 function preloadImages() {
-  const images = ["img/grass.png", "img/player/Walk.png", "img/player/Run.png", "img/player/Idle.png"];
+  const images = [
+    "img/grass.png",
+    "img/player/Walk.png",
+    "img/player/Run.png",
+    "img/player/Idle.png",
+  ];
   images.forEach((src) => {
     const img = new Image();
     img.src = src;
   });
+}
+
+// Apply language to all translatable elements
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("pixpage-lang", lang);
+
+  // Update all data-i18n elements (plain text)
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  // Update all data-i18n-html elements (HTML content with <br> etc.)
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-html");
+    if (translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Swap dynamic JS data objects
+  speechBubbleMessages =
+    lang === "de" ? speechBubbleMessages_de : speechBubbleMessages_en;
+  universityProjects =
+    lang === "de" ? universityProjects_de : universityProjects_en;
+
+  // Update speech bubble text for current scene
+  updateSpeechBubble(currentScene);
+
+  // Re-render open room modal if language changes mid-viewing
+  if (roomModal && roomModal.classList.contains("active")) {
+    const currentRoomId = roomTitleEl.dataset.currentRoom;
+    if (currentRoomId) {
+      openRoomModal(currentRoomId);
+    }
+  }
+
+  // Update HTML lang attribute
+  document.documentElement.lang = lang;
 }
 
 // Initialize
@@ -355,6 +632,16 @@ function init() {
     // Reinitialize grass tiles for new viewport size
     initGrassTiles();
   });
+
+  // Language toggle
+  const langToggle = document.getElementById("lang-toggle");
+  langToggle.addEventListener("click", () => {
+    const newLang = currentLang === "en" ? "de" : "en";
+    applyLanguage(newLang);
+  });
+
+  // Apply saved language on load
+  applyLanguage(currentLang);
 }
 
 // Grass Tile System Functions
@@ -367,7 +654,8 @@ function initGrassTiles() {
   // Calculate how many tiles we need to cover the viewport PLUS max travel distance (3 scenes)
   const viewportWidth = window.innerWidth;
   const maxTravelDistance = 3 * TILES_PER_SCENE * GRASS_TILE_WIDTH; // Max distance for 3 scene jump
-  const tilesNeeded = Math.ceil((viewportWidth + maxTravelDistance * 2) / GRASS_TILE_WIDTH) + 16; // Extra large buffer for mobile
+  const tilesNeeded =
+    Math.ceil((viewportWidth + maxTravelDistance * 2) / GRASS_TILE_WIDTH) + 16; // Extra large buffer for mobile
 
   // Create tiles centered around position 0
   const centerIndex = Math.floor(tilesNeeded / 2);
@@ -684,6 +972,7 @@ function openRoomModal(roomId) {
   const roomData = universityProjects[roomId];
   if (!roomData) return;
 
+  roomTitleEl.dataset.currentRoom = roomId;
   roomTitleEl.textContent = roomData.title;
 
   // Clear previous projects

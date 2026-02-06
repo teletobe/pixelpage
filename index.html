@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Pixel Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,10 +16,29 @@
   <body>
     <!-- Navigation Menu -->
     <nav class="pixel-nav">
-      <button class="nav-btn" data-scene="about">ABOUT</button>
-      <button class="nav-btn" data-scene="photography">PHOTOBOOK</button>
-      <button class="nav-btn" data-scene="university">EXPERIENCE</button>
-      <button class="nav-btn" data-scene="contact">CONTACT</button>
+      <button class="nav-btn" data-scene="about" data-i18n="nav.about">
+        ABOUT
+      </button>
+      <button
+        class="nav-btn"
+        data-scene="photography"
+        data-i18n="nav.photobook"
+      >
+        PHOTOBOOK
+      </button>
+      <button
+        class="nav-btn"
+        data-scene="university"
+        data-i18n="nav.experience"
+      >
+        EXPERIENCE
+      </button>
+      <button class="nav-btn" data-scene="contact" data-i18n="nav.contact">
+        CONTACT
+      </button>
+      <button class="lang-toggle" id="lang-toggle" data-i18n="lang.toggle">
+        DE
+      </button>
     </nav>
 
     <!-- Main Game Container -->
@@ -52,25 +72,29 @@
         <!-- About Me Content -->
         <div class="content-section active" id="content-about">
           <div class="pixel-box bio-box">
-            <h2 class="pixel-title">WELCOME!</h2>
+            <h2 class="pixel-title" data-i18n="about.title">WELCOME!</h2>
             <div class="bio-content">
-              <p>Hi! I'm Tobi :&#41;</p>
-              <p class="bio-text">
+              <p data-i18n="about.greeting">Hi! I'm Tobi :&#41;</p>
+              <p class="bio-text" data-i18n="about.description">
                 Welcome to my website! Navigate through different areas to
                 explore my work and interests. Use the buttons above to travel
                 to different locations!
               </p>
               <div class="stats">
                 <div class="stat-item">
-                  <span class="stat-label">LEVEL:</span>
-                  <span class="stat-value"
+                  <span class="stat-label" data-i18n="about.level.label"
+                    >LEVEL:</span
+                  >
+                  <span class="stat-value" data-i18n="about.level.value"
                     >Recently graduated MSc. Media & Human-Centred
                     Computing</span
                   >
                 </div>
                 <div class="stat-item">
-                  <span class="stat-label">INTERESTS:</span>
-                  <span class="stat-value"
+                  <span class="stat-label" data-i18n="about.interests.label"
+                    >INTERESTS:</span
+                  >
+                  <span class="stat-value" data-i18n="about.interests.value"
                     >Interactive & Immersive Media, AI, Ethics,
                     Photography</span
                   >
@@ -82,14 +106,22 @@
 
         <!-- Photography Content -->
         <div class="content-section" id="content-photography">
-          <button class="pixel-button photobook-btn" id="open-photobook">
+          <button
+            class="pixel-button photobook-btn"
+            id="open-photobook"
+            data-i18n="photography.button"
+          >
             OPEN PHOTOBOOK
           </button>
         </div>
 
         <!-- University/Experience Content -->
         <div class="content-section" id="content-university">
-          <button class="pixel-button experience-btn" id="open-experience">
+          <button
+            class="pixel-button experience-btn"
+            id="open-experience"
+            data-i18n="experience.button"
+          >
             EXPLORE EDUCATION & EXPERIENCE
           </button>
         </div>
@@ -97,13 +129,14 @@
         <!-- Contact Content -->
         <div class="content-section" id="content-contact">
           <div class="pixel-box contact-box">
-            <h2 class="pixel-title">GET IN TOUCH</h2>
+            <h2 class="pixel-title" data-i18n="contact.title">GET IN TOUCH</h2>
             <div class="contact-content">
-              <p>Let's connect!</p>
+              <p data-i18n="contact.text">Let's connect!</p>
               <div class="contact-links">
                 <a
                   href="mailto:tobiashchristoph@outlook.com"
                   class="contact-link"
+                  data-i18n="contact.email"
                   >EMAIL</a
                 >
               </div>
@@ -174,60 +207,70 @@
         ×
       </button>
       <div class="experience-content">
-        <h2 class="experience-title">EDUCATION & EXPERIENCE</h2>
+        <h2 class="experience-title" data-i18n="experience.title">
+          EDUCATION & EXPERIENCE
+        </h2>
         <div class="education-grid">
           <!-- BSc. Informatics - Red -->
           <div class="uni-room edu-bsc" id="room-bsc">
-            <h3>BSc. INFORMATICS</h3>
-            <p class="room-summary">
+            <h3 data-i18n="room.bsc.title">BSc. INFORMATICS</h3>
+            <p class="room-summary" data-i18n="room.bsc.summary">
               Computer sciences foundation. (University Innsbruck, 2022).
             </p>
             <div class="room-content">
-              <p>
+              <p data-i18n-html="room.bsc.desc1">
                 I completed my bachelor's degree in Computer Science at the
                 University Innsbruck in 2022.<br />
               </p>
-              <p>
+              <p data-i18n="room.bsc.desc2">
                 It provided a solid foundation in programming, algorithms, and
                 software development.
               </p>
               <br />
-              <p>Click to explore what it thought me!</p>
+              <p data-i18n="room.bsc.desc3">
+                Click to explore what it thought me!
+              </p>
             </div>
           </div>
 
           <!-- MSc. Container - Blue themed -->
           <div class="edu-msc-container">
-            <h3 class="msc-title">MSc. HUMAN-CENTRED COMPUTING</h3>
-            <p class="msc-description-mobile">Graduated from TU Wien, 2026:</p>
-            <p class="msc-description">
+            <h3 class="msc-title" data-i18n="room.msc.title">
+              MSc. HUMAN-CENTRED COMPUTING
+            </h3>
+            <p class="msc-description-mobile" data-i18n="room.msc.desc.mobile">
+              Graduated from TU Wien, 2026:
+            </p>
+            <p class="msc-description" data-i18n="room.msc.desc">
               I graduated from this multidisciplinary master's program at TU
               Wien in 2026.
             </p>
             <div class="msc-modules">
               <div class="uni-room edu-msc" id="room-userresearch">
-                <h3>USER RESEARCH</h3>
+                <h3 data-i18n="room.userresearch.title">USER RESEARCH</h3>
               </div>
               <div class="uni-room edu-msc" id="room-interactive">
-                <h3>INTERACTIVE MEDIA</h3>
+                <h3 data-i18n="room.interactive.title">INTERACTIVE MEDIA</h3>
               </div>
               <div class="uni-room edu-msc" id="room-critical">
-                <h3>CRITICAL REFLECTION</h3>
+                <h3 data-i18n="room.critical.title">CRITICAL REFLECTION</h3>
               </div>
             </div>
           </div>
 
           <!-- Test Automation Internship - Green -->
           <div class="uni-room edu-internship" id="room-automation">
-            <h3>TEST AUTOMATION</h3>
-            <p class="room-summary">Internship at Becton Dickinson.</p>
+            <h3 data-i18n="room.automation.title">TEST AUTOMATION</h3>
+            <p class="room-summary" data-i18n="room.automation.summary">
+              Internship at Becton Dickinson.
+            </p>
             <div class="room-content">
-              <p>
+              <p data-i18n="room.automation.desc1">
                 Click to see where I obtained professional work experience in
                 IT.
               </p>
               <br />
-              <p>
+              <p data-i18n="room.automation.desc2">
                 Experience in automated testing frameworks and quality assurance
                 during an internship at a medical technology company.
               </p>
@@ -236,10 +279,14 @@
 
           <!-- Gender & Diversity Certificate - Purple, spans both columns -->
           <div class="uni-room edu-certificate" id="room-diversity">
-            <h3>GENDER & DIVERSITY COMPETENCES</h3>
-            <p class="room-summary">Certificate at TU Wien with STS classes.</p>
+            <h3 data-i18n="room.diversity.title">
+              GENDER & DIVERSITY COMPETENCES
+            </h3>
+            <p class="room-summary" data-i18n="room.diversity.summary">
+              Certificate at TU Wien with STS classes.
+            </p>
             <div class="room-content">
-              <p>
+              <p data-i18n="room.diversity.desc">
                 A Certificate in gender and diversity competences. Attended
                 classes on STS. Click to learn what it encompassed.
               </p>

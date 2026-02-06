@@ -623,6 +623,7 @@ body {
 /* Experience Modal */
 #experience-modal {
   background: rgba(0, 0, 0, 0.85);
+  overflow: hidden;
 }
 
 #experience-modal .experience-close {
@@ -679,6 +680,7 @@ body {
   padding: 20px;
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
   grid-row: span 2;
+  box-sizing: border-box;
 }
 
 .msc-title {
@@ -767,6 +769,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
 }
 
 .uni-room:hover {
@@ -1263,29 +1266,40 @@ body {
   .education-grid {
     grid-template-columns: 1fr;
     gap: 7px;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .edu-msc-container {
     grid-row: auto;
     padding: 12px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .edu-certificate {
     grid-column: span 1; /* Single column on mobile */
+    min-width: 0;
   }
 
   .uni-room {
     padding: 12px;
+    min-width: 0;
   }
 
   .uni-room h3 {
     font-size: 10px;
     margin-bottom: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .msc-title {
     font-size: 9px;
     margin-bottom: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .msc-modules {
@@ -1298,6 +1312,8 @@ body {
 
   .edu-msc h3 {
     font-size: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .msc-description {
@@ -1333,10 +1349,17 @@ body {
   .experience-title {
     font-size: 16px;
     margin-bottom: 25px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .experience-content {
     padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .photobook-page {
@@ -1456,24 +1479,34 @@ body {
 
   .education-grid {
     gap: 5px;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .edu-msc-container {
     padding: 10px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .uni-room {
     padding: 10px;
+    min-width: 0;
   }
 
   .uni-room h3 {
     font-size: 9px;
     margin-bottom: 5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .msc-title {
     font-size: 8px;
     margin-bottom: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .msc-modules {
@@ -1486,6 +1519,8 @@ body {
 
   .edu-msc h3 {
     font-size: 7px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .room-summary {

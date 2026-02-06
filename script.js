@@ -303,7 +303,7 @@ const universityProjects_de = {
     ],
   },
   "room-userresearch": {
-    title: "NUTZER:INNENFORSCHUNG",
+    title: "USER-FORSCHUNG",
     projects: [
       {
         name: "Wiener Radinfrastruktur",
@@ -316,9 +316,9 @@ const universityProjects_de = {
           "Das Projekt sollte Patient:innen st\u00e4rken, durch Forschung an einer Roadmap zur Entwicklung eines interaktiven, patient:innenzentrierten EHR-Systems. Interviews durchgef\u00fchrt und ein Framework entworfen.",
       },
       {
-        name: "Technologieintegration in Kognitiver Verhaltenstherapie",
+        name: "Technologien in CBT",
         description:
-          "Scoping Review zur Bewertung der Auswirkungen unterst\u00fctzender Technologien in der KVT, um potenzielle Strategien zur Bew\u00e4ltigung identifizierter Einschr\u00e4nkungen zu erforschen.",
+          "Scoping Review zur Bewertung der Auswirkungen unterst\u00fctzender Technologien in der kognitiven Verhaltenstherapie, um potenzielle Strategien zur Bew\u00e4ltigung identifizierter Einschr\u00e4nkungen zu erforschen.",
       },
     ],
   },
@@ -326,12 +326,12 @@ const universityProjects_de = {
     title: "INTERAKTIVE MEDIEN",
     projects: [
       {
-        name: "Interaktive Designprojekte",
+        name: "UX",
         description:
-          "<strong>PresentWrist:</strong> Freih\u00e4ndige Pr\u00e4sentationssteuerung mit einem M5StackC als Smartwatch. Projekt umfasste IMU-Datenverarbeitung und Handheld-Design. <br/><br/><strong>Open Source Smart Thermostat Projekt:</strong> Mit 3D-Drucken und PCB-Platinen einen pers\u00f6nlichen Thermostat erstellt, der individuell programmiert werden kann. Prototyping und Ver\u00f6ffentlichung der Modelle. <br/><br/><strong>Fahrrad-Absichtssignalisierung:</strong> Prototyping einer Absichtssignalisierungstechnologie f\u00fcr Fahrr\u00e4der. Mit App plus Mikrocontroller mit Tasten, Vibration und Sound zur Kommunikation von Abbiegesignalen und Gefahrenwarnungen.",
+          "<strong>PresentWrist:</strong> Freih\u00e4ndige Pr\u00e4sentationssteuerung mit einem M5StackC als Smartwatch. Projekt umfasste IMU-Datenverarbeitung und Handheld-Design. <br/><br/><strong>Open Source Smart Thermostat Projekt:</strong> Mit 3D-Drucken und PCB-Platinen einen pers\u00f6nlichen Thermostat erstellt, der individuell programmiert werden kann. Prototyping und Ver\u00f6ffentlichung der Modelle. <br/><br/><strong>Fahrrad Absichten Signalisierung:</strong> Prototypen f\u00fcr Fahrr\u00e4der. Mit App plus Mikrocontroller mit Tasten, Vibration und Sound zur Kommunikation von Abbiegesignalen und Gefahrenwarnungen.",
       },
       {
-        name: "Aufkommende Technologien",
+        name: "VR/AR und KI",
         description:
           "<strong>Text2Image:</strong> Erm\u00f6glicht Nutzern, gelesene Inhalte (z.B. B\u00fccher oder Zeitungen) zu scannen und automatisch ein passendes Bild zu generieren. Mit LLMs und Bildgenerierungs-APIs. <br/><br/><strong>VR:</strong> Kooperatives Zwei-Spieler-Puzzlespiel in virtueller Realit\u00e4t. <br/><br/><strong>AR:</strong> Geografie-L\u00e4nder-Ratespiel in erweiterter Realit\u00e4t.",
       },
@@ -373,7 +373,7 @@ const universityProjects_de = {
     ],
   },
   "room-automation": {
-    title: "TESTAUTOMATISIERUNG",
+    title: "TEST AUTOMATISIERUNG",
     projects: [
       {
         name: "Manuelles und Automatisiertes Testen",
@@ -388,10 +388,10 @@ const universityProjects_de = {
     ],
   },
   "room-diversity": {
-    title: "GENDER & DIVERSIT\u00c4TSKOMPETENZEN",
+    title: "GENDER & DIVERSIT\u00c4TS- KOMPETENZEN",
     projects: [
       {
-        name: "Lehrveranstaltungen:",
+        name: "Uni-Kurse:",
         description:
           "Ich habe Kurse belegt in <strong>Diversit\u00e4tskompetenzen und -management, feministischen Technologiestudien, Auswirkungen von Technologie und Technikfolgenabsch\u00e4tzung,</strong> mit einem STS-basierten Ansatz zur Analyse, wie Technologien soziale Strukturen, Organisationen und Nutzer:innen pr\u00e4gen.",
       },

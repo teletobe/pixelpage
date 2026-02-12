@@ -1,0 +1,80 @@
+/* ===========================================
+   navigation.css — Top nav bar & language toggle
+   =========================================== */
+
+.pixel-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border-bottom: 4px solid #0f3460;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 0 #16213e;
+}
+
+.nav-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  padding: 12px 20px;
+  background: #e94560;
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #16213e;
+}
+
+.nav-btn:hover {
+  background: #ff6b6b;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16213e;
+}
+
+.nav-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #16213e;
+}
+
+.nav-btn.active {
+  background: #ffa500;
+  border-color: #ffeb3b;
+}
+
+.nav-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Language Toggle */
+.lang-toggle {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  padding: 12px 16px;
+  background: #533483;
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #16213e;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lang-toggle:hover {
+  background: #7b4db5;
+  transform: translateY(-50%) translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16213e;
+}
+
+.lang-toggle:active {
+  transform: translateY(-50%) translate(4px, 4px);
+  box-shadow: 0 0 0 #16213e;
+}

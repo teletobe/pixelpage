@@ -1,0 +1,270 @@
+/* ===========================================
+   content.css — Content overlay panels, pixel boxes,
+   about/bio section, contact section, and action buttons.
+   =========================================== */
+
+/* --- Content Overlay (sits above the game world) --- */
+
+.content-overlay {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  pointer-events: none;
+  z-index: 150;
+}
+
+.content-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 40px 40px 40px;
+}
+
+.content-section.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.content-section:not(.active) * {
+  pointer-events: none !important;
+}
+
+/* --- Pixel Box (reusable card style) --- */
+
+.pixel-box {
+  background: rgba(26, 26, 46, 0.95);
+  border: 4px solid #fff;
+  padding: 30px;
+  box-shadow:
+    8px 8px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 0 2px #0f3460;
+  max-width: 600px;
+  position: relative;
+}
+
+.pixel-box::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: repeating-linear-gradient(
+    0deg,
+    #fff 0px,
+    #fff 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.pixel-title {
+  font-size: 18px;
+  color: #ffa500;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+/* --- About / Bio Section --- */
+
+.bio-content {
+  color: #fff;
+  line-height: 1.8;
+}
+
+.pixel-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(
+    to bottom,
+    #ffd4a3 0%,
+    #ffd4a3 40%,
+    #e94560 40%,
+    #e94560 70%,
+    #2c3e50 70%
+  );
+  border: 3px solid #fff;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.bio-content p {
+  font-size: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.bio-footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 165, 0, 0.3);
+  font-size: 7px !important;
+  color: #888;
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+
+.bio-text {
+  text-align: left !important;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #ffa500;
+}
+
+.stats {
+  margin-top: 20px;
+  border-top: 2px solid #ffa500;
+  padding-top: 15px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 8px;
+}
+
+.stat-label {
+  color: #ffa500;
+}
+
+.stat-value {
+  color: #fff;
+  text-align: right;
+}
+
+/* --- Action Buttons (scene CTAs) --- */
+
+.pixel-button {
+  font-family: "Press Start 2P", cursive;
+  background: #e94560;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.1s;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.pixel-button:hover {
+  background: #ff6b6b;
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.pixel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+.photobook-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  padding: 30px 60px;
+  background: #8b4513;
+  color: #fff;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.1s;
+  margin-top: 200px;
+}
+
+.photobook-btn:hover {
+  background: #a0522d;
+  transform: translate(2px, 2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.photobook-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.experience-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  padding: 30px 40px;
+  background: #2e7d32;
+  color: #fff;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.1s;
+  margin-top: 200px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.experience-btn:hover {
+  background: #43a047;
+  transform: translate(2px, 2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.experience-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* --- Contact Section --- */
+
+.contact-box {
+  max-width: 600px;
+  padding: 40px 50px;
+}
+
+.contact-content {
+  color: #fff;
+  text-align: center;
+}
+
+.contact-content p {
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.contact-link {
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  padding: 20px 40px;
+  background: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border: 3px solid #fff;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  display: block;
+  text-align: center;
+}
+
+.contact-link:hover {
+  background: #5ba3ff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.contact-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}

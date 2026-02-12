@@ -1,0 +1,20 @@
+/* ===========================================
+   base.css — Global reset & body defaults
+   Pixel-art rendering applied to all elements.
+   =========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+body {
+  font-family: "Press Start 2P", cursive;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}

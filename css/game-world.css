@@ -1,0 +1,337 @@
+/* ===========================================
+   game-world.css — Game viewport, parallax layers,
+   grass tiles, character sprites, speech bubble,
+   and all sprite/world keyframe animations.
+   =========================================== */
+
+/* --- Game Viewport --- */
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #87ceeb url("../img/sky.png") center center no-repeat;
+  background-size: 1700px auto;
+  image-rendering: pixelated;
+  animation: sky-bounce 0.8s ease-in-out infinite;
+}
+
+/* --- Parallax Layers --- */
+
+.parallax-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.parallax-layer .layer-content {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 0;
+}
+
+.background-layer {
+  z-index: 1;
+}
+
+.background-layer .layer-content {
+  position: absolute;
+  left: 0;
+  bottom: 256px;
+  top: auto;
+  height: 300px;
+  background-image: url("../img/background1280p.png");
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  image-rendering: pixelated;
+  transform: translateX(0);
+  transition: transform 3s ease-out;
+}
+
+/* --- Grass Tiles --- */
+
+.grass-container {
+  z-index: 3;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 3s ease-out;
+  will-change: transform;
+}
+
+.grass-tile {
+  position: absolute;
+  width: 384px;
+  height: 285px;
+  bottom: 0;
+  background-image: url("../img/grass.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  image-rendering: pixelated;
+}
+
+/* --- Character --- */
+
+.character {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 256px;
+  height: 256px;
+  z-index: 200;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.character-click-target {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 145px;
+  cursor: pointer;
+  pointer-events: auto;
+  /* Uncomment to debug: */
+  /* background: rgba(255, 0, 0, 0.3); */
+}
+
+.character.walking .character-click-target,
+.character.running .character-click-target {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Facing directions */
+.character.face-left {
+  transform: translateX(-50%) scaleX(-1);
+}
+
+.character.face-right {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.character.idle {
+  animation: idle 0.5s ease-in-out infinite;
+}
+
+/* --- Character Sprite Sheet --- */
+
+.character-sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/player/Walk.png");
+  background-size: 1000% 100%;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+/* Idle: 2-frame sprite (standing + waving) */
+.character.idle .character-sprite {
+  background-image: url("../img/player/Idle.png");
+  background-size: 200% 100%;
+  animation: sprite-idle 6s step-end infinite;
+}
+
+/* Running sprite */
+.character.running .character-sprite {
+  background-image: url("../img/player/Run.png");
+}
+
+/* Walk / run sprite cycling at normal & fast speeds */
+.character.walking.speed-normal .character-sprite {
+  animation: sprite-walk 1.2s steps(9) infinite;
+}
+.character.walking.speed-fast .character-sprite {
+  animation: sprite-walk 0.8s steps(9) infinite;
+}
+.character.running.speed-normal .character-sprite {
+  animation: sprite-run 1.2s steps(9) infinite;
+}
+.character.running.speed-fast .character-sprite {
+  animation: sprite-run 0.8s steps(9) infinite;
+}
+
+/* Walk movement at normal & fast speeds */
+.character.walking.face-left.speed-normal {
+  animation: walk-left 0.8s steps(9) infinite;
+}
+.character.walking.face-right.speed-normal {
+  animation: walk-right 0.8s steps(9) infinite;
+}
+.character.walking.face-left.speed-fast {
+  animation: walk-left 0.4s steps(9) infinite;
+}
+.character.walking.face-right.speed-fast {
+  animation: walk-right 0.4s steps(9) infinite;
+}
+
+/* --- Speech Bubble --- */
+
+.speech-bubble {
+  position: absolute;
+  bottom: 340px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 12px 18px;
+  border: 4px solid #000;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 201;
+}
+
+.speech-bubble.visible {
+  opacity: 1;
+  visibility: visible;
+  animation: bubble-float 2s ease-in-out infinite;
+}
+
+/* Pixel-art triangle tail */
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #000;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fff;
+  z-index: 1;
+}
+
+.bubble-text {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* --- Keyframe Animations --- */
+
+@keyframes bubble-float {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -3px;
+  }
+}
+
+@keyframes walk-right {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+
+@keyframes walk-left {
+  0% {
+    transform: translateX(-50%) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(-1);
+  }
+}
+
+@keyframes idle {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+@keyframes sky-bounce {
+  0%,
+  100% {
+    background-position: center center;
+  }
+  50% {
+    background-position: center calc(50% - 2px);
+  }
+}
+
+@keyframes background-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Idle: alternates standing (frame 1) and waving (frame 2) */
+@keyframes sprite-idle {
+  0%,
+  49.99% {
+    background-position: 0% 0%;
+  }
+  50%,
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes sprite-walk {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes sprite-run {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 0%;
+  }
+}

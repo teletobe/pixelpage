@@ -1,0 +1,705 @@
+/* ===========================================
+   responsive.css — All media-query overrides,
+   ordered from large screens down to small mobile.
+   =========================================== */
+
+/* --- Tablet (< 1100px) — scale down photobook --- */
+@media (max-width: 1100px) {
+  .photobook-page {
+    width: 380px;
+    height: 590px;
+  }
+
+  .photobook-spine {
+    height: 590px;
+  }
+
+  .page-nav-side {
+    font-size: 18px;
+    padding: 30px 12px;
+  }
+}
+
+/* --- Small tablet / landscape mobile (< 900px) --- */
+@media (max-width: 900px) {
+  .photobook-page {
+    width: 320px;
+    height: 500px;
+  }
+
+  .photobook-spine {
+    height: 500px;
+  }
+
+  .page-nav-side {
+    font-size: 16px;
+    padding: 25px 10px;
+  }
+
+  .page-nav-side.prev-page {
+    left: 10px;
+  }
+
+  .page-nav-side.next-page {
+    right: 10px;
+  }
+
+  .page-counter {
+    font-size: 10px;
+    padding: 8px 15px;
+  }
+}
+
+/* --- Mobile portrait (< 768px) --- */
+@media (max-width: 768px) {
+  .pixel-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .nav-btn {
+    font-size: 10px;
+    padding: 7px;
+  }
+
+  .lang-toggle {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transform: none;
+    font-size: 8px;
+    padding: 6px 10px;
+  }
+
+  .lang-toggle:hover {
+    transform: translate(2px, 2px);
+  }
+
+  .lang-toggle:active {
+    transform: translate(4px, 4px);
+  }
+
+  .pixel-title {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .content-section {
+    padding: 20px 15px;
+    padding-top: 60px;
+  }
+
+  .pixel-box {
+    padding: 15px;
+    max-width: 90%;
+    border: 3px solid #fff;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .bio-box {
+    margin-top: 20px;
+    padding: 12px;
+  }
+
+  .pixel-avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .bio-content p {
+    font-size: 8px;
+    margin-bottom: 10px;
+  }
+
+  .bio-text {
+    padding: 10px;
+    font-size: 7px;
+  }
+
+  .stats {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .stat-item {
+    font-size: 7px;
+    margin-bottom: 6px;
+  }
+
+  .university-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .edu-msc-container {
+    grid-row: auto;
+    padding: 12px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .edu-certificate {
+    grid-column: span 1;
+    min-width: 0;
+  }
+
+  .uni-room {
+    padding: 12px;
+    min-width: 0;
+  }
+
+  .uni-room h3 {
+    font-size: 10px;
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .msc-title {
+    font-size: 9px;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .msc-modules {
+    gap: 6px;
+  }
+
+  .edu-msc {
+    padding: 6px 10px !important;
+  }
+
+  .edu-msc h3 {
+    font-size: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .msc-description {
+    display: none;
+  }
+
+  .msc-description-mobile {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 6px;
+  }
+
+  .room-summary {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .uni-room .room-content {
+    display: none;
+  }
+
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+    border-width: 4px;
+  }
+
+  .close-btn {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+  }
+
+  #experience-modal .experience-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .room-detail h2 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .project-item {
+    padding: 10px 12px;
+  }
+
+  .project-item h3 {
+    font-size: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .project-item p {
+    font-size: 8px;
+  }
+
+  .photobook-btn {
+    font-size: 20px;
+    padding: 25px 50px;
+  }
+
+  .experience-btn {
+    font-size: 12px;
+    padding: 20px 30px;
+    margin-top: 150px;
+  }
+
+  .experience-title {
+    font-size: 16px;
+    margin-bottom: 25px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .experience-content {
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .photobook-page {
+    width: 260px;
+    height: 400px;
+  }
+
+  .photobook-spine {
+    height: 400px;
+  }
+
+  .photo-frame {
+    padding: 4px 10px;
+  }
+
+  .page-nav-side {
+    font-size: 14px;
+    padding: 20px 8px;
+  }
+
+  .page-nav-side.prev-page {
+    left: 5px;
+  }
+
+  .page-nav-side.next-page {
+    right: 5px;
+  }
+}
+
+/* --- Small mobile (< 600px) --- */
+@media (max-width: 600px) {
+  .lang-toggle {
+    font-size: 7px;
+    padding: 5px 8px;
+    right: 5px;
+    top: 5px;
+  }
+
+  .content-section {
+    padding: 10px 10px;
+    padding-top: 50px;
+  }
+
+  .pixel-box {
+    padding: 12px;
+    max-width: 95%;
+    border: 2px solid #fff;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .bio-box {
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .pixel-title {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .pixel-avatar {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  .bio-content p {
+    font-size: 7px;
+    margin-bottom: 8px;
+  }
+
+  .bio-text {
+    padding: 8px;
+    font-size: 6px;
+    line-height: 1.6;
+  }
+
+  .stats {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .stat-item {
+    font-size: 7px;
+    margin-bottom: 5px;
+  }
+
+  .photobook-page {
+    width: 260px;
+    height: 400px;
+  }
+
+  .photobook-spine {
+    height: 310px;
+  }
+
+  .photo-frame {
+    padding: 3px 8px;
+  }
+
+  .page-nav-side {
+    font-size: 12px;
+    padding: 15px 6px;
+  }
+
+  .page-counter {
+    font-size: 8px;
+    padding: 6px 12px;
+    bottom: 15px;
+  }
+
+  .photobook-close {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .education-grid {
+    gap: 5px;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .edu-msc-container {
+    padding: 10px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .uni-room {
+    padding: 10px;
+    min-width: 0;
+  }
+
+  .uni-room h3 {
+    font-size: 9px;
+    margin-bottom: 5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .msc-title {
+    font-size: 8px;
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .msc-modules {
+    gap: 5px;
+  }
+
+  .edu-msc {
+    padding: 5px 8px !important;
+  }
+
+  .edu-msc h3 {
+    font-size: 7px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .room-summary {
+    font-size: 6px;
+  }
+
+  .msc-description-mobile {
+    font-size: 5px;
+    margin-bottom: 8px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+    border-width: 3px;
+  }
+
+  .close-btn {
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+
+  #experience-modal .experience-close {
+    top: 8px;
+    right: 8px;
+  }
+
+  .room-detail h2 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .project-item {
+    padding: 8px 10px;
+    border-width: 2px;
+  }
+
+  .project-item h3 {
+    font-size: 9px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .project-item p {
+    font-size: 7px;
+  }
+}
+
+/* --- Large / 4K displays (> 2000px) --- */
+@media (min-width: 2000px) {
+  .lang-toggle {
+    font-size: 14px;
+    padding: 16px 22px;
+    border-width: 4px;
+    right: 25px;
+  }
+
+  .pixel-box {
+    max-width: 900px;
+    padding: 45px;
+    border-width: 6px;
+  }
+
+  .pixel-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .bio-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .bio-text {
+    padding: 22px;
+  }
+
+  .stat-item {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .pixel-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .modal-content {
+    max-width: 1100px;
+    padding: 60px;
+    border-width: 8px;
+  }
+
+  .close-btn {
+    font-size: 30px;
+    width: 65px;
+    height: 65px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .room-detail h2 {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  .room-projects {
+    gap: 28px;
+  }
+
+  .project-item {
+    padding: 22px 28px;
+    border-width: 4px;
+  }
+
+  .project-item h3 {
+    font-size: 16px;
+  }
+
+  .project-item p {
+    font-size: 12px;
+  }
+
+  .education-grid {
+    max-width: 1400px;
+    gap: 40px;
+  }
+
+  .experience-title {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+
+  .edu-msc-container {
+    padding: 30px;
+    border-width: 6px;
+  }
+
+  .msc-title {
+    font-size: 16px;
+  }
+
+  .msc-description {
+    font-size: 11px;
+  }
+
+  .edu-msc h3 {
+    font-size: 14px;
+  }
+
+  .university-grid {
+    max-width: 1200px;
+    gap: 40px;
+  }
+
+  .uni-room {
+    padding: 28px;
+    border-width: 6px;
+  }
+
+  .room-title {
+    font-size: 14px;
+  }
+
+  .room-summary {
+    font-size: 10px;
+  }
+
+  .contact-box {
+    max-width: 850px;
+    padding: 55px 70px;
+  }
+
+  .contact-content p {
+    font-size: 18px;
+  }
+
+  .contact-link {
+    font-size: 16px;
+    padding: 28px 50px;
+    border-width: 4px;
+  }
+
+  .photobook-btn {
+    font-size: 24px;
+    padding: 40px 80px;
+    border-width: 6px;
+  }
+
+  .experience-btn {
+    font-size: 18px;
+    padding: 40px 55px;
+    border-width: 6px;
+  }
+
+  .photobook-page {
+    width: 600px;
+    height: 900px;
+  }
+
+  .speech-bubble {
+    font-size: 12px;
+    padding: 16px 24px;
+    border-width: 5px;
+  }
+}
+
+/* --- Ultra-wide 4K+ (> 3000px) --- */
+@media (min-width: 3000px) {
+  .pixel-box {
+    max-width: 1200px;
+    padding: 60px;
+  }
+
+  .pixel-title {
+    font-size: 34px;
+  }
+
+  .bio-content p {
+    font-size: 18px;
+  }
+
+  .stat-item {
+    font-size: 15px;
+  }
+
+  .modal-content {
+    max-width: 1500px;
+    padding: 80px;
+  }
+
+  .close-btn {
+    font-size: 36px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .room-detail h2 {
+    font-size: 34px;
+  }
+
+  .project-item h3 {
+    font-size: 20px;
+  }
+
+  .project-item p {
+    font-size: 15px;
+  }
+
+  .education-grid {
+    max-width: 1800px;
+  }
+
+  .university-grid {
+    max-width: 1600px;
+  }
+
+  .contact-box {
+    max-width: 1100px;
+  }
+
+  .contact-content p {
+    font-size: 22px;
+  }
+
+  .contact-link {
+    font-size: 20px;
+    padding: 35px 60px;
+  }
+
+  .photobook-page {
+    width: 750px;
+    height: 1100px;
+  }
+}

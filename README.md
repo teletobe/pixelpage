@@ -4,6 +4,8 @@ A retro pixel art personal portfolio . Sections are navigated by the character w
 
 Site is still work-in-progress. More regions to come + cleaner portfolio book.
 
+[Check it out :)](https://teletobe.github.io/pixelpage/)
+
 ## Features
 
 - **Game world** — Character walks between scenes (About, Photography, Experience, Contact) with idle/walk/run animations and clickable speech bubbles

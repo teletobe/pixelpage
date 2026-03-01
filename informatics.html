@@ -161,7 +161,7 @@
               <p data-i18n="about.greeting">Hi! I'm Tobi :) (he/him)</p>
               <p class="bio-text" data-i18n="cs.description">
                 A pixel sidescroller through my computer science education and
-                work experience. Use ◀ ▶ to travel between chapters.
+                work experience. Use &#9666 &#9656 to travel between chapters.
               </p>
               <div class="stats">
                 <div class="stat-item">
@@ -425,6 +425,18 @@
         var btn = document.getElementById(id);
         if (btn) btn.addEventListener("click", showAbToast);
       });
-    </script>
+
+      // 11. Keyboard arrow keys → scene navigation
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        // Don't fire when a modal is open
+        if (document.querySelector(".modal.active")) return;
+        if (e.key === "ArrowLeft") {
+          navigatePrevScene();
+        } else {
+          navigateNextScene();
+        }
+      });
+</script>
   </body>
 </html>

@@ -223,5 +223,8 @@ function navigateToScene(sceneName) {
 
     isTransitioning = false;
     navButtons.forEach((btn) => btn.classList.remove("disabled"));
+
+    // Hook for Game Boy overlay to sync its buttons / scene dots
+    if (typeof onSceneArrival === "function") onSceneArrival(sceneName);
   }, transitionTime);
 }

@@ -3,15 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Pixel Portfolio</title>
+    <title>Tobi's Page</title>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <!-- CSS: split by concern -->
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/navigation.css" />
-    <link rel="stylesheet" href="css/game-world.css" />
-    <link rel="stylesheet" href="css/content.css" />
-    <link rel="stylesheet" href="css/modals.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/landing.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,305 +15,242 @@
     />
   </head>
   <body>
-    <!-- Navigation Menu -->
-    <nav class="pixel-nav">
-      <button class="nav-btn" data-scene="about" data-i18n="nav.about">
-        ABOUT
-      </button>
-      <button
-        class="nav-btn"
-        data-scene="photography"
-        data-i18n="nav.photobook"
-      >
-        PHOTOBOOK
-      </button>
-      <button
-        class="nav-btn"
-        data-scene="university"
-        data-i18n="nav.experience"
-      >
-        EXPERIENCE
-      </button>
-      <button class="nav-btn" data-scene="contact" data-i18n="nav.contact">
-        CONTACT
-      </button>
-      <button class="lang-toggle" id="lang-toggle" data-i18n="lang.toggle">
-        DE
-      </button>
-    </nav>
+    <div id="landing-hub">
+      <!-- ── Decorative pixel grid overlay ── -->
+      <div class="hub-grid-overlay" aria-hidden="true"></div>
 
-    <!-- Main Game Container -->
-    <div class="game-container">
-      <!-- Parallax Background Layers -->
-      <div class="parallax-container">
-        <!-- Main Background Layer - Shows different sections per scene -->
-        <div class="parallax-layer background-layer" id="background-layer">
-          <div class="layer-content"></div>
-        </div>
+      <div class="hub-inner">
+        <!-- ══════════════════════════════════════
+             HEADER
+             ══════════════════════════════════════ -->
+        <header class="hub-header">
+          <div class="hub-title-row">
+            <span class="hub-prompt" aria-hidden="true">&gt;</span>
+            <h1 class="hub-title">Tobi's little page</h1>
+            <span class="hub-cursor" aria-hidden="true">_</span>
+          </div>
+          <p class="hub-tagline">// explore my website</p>
 
-        <!-- Grass Layer - Discrete tiles -->
-        <div class="parallax-layer grass-container" id="grass-container">
-          <!-- Grass tiles will be dynamically created here -->
-        </div>
-      </div>
+          <div class="hub-intro">
+            <p>
+              hi! i'm tobi (he/him). recently graduated with an MSc in
+              human-centred computing from TU Wien.
+            </p>
+            <p>
+              pick a section below to explore — most are still being built, but
+              the informatics one is live!
+            </p>
+          </div>
 
-      <!-- Character - Always Centered -->
-      <div class="character" id="character">
-        <div class="character-sprite"></div>
-        <div class="character-click-target" id="character-click-target"></div>
-      </div>
+          <div class="hub-badges">
+            <span class="badge">no tracking</span>
+            <span class="badge">no frameworks</span>
+            <span class="badge">v2026</span>
+            <span class="badge">vienna, austria</span>
+          </div>
+        </header>
 
-      <!-- Speech Bubble - Positioned independently so it doesn't flip with character -->
-      <div class="speech-bubble" id="speech-bubble">
-        <div class="bubble-text">Hello!</div>
-      </div>
+        <!-- ══════════════════════════════════════
+             ZONE GRID
+             ══════════════════════════════════════ -->
+        <main class="hub-zones" role="main">
+          <!-- ── 01 INFORMATICS (LIVE) ── -->
+          <article
+            class="hub-zone zone--informatics zone--live"
+            role="button"
+            tabindex="0"
+            onclick="window.location.href = 'informatics.html'"
+            onkeydown="
+              if (event.key === 'Enter')
+                window.location.href = 'informatics.html';
+            "
+            aria-label="Informatics — enter the CS journey"
+          >
+            <div class="zone-topbar">
+              <span class="zone-num">01</span>
+              <h2 class="zone-title">INFORMATICS</h2>
+              <span class="zone-badge zone-badge--live">● LIVE</span>
+            </div>
 
-      <!-- Content Overlay -->
-      <div class="content-overlay">
-        <!-- About Me Content -->
-        <div class="content-section active" id="content-about">
-          <div class="pixel-box bio-box">
-            <h2 class="pixel-title" data-i18n="about.title">WELCOME!</h2>
-            <div class="bio-content">
-              <p data-i18n="about.greeting">Hi! I'm Tobi :&#41;</p>
-              <p class="bio-text" data-i18n="about.description">
-                Welcome to my website! Navigate through different areas to
-                explore my work and interests. Use the buttons above to travel
-                to different locations!
-              </p>
-              <div class="stats">
-                <div class="stat-item">
-                  <span class="stat-label" data-i18n="about.level.label"
-                    >LEVEL:</span
-                  >
-                  <span class="stat-value" data-i18n="about.level.value"
-                    >Recently graduated MSc. Media & Human-Centred
-                    Computing</span
-                  >
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label" data-i18n="about.interests.label"
-                    >INTERESTS:</span
-                  >
-                  <span class="stat-value" data-i18n="about.interests.value"
-                    >Interactive & Immersive Media, AI, Ethics,
-                    Photography</span
-                  >
+            <div class="zone-body">
+              <!-- Pixel art: Game Boy shape using CSS -->
+              <div class="zone-art" aria-hidden="true">
+                <div class="pixel-gameboy">
+                  <div class="pgb-screen">
+                    <span class="pgb-pixel"></span>
+                    <span class="pgb-pixel"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel"></span>
+                    <span class="pgb-pixel"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                    <span class="pgb-pixel on"></span>
+                  </div>
+                  <div class="pgb-controls">
+                    <span class="pgb-dpad">✛</span>
+                    <span class="pgb-ab">●●</span>
+                  </div>
                 </div>
               </div>
-              <p class="bio-footer" data-i18n="about.footer">v2026 — Work in progress</p>
+
+              <div class="zone-desc">
+                <p class="zone-summary">
+                  a pixel sidescroller through my computer science journey
+                </p>
+                <ul class="zone-tags">
+                  <li>BSc. Informatics — Uni Innsbruck</li>
+                  <li>MSc. Human-Centred Computing — TU Wien</li>
+                  <li>Work Experience</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Photography Content -->
-        <div class="content-section" id="content-photography">
-          <button
-            class="pixel-button photobook-btn"
-            id="open-photobook"
-            data-i18n="photography.button"
+            <div class="zone-footer">
+              <a href="informatics.html" class="zone-enter-btn" tabindex="-1">
+                [ PRESS START ] ▶
+              </a>
+            </div>
+          </article>
+
+          <!-- ── 02 PHOTOGRAPHY (COMING SOON) ── -->
+          <article
+            class="hub-zone zone--photography zone--soon"
+            aria-label="Photography — coming soon"
           >
-            OPEN PHOTOBOOK
-          </button>
-        </div>
+            <div class="zone-topbar">
+              <span class="zone-num">02</span>
+              <h2 class="zone-title">PHOTOGRAPHY</h2>
+              <span class="zone-badge zone-badge--soon">○ SOON</span>
+            </div>
 
-        <!-- University/Experience Content -->
-        <div class="content-section" id="content-university">
-          <button
-            class="pixel-button experience-btn"
-            id="open-experience"
-            data-i18n="experience.button"
-          >
-            EXPLORE EDUCATION & EXPERIENCE
-          </button>
-        </div>
-
-        <!-- Contact Content -->
-        <div class="content-section" id="content-contact">
-          <div class="pixel-box contact-box">
-            <h2 class="pixel-title" data-i18n="contact.title">GET IN TOUCH</h2>
-            <div class="contact-content">
-              <p data-i18n="contact.text">Let's connect!</p>
-              <div class="contact-links">
-                <a
-                  href="mailto:tobiashchristoph@outlook.com"
-                  class="contact-link"
-                  data-i18n="contact.email"
-                  >EMAIL</a
+            <div class="zone-body">
+              <div class="zone-art" aria-hidden="true">
+                <pre class="pixel-ascii">
+ ┌─────────┐
+ │  ┌───┐  │
+ │  │ ● │  │
+ │  └───┘  │
+ └─────────┘
+ ══ ▓▓▓▓▓ ══</pre
                 >
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Photobook Modal -->
-    <div class="modal" id="photobook-modal">
-      <button class="close-btn photobook-close" id="close-photobook">×</button>
-      <button class="page-nav-side prev-page" id="prev-page">◄</button>
-      <button class="page-nav-side next-page" id="next-page">►</button>
-
-      <div class="photobook-spread">
-        <div class="photobook-page left-page">
-          <div class="photo-frame">
-            <img
-              src="player.png"
-              alt="Photo"
-              class="portfolio-photo"
-              id="left-photo-1"
-            />
-            <div class="photo-caption" id="left-caption-1">Caption</div>
-          </div>
-          <div class="photo-frame">
-            <img
-              src="player.png"
-              alt="Photo"
-              class="portfolio-photo"
-              id="left-photo-2"
-            />
-            <div class="photo-caption" id="left-caption-2">Caption</div>
-          </div>
-        </div>
-        <div class="photobook-spine"></div>
-        <div class="photobook-page right-page">
-          <div class="photo-frame">
-            <img
-              src="player.png"
-              alt="Photo"
-              class="portfolio-photo"
-              id="right-photo-1"
-            />
-            <div class="photo-caption" id="right-caption-1">Caption</div>
-          </div>
-          <div class="photo-frame">
-            <img
-              src="player.png"
-              alt="Photo"
-              class="portfolio-photo"
-              id="right-photo-2"
-            />
-            <div class="photo-caption" id="right-caption-2">Caption</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="page-counter">
-        <span id="current-page">1-2</span> / <span id="total-pages">5</span>
-      </div>
-    </div>
-
-    <!-- Education & Experience Modal -->
-    <div class="modal" id="experience-modal">
-      <button class="close-btn experience-close" id="close-experience">
-        ×
-      </button>
-      <div class="experience-content">
-        <h2 class="experience-title" data-i18n="experience.title">
-          EDUCATION & EXPERIENCE
-        </h2>
-        <div class="education-grid">
-          <!-- BSc. Informatics - Red -->
-          <div class="uni-room edu-bsc" id="room-bsc">
-            <h3 data-i18n="room.bsc.title">BSc. INFORMATICS</h3>
-            <p class="room-summary" data-i18n="room.bsc.summary">
-              Computer sciences foundation. (University Innsbruck, 2022).
-            </p>
-            <div class="room-content">
-              <p data-i18n-html="room.bsc.desc1">
-                I completed my bachelor's degree in Computer Science at the
-                University Innsbruck in 2022.<br />
-              </p>
-              <p data-i18n="room.bsc.desc2">
-                It provided a solid foundation in programming, algorithms, and
-                software development.
-              </p>
-              <br />
-              <p data-i18n="room.bsc.desc3">
-                Click to explore what it thought me!
-              </p>
-            </div>
-          </div>
-
-          <!-- MSc. Container - Blue themed -->
-          <div class="edu-msc-container">
-            <h3 class="msc-title" data-i18n="room.msc.title">
-              MSc. HUMAN-CENTRED COMPUTING
-            </h3>
-            <p class="msc-description-mobile" data-i18n="room.msc.desc.mobile">
-              Graduated from TU Wien, 2026:
-            </p>
-            <p class="msc-description" data-i18n="room.msc.desc">
-              I graduated from this multidisciplinary master's program at TU
-              Wien in 2026.
-            </p>
-            <div class="msc-modules">
-              <div class="uni-room edu-msc" id="room-userresearch">
-                <h3 data-i18n="room.userresearch.title">USER RESEARCH</h3>
-              </div>
-              <div class="uni-room edu-msc" id="room-interactive">
-                <h3 data-i18n="room.interactive.title">INTERACTIVE MEDIA</h3>
-              </div>
-              <div class="uni-room edu-msc" id="room-critical">
-                <h3 data-i18n="room.critical.title">CRITICAL REFLECTION</h3>
+              <div class="zone-desc">
+                <p class="zone-summary">gear, photo zines &amp; analog work</p>
+                <ul class="zone-tags zone-tags--dim">
+                  <li>camera gear &amp; setup</li>
+                  <li>self-made photo zines</li>
+                  <li>inspiration &amp; mood boards</li>
+                </ul>
               </div>
             </div>
-          </div>
 
-          <!-- Test Automation Internship - Green -->
-          <div class="uni-room edu-internship" id="room-automation">
-            <h3 data-i18n="room.automation.title">TEST AUTOMATION</h3>
-            <p class="room-summary" data-i18n="room.automation.summary">
-              Internship at Becton Dickinson.
-            </p>
-            <div class="room-content">
-              <p data-i18n="room.automation.desc1">
-                Click to see where I obtained professional work experience in
-                IT.
-              </p>
-              <br />
-              <p data-i18n="room.automation.desc2">
-                Experience in automated testing frameworks and quality assurance
-                during an internship at a medical technology company.
-              </p>
+            <div class="zone-footer">
+              <span class="zone-soon-label">[ COMING SOON ]</span>
             </div>
-          </div>
+          </article>
 
-          <!-- Gender & Diversity Certificate - Purple, spans both columns -->
-          <div class="uni-room edu-certificate" id="room-diversity">
-            <h3 data-i18n="room.diversity.title">
-              GENDER & DIVERSITY COMPETENCES
-            </h3>
-            <p class="room-summary" data-i18n="room.diversity.summary">
-              Certificate at TU Wien with STS classes.
-            </p>
-            <div class="room-content">
-              <p data-i18n="room.diversity.desc">
-                A Certificate in gender and diversity competences. Attended
-                classes on STS. Click to learn what it encompassed.
-              </p>
+          <!-- ── 03 BOOKS & GAMES (COMING SOON) ── -->
+          <article
+            class="hub-zone zone--books zone--soon"
+            aria-label="Books and games — coming soon"
+          >
+            <div class="zone-topbar">
+              <span class="zone-num">03</span>
+              <h2 class="zone-title">BOOKS &amp; GAMES</h2>
+              <span class="zone-badge zone-badge--soon">○ SOON</span>
             </div>
-          </div>
-        </div>
+
+            <div class="zone-body">
+              <div class="zone-art" aria-hidden="true">
+                <pre class="pixel-ascii">
+  ▓▓▓▓▓▓▓▓▓
+ ▓▓▓▓▓▓▓▓▓▓▓
+  ████████
+  ████████
+ ██████████
+  ▒▒▒▒▒▒▒▒</pre
+                >
+              </div>
+
+              <div class="zone-desc">
+                <p class="zone-summary">what i've been reading &amp; playing</p>
+                <ul class="zone-tags zone-tags--dim">
+                  <li>book recommendations</li>
+                  <li>game picks</li>
+                  <li>currently reading / playing</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="zone-footer">
+              <span class="zone-soon-label">[ COMING SOON ]</span>
+            </div>
+          </article>
+
+          <!-- ── 04 MOUNTAINS (COMING SOON) ── -->
+          <article
+            class="hub-zone zone--mountains zone--soon"
+            aria-label="Mountains — coming soon"
+          >
+            <div class="zone-topbar">
+              <span class="zone-num">04</span>
+              <h2 class="zone-title">MOUNTAINS</h2>
+              <span class="zone-badge zone-badge--soon">○ SOON</span>
+            </div>
+
+            <div class="zone-body">
+              <div class="zone-art" aria-hidden="true">
+                <pre class="pixel-ascii">
+    /\    /\
+   /  \  /  \
+  / /\ \/ /\ \
+ /  /  /\  \  \
+/___/  \/  \___\</pre
+                >
+              </div>
+
+              <div class="zone-desc">
+                <p class="zone-summary">
+                  hiking in austria — routes &amp; tips
+                </p>
+                <ul class="zone-tags zone-tags--dim">
+                  <li>trail recommendations</li>
+                  <li>conditions &amp; difficulty notes</li>
+                  <li>gear suggestions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="zone-footer">
+              <span class="zone-soon-label">[ COMING SOON ]</span>
+            </div>
+          </article>
+        </main>
+
+        <!-- ══════════════════════════════════════
+             FOOTER
+             ══════════════════════════════════════ -->
+        <footer class="hub-footer">
+          <span>v2026</span>
+          <span class="hub-sep" aria-hidden="true">·</span>
+          <a href="mailto:tobiashchristoph@outlook.com">contact</a>
+          <span class="hub-sep" aria-hidden="true">·</span>
+          <span>no tracking</span>
+          <span class="hub-sep" aria-hidden="true">·</span>
+          <span>no frameworks</span>
+          <span class="hub-sep" aria-hidden="true">·</span>
+          <span>built with vanilla HTML / CSS / JS</span>
+        </footer>
       </div>
     </div>
-
-    <!-- Room Detail Modal -->
-    <div class="modal" id="room-modal">
-      <div class="modal-content room-detail">
-        <button class="close-btn" id="close-room">×</button>
-        <h2 id="room-title">Room Title</h2>
-        <div class="room-projects" id="room-projects">
-          <!-- Projects will be inserted here -->
-        </div>
-      </div>
-    </div>
-
-    <!-- JS: data first, then feature modules, app.js last (runs init) -->
-    <script src="js/data.js"></script>
-    <script src="js/scene.js"></script>
-    <script src="js/photobook.js"></script>
-    <script src="js/experience.js"></script>
-    <script src="js/app.js"></script>
   </body>
 </html>

@@ -56,130 +56,131 @@
   background: #ff6b6b;
 }
 
-/* --- Photobook Modal --- */
+/* --- Zine Modal --- */
 
 #photobook-modal {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(250, 247, 243, 0.97);
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* centre and size to match the content column */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(860px, calc(100% - 20px));
+  border-left: 2px solid #9e8573;
+  border-right: 2px solid #9e8573;
+}
+
+/* override base .modal.active flex — block lets sticky work correctly */
+#photobook-modal.active {
+  display: block;
 }
 
 #photobook-modal .photobook-close {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: sticky;
+  top: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: 16px;
+  margin-top: 16px;
 }
 
-.photobook-spread {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  height: 100vh;
+/* Scrollable content column */
+.zine-container {
   width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 90px 32px 120px;
+  box-sizing: border-box;
 }
 
-.photobook-page {
-  width: 450px;
-  height: 700px;
-  background: #2c2c2c;
+/* Every group of photos is a "block" */
+.zine-block {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 80px;
 }
 
-.photobook-page.left-page {
-  border: 12px solid #8b4513;
-  border-right: 6px solid #8b4513;
-}
+/* === Layout variants === */
 
-.photobook-page.right-page {
-  border: 12px solid #8b4513;
-  border-left: 6px solid #8b4513;
-}
-
-.photobook-spine {
-  width: 8px;
-  height: 700px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-}
-
-.photo-frame {
-  width: 100%;
-  height: 50%;
-  background: #e8e8e8;
-  padding: 5px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* One large photo, centred */
+.zine-hero {
   justify-content: center;
 }
+.zine-hero .zine-img-wrap {
+  width: 82%;
+  flex-shrink: 0;
+}
 
-.portfolio-photo {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+/* Two equal-width photos */
+.zine-duo-even {
+  align-items: center;
+}
+.zine-duo-even .zine-img-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Two photos, first noticeably larger; second slightly offset down */
+.zine-duo-offset {
+  align-items: flex-start;
+  gap: 20px;
+}
+.zine-duo-offset .zine-img-wrap:nth-child(1) {
+  flex: 1.6;
+  min-width: 0;
+}
+.zine-duo-offset .zine-img-wrap:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+  margin-top: 48px;
+}
+
+/* Single photo, left-aligned at ~half width */
+.zine-solo-left {
+  justify-content: flex-start;
+}
+.zine-solo-left .zine-img-wrap {
+  width: 52%;
+  flex-shrink: 0;
+}
+
+/* Single photo, right-aligned at ~58% width */
+.zine-solo-right {
+  justify-content: flex-end;
+}
+.zine-solo-right .zine-img-wrap {
+  width: 58%;
+  flex-shrink: 0;
+}
+
+/* Three equal-width photos in a row — natural proportions, vertically centred */
+.zine-trio {
+  align-items: center;
+  gap: 12px;
+}
+.zine-trio .zine-img-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Shared image-wrap base — hidden until scrolled into view */
+.zine-img-wrap {
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s ease;
+}
+.zine-img-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.zine-img-wrap img {
+  width: 100%;
   height: auto;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-.photo-caption {
-  display: none;
-}
-
-/* Page navigation arrows (left / right of photobook) */
-.page-nav-side {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: "Press Start 2P", cursive;
-  font-size: 20px;
-  padding: 40px 15px;
-  background: rgba(74, 144, 226, 0.8);
-  color: #fff;
-  border: 3px solid #fff;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 2001;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.page-nav-side.prev-page {
-  left: 20px;
-}
-
-.page-nav-side.next-page {
-  right: 20px;
-}
-
-.page-nav-side:hover {
-  background: rgba(91, 163, 255, 0.9);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.page-nav-side:disabled {
-  background: rgba(102, 102, 102, 0.5);
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.page-counter {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 12px;
-  color: #ffa500;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
-  border: 2px solid #ffa500;
-  z-index: 2001;
+  display: block;
 }
 
 /* --- Experience Modal --- */

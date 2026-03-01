@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tobi's CS Journey</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
+    <link rel="stylesheet" href="css/game-world.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/gameboy.css" />
+    <link rel="stylesheet" href="css/informatics.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════
+         A/B BUTTON TOAST
+         ═══════════════════════════════════════════════════════ -->
+    <div id="ab-toast" class="ab-toast" aria-live="polite" aria-hidden="true">
+      (these buttons don't do anything!)
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         GAME BOY FRAME OVERLAY
+         ═══════════════════════════════════════════════════════ -->
+    <div id="gameboy-overlay">
+      <div class="gb-body">
+        <!-- Top strip -->
+        <div class="gb-top">
+          <div class="gb-brand" id="gb-back-btn" title="Back to main page">
+            GO<em>BACK</em>
+          </div>
+
+          <div class="gb-scene-indicator">
+            <div class="gb-scene-dots">
+              <div
+                class="gb-scene-dot active"
+                data-gb-scene="about"
+                title="Intro"
+              ></div>
+              <div
+                class="gb-scene-dot"
+                data-gb-scene="photography"
+                title="Bachelor"
+              ></div>
+              <div
+                class="gb-scene-dot"
+                data-gb-scene="university"
+                title="Master"
+              ></div>
+              <div
+                class="gb-scene-dot"
+                data-gb-scene="contact"
+                title="Work Exp"
+              ></div>
+            </div>
+            <span class="gb-scene-label" id="gb-scene-name">INTRO</span>
+          </div>
+
+          <div class="gb-top-right">
+            <div class="gb-led" title="Power on"></div>
+            <button class="gb-lang-btn" id="gb-lang-toggle">DE</button>
+          </div>
+        </div>
+
+        <!-- Middle row — A/B moved to bottom strip -->
+        <div class="gb-middle">
+          <div class="gb-left-strip">
+            <button
+              class="gb-nav-btn gb-btn-left"
+              id="gb-left"
+              title="Previous"
+            >
+              ◀
+            </button>
+          </div>
+          <div class="gb-screen-window"></div>
+          <div class="gb-right-strip">
+            <button class="gb-nav-btn gb-btn-right" id="gb-right" title="Next">
+              ▶
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom strip: SELECT · START · A B · speaker -->
+        <div class="gb-bottom">
+          <div class="gb-sys-group">
+            <button class="gb-sys-btn" id="gb-btn-select">SELECT</button>
+            <button class="gb-sys-btn" id="gb-btn-start">START</button>
+          </div>
+          <div class="gb-bottom-right">
+            <div class="gb-ab-group gb-ab-bottom">
+              <button class="gb-btn-b gb-nav-btn" id="gb-btn-b" title="Action B">
+                B
+              </button>
+              <button class="gb-btn-a gb-nav-btn" id="gb-btn-a" title="Action A">
+                A
+              </button>
+            </div>
+            <div class="gb-speaker">
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+              <div class="gb-speaker-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         GAME WORLD
+         ═══════════════════════════════════════════════════════ -->
+
+    <!-- Nav (hidden in game-boy mode) -->
+    <nav class="pixel-nav" id="pixel-nav">
+      <button class="nav-btn" data-scene="about">INTRO</button>
+      <button class="nav-btn" data-scene="photography">BACHELOR</button>
+      <button class="nav-btn" data-scene="university">MASTER</button>
+      <button class="nav-btn" data-scene="contact">WORK EXP</button>
+      <button class="lang-toggle" id="lang-toggle">DE</button>
+    </nav>
+
+    <!-- Main Game Container -->
+    <div class="game-container">
+      <div class="parallax-container">
+        <div class="parallax-layer background-layer" id="background-layer">
+          <div class="layer-content"></div>
+        </div>
+        <div class="parallax-layer grass-container" id="grass-container"></div>
+      </div>
+
+      <div class="character" id="character">
+        <div class="character-sprite"></div>
+        <div class="character-click-target" id="character-click-target"></div>
+      </div>
+
+      <div class="speech-bubble" id="speech-bubble">
+        <div class="bubble-text">Hello!</div>
+      </div>
+
+      <!-- Content Overlay -->
+      <div class="content-overlay">
+        <!-- ── INTRO (scene: about) ── -->
+        <div class="content-section active" id="content-about">
+          <div class="pixel-box bio-box">
+            <h2 class="pixel-title" data-i18n="cs.title">CS JOURNEY</h2>
+            <div class="bio-content">
+              <p data-i18n="about.greeting">Hi! I'm Tobi :) (he/him)</p>
+              <p class="bio-text" data-i18n="cs.description">
+                A pixel sidescroller through my computer science education and
+                work experience. Use ◀ ▶ to travel between chapters.
+              </p>
+              <div class="stats">
+                <div class="stat-item">
+                  <span class="stat-label" data-i18n="cs.level.label"
+                    >DEGREE:</span
+                  >
+                  <span class="stat-value" data-i18n="cs.level.value"
+                    >MSc. Media &amp; Human-Centred Computing</span
+                  >
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label" data-i18n="cs.focus.label"
+                    >FOCUS:</span
+                  >
+                  <span class="stat-value" data-i18n="cs.focus.value"
+                    >Interactive Media, AI Ethics, UX Research</span
+                  >
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label" data-i18n="cs.location.label"
+                    >BASED IN:</span
+                  >
+                  <span class="stat-value" data-i18n="cs.location.value"
+                    >Vienna, Austria</span
+                  >
+                </div>
+              </div>
+              <p class="bio-footer" data-i18n="cs.footer">
+                use ◀ ▶ to explore each chapter
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── BACHELOR (scene: photography) ── -->
+        <div class="content-section" id="content-photography">
+          <div class="scene-chapter">
+            <p class="scene-chapter-label" data-i18n="chapter.1">
+              CHAPTER 1 — BACHELOR
+            </p>
+            <div class="scene-rooms-inline scene-rooms-inline--single">
+              <div class="uni-room edu-bsc" id="room-bsc">
+                <h3 data-i18n="room.bsc.title">BSc. INFORMATICS</h3>
+                <p class="room-summary" data-i18n="room.bsc.summary">
+                  Computer sciences foundation. (University Innsbruck, 2022).
+                </p>
+                <div class="room-content">
+                  <p data-i18n-html="room.bsc.desc1">
+                    I completed my bachelor's degree in Computer Science at the
+                    University Innsbruck in 2022.<br />
+                  </p>
+                  <p data-i18n="room.bsc.desc2">
+                    It provided a solid foundation in programming, algorithms,
+                    and software development.
+                  </p>
+                  <br />
+                  <p data-i18n="room.bsc.desc3">
+                    Click to explore what it thought me!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── MASTER (scene: university) ── -->
+        <div class="content-section" id="content-university">
+          <div class="scene-chapter">
+            <p class="scene-chapter-label" data-i18n="chapter.2">
+              CHAPTER 2 — MASTER
+            </p>
+            <div class="scene-rooms-inline scene-rooms-inline--master">
+              <div class="edu-msc-container scene-msc-block">
+                <h3 class="msc-title" data-i18n="room.msc.title">
+                  MSc. HUMAN-CENTRED COMPUTING
+                </h3>
+                <p class="msc-description" data-i18n="room.msc.desc">
+                  I graduated from this multidisciplinary master's program at TU
+                  Wien in 2026.
+                </p>
+                <div class="msc-modules">
+                  <div class="uni-room edu-msc" id="room-userresearch">
+                    <h3 data-i18n="room.userresearch.title">USER RESEARCH</h3>
+                  </div>
+                  <div class="uni-room edu-msc" id="room-interactive">
+                    <h3 data-i18n="room.interactive.title">
+                      INTERACTIVE MEDIA
+                    </h3>
+                  </div>
+                  <div class="uni-room edu-msc" id="room-critical">
+                    <h3 data-i18n="room.critical.title">CRITICAL REFLECTION</h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="uni-room edu-certificate scene-cert-block"
+                id="room-diversity"
+              >
+                <h3 data-i18n="room.diversity.title">
+                  GENDER &amp; DIVERSITY COMPETENCES
+                </h3>
+                <p class="room-summary" data-i18n="room.diversity.summary">
+                  Certificate at TU Wien with STS classes.
+                </p>
+                <div class="room-content">
+                  <p data-i18n="room.diversity.desc">
+                    A Certificate in gender and diversity competences. Attended
+                    classes on STS. Click to learn what it encompassed.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── WORK EXPERIENCE (scene: contact) ── -->
+        <div class="content-section" id="content-contact">
+          <div class="scene-chapter">
+            <p class="scene-chapter-label" data-i18n="chapter.3">
+              CHAPTER 3 — WORK EXPERIENCE
+            </p>
+            <div class="scene-rooms-inline scene-rooms-inline--work">
+              <div class="uni-room edu-internship" id="room-automation">
+                <h3 data-i18n="room.automation.title">TEST AUTOMATION</h3>
+                <p class="room-summary" data-i18n="room.automation.summary">
+                  Internship at Becton Dickinson.
+                </p>
+                <div class="room-content">
+                  <p data-i18n="room.automation.desc1">
+                    Click to see where I obtained professional work experience
+                    in IT.
+                  </p>
+                  <br />
+                  <p data-i18n="room.automation.desc2">
+                    Experience in automated testing frameworks and quality
+                    assurance during an internship at a medical technology
+                    company.
+                  </p>
+                </div>
+              </div>
+              <!-- Placeholder for additional work experience -->
+              <div class="uni-room edu-placeholder" id="room-work-placeholder">
+                <h3 data-i18n="cs.work.placeholder">[MORE COMING SOON]</h3>
+                <p class="room-summary" data-i18n="cs.work.placeholder.summary">
+                  Placeholder for future entries.
+                </p>
+                <div class="room-content">
+                  <p data-i18n="cs.work.placeholder.desc">
+                    Additional work experience will appear here.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zine Modal (kept for JS compatibility — not used here) -->
+    <div class="modal" id="photobook-modal">
+      <button class="close-btn photobook-close" id="close-photobook">×</button>
+      <div class="zine-container" id="zine-container"></div>
+    </div>
+
+    <!-- Education & Experience Modal (kept for JS compatibility) -->
+    <div class="modal" id="experience-modal">
+      <button class="close-btn experience-close" id="close-experience">
+        ×
+      </button>
+      <div class="experience-content">
+        <h2 class="experience-title">EDUCATION &amp; EXPERIENCE</h2>
+        <div class="education-grid"></div>
+      </div>
+    </div>
+
+    <!-- Room Detail Modal -->
+    <div class="modal" id="room-modal">
+      <div class="modal-content room-detail">
+        <button class="close-btn" id="close-room">×</button>
+        <h2 id="room-title">Room Title</h2>
+        <div class="room-projects" id="room-projects"></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/photobook.js"></script>
+    <script src="js/experience.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Informatics page overrides — runs directly after app.js (DOM already ready) -->
+    <script>
+      // 1. Override back-to-hub navigation BEFORE initGbControls() registers the handler
+      window.goBackToLanding = function () {
+        window.location.href = "index.html";
+      };
+
+      // 2. Override speech bubble messages for CS context
+      Object.assign(speechBubbleMessages_en, {
+        about: "Hi! Welcome to my CS journey :)",
+        photography: "My bachelor years!",
+        university: "The masters chapter...",
+        contact: "Work experience!",
+      });
+      Object.assign(speechBubbleMessages_de, {
+        about: "Hi! Willkommen in meiner CS-Welt :)",
+        photography: "Mein Bachelorstudium!",
+        university: "Das Masterstudium...",
+        contact: "Berufserfahrung!",
+      });
+
+      // 3. Show GB overlay immediately (no landing page on this page)
+      const _overlay = document.getElementById("gameboy-overlay");
+      if (_overlay) _overlay.classList.add("active");
+
+      // 4. Hide pixel-nav
+      const _pixelNav = document.getElementById("pixel-nav");
+      if (_pixelNav) _pixelNav.style.display = "none";
+
+      // 5. Init GB controls (normally triggered from enterGame())
+      if (typeof initGbControls === "function") initGbControls();
+
+      // 6. Override GB scene labels for CS context
+      Object.assign(GB_SCENE_LABELS, {
+        about: "INTRO",
+        photography: "BACHELOR",
+        university: "MASTER",
+        contact: "WORK EXP",
+      });
+
+      // 7. Apply correct label for the initial scene
+      if (typeof updateGbSceneName === "function")
+        updateGbSceneName(currentScene);
+      // (speech bubble is refreshed by init() → applyLanguage() on DOMContentLoaded)
+
+      // 8. Placeholder room is non-interactive (no data entry for it)
+      const _placeholder = document.getElementById("room-work-placeholder");
+      if (_placeholder) {
+        _placeholder.style.cursor = "default";
+        _placeholder.style.pointerEvents = "none";
+        _placeholder.style.opacity = "0.5";
+      }
+
+      // 10. A/B button toast
+      let _toastTimer = null;
+      const _toast = document.getElementById("ab-toast");
+
+      function showAbToast() {
+        if (!_toast) return;
+        _toast.setAttribute("aria-hidden", "false");
+        _toast.classList.add("visible");
+        clearTimeout(_toastTimer);
+        _toastTimer = setTimeout(function () {
+          _toast.classList.remove("visible");
+          _toast.setAttribute("aria-hidden", "true");
+        }, 2800);
+      }
+
+      ["gb-btn-a", "gb-btn-b", "gb-btn-select", "gb-btn-start"].forEach(function (id) {
+        var btn = document.getElementById(id);
+        if (btn) btn.addEventListener("click", showAbToast);
+      });
+    </script>
+  </body>
+</html>

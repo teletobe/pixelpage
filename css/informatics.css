@@ -1,0 +1,216 @@
+/* ===========================================
+   informatics.css — Layout overrides for the
+   CS journey sidescroller (informatics.html).
+
+   Adds scene-chapter wrappers and inline room
+   grids shown directly in each content section.
+   =========================================== */
+
+/* ---- Scene chapter wrapper ---- */
+
+.scene-chapter {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* fit inside GB frame */
+  padding-right: 4px; /* scrollbar breathing room */
+}
+
+.scene-chapter-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(6px, 0.8vw, 9px);
+  color: #ffa500;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255, 165, 0, 0.3);
+  text-shadow: 2px 2px 0 #000;
+  flex-shrink: 0;
+}
+
+/* ---- Inline room grids ---- */
+
+.scene-rooms-inline {
+  display: grid;
+  gap: 14px;
+}
+
+/* Single card (bachelor) */
+.scene-rooms-inline--single {
+  grid-template-columns: 1fr;
+}
+
+/* Two columns for work experience */
+.scene-rooms-inline--work {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Master layout: msc block + diversity side by side */
+.scene-rooms-inline--master {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+/* Make the msc container fit inline (remove grid-row: span 2 override) */
+.scene-msc-block {
+  grid-row: auto !important;
+}
+
+/* Diversity cert spans both cols on narrow screens (handled below) */
+.scene-cert-block {
+  grid-column: auto;
+}
+
+/* Override .edu-certificate span-2 when inside scene inline grids */
+.scene-rooms-inline .edu-certificate {
+  grid-column: auto !important;
+}
+
+/* ---- Room summary visibility ---- */
+
+/* Show summaries inline (they're hidden by default in modals.css) */
+.scene-chapter .room-summary {
+  display: block !important;
+  font-size: 7px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.scene-chapter .room-content {
+  font-size: 7px;
+  margin-top: 4px;
+}
+
+/* ---- Bottom strip right cluster (A/B + speaker grouped together) ---- */
+
+.gb-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ---- A/B buttons in bottom strip ---- */
+
+/* When the ab-group lives in the bottom bar, lay buttons side-by-side */
+.gb-ab-bottom {
+  flex-direction: row !important;
+  gap: 10px;
+}
+
+/* Slightly larger hit area in the bottom position */
+.gb-ab-bottom .gb-btn-a,
+.gb-ab-bottom .gb-btn-b {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---- A/B toast overlay ---- */
+
+.ab-toast {
+  position: fixed;
+  /* sit just above the GB bottom strip (--gb-bottom-h default 78px) */
+  bottom: calc(var(--gb-bottom-h, 78px) + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: #1a1a2e;
+  border: 3px solid #fff;
+  box-shadow: 5px 5px 0 #000;
+  padding: 14px 22px;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(6px, 0.85vw, 9px);
+  color: #fff;
+  line-height: 1.8;
+  text-align: center;
+  max-width: min(340px, 80vw);
+  z-index: 3000;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.ab-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---- Placeholder room ---- */
+
+.edu-placeholder {
+  background: rgba(60, 60, 70, 0.6) !important;
+  border: 4px dashed rgba(255, 255, 255, 0.2) !important;
+  cursor: default;
+}
+
+.edu-placeholder h3 {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 700px) {
+  .scene-rooms-inline--master,
+  .scene-rooms-inline--work {
+    grid-template-columns: 1fr;
+  }
+
+  .scene-cert-block {
+    grid-column: 1;
+  }
+}
+
+/* ---- Fix content padding + text sizes on small screens ---- */
+
+/* Ensure content clears the GB side strips (--gb-side-w is 56px at ≤768px) */
+@media (max-width: 768px) {
+  .content-section {
+    padding-left: calc(var(--gb-side-w) + 12px);
+    padding-right: calc(var(--gb-side-w) + 12px);
+  }
+
+  /* Slightly larger text for readability in scene content */
+  .scene-chapter-label {
+    font-size: 9px;
+  }
+
+  .uni-room h3 {
+    font-size: 11px;
+  }
+
+  .msc-title {
+    font-size: 10px;
+  }
+
+  .edu-msc h3 {
+    font-size: 9px;
+  }
+
+  .scene-chapter .room-summary {
+    font-size: 8px;
+  }
+
+  .scene-chapter .room-content {
+    font-size: 8px;
+  }
+
+  .bio-content p {
+    font-size: 10px;
+  }
+
+  .stat-item {
+    font-size: 9px;
+  }
+}
+
+/* Very small screens: GB side strip shrinks to 44px */
+@media (max-width: 480px) {
+  .content-section {
+    padding-left: calc(var(--gb-side-w) + 8px);
+    padding-right: calc(var(--gb-side-w) + 8px);
+  }
+}

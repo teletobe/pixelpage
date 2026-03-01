@@ -1,68 +1,79 @@
 /* ===========================================
-   photobook.js — Photobook modal: open, close,
-   page navigation, and spread rendering.
+   photobook.js — Zine modal: open, close,
+   and editorial layout rendering.
 
    Depends on: data.js (photos)
-   Uses globals from app.js (DOM refs, currentPhotoIndex).
+   Uses globals from app.js (photobookModal).
    =========================================== */
 
 function openPhotobook() {
   photobookModal.classList.add("active");
-  currentPhotoIndex = 0;
-  displayPhotoSpread();
+  photobookModal.scrollTop = 0;
+  buildZine();
 }
 
 function closePhotobook() {
   photobookModal.classList.remove("active");
 }
 
-// Render 4 photos at once (2 per page, left + right)
-function displayPhotoSpread() {
-  const photoElements = [
-    { img: leftPhoto1El, caption: leftCaption1El },
-    { img: leftPhoto2El, caption: leftCaption2El },
-    { img: rightPhoto1El, caption: rightCaption1El },
-    { img: rightPhoto2El, caption: rightCaption2El },
+function buildZine() {
+  const container = document.getElementById("zine-container");
+  container.innerHTML = "";
+
+  // Layout sequence — cycles across all photos
+  // "count" = number of photos consumed by this block
+  const layouts = [
+    { type: "hero",       count: 1 },
+    { type: "duo-offset", count: 2 },
+    { type: "solo-left",  count: 1 },
+    { type: "trio",       count: 3 },
+    { type: "solo-right", count: 1 },
+    { type: "duo-even",   count: 2 },
   ];
 
-  photoElements.forEach((element, index) => {
-    const photoIndex = currentPhotoIndex + index;
+  let photoIndex  = 0;
+  let layoutIndex = 0;
 
-    if (photoIndex < photos.length) {
-      const photo = photos[photoIndex];
-      element.img.src = photo.src;
-      element.img.alt = photo.caption;
-      element.img.style.display = "block";
-    } else {
-      element.img.style.display = "none";
+  while (photoIndex < photos.length) {
+    const layout = layouts[layoutIndex % layouts.length];
+    const count  = Math.min(layout.count, photos.length - photoIndex);
+
+    const block = document.createElement("div");
+    block.className = `zine-block zine-${layout.type}`;
+
+    for (let i = 0; i < count; i++) {
+      const photo = photos[photoIndex + i];
+
+      const wrap = document.createElement("div");
+      wrap.className = "zine-img-wrap";
+      // Stagger siblings within the same block
+      wrap.style.transitionDelay = `${i * 0.08}s`;
+
+      const img = document.createElement("img");
+      img.src     = photo.src;
+      img.alt     = photo.caption || "";
+      img.loading = "lazy";
+
+      wrap.appendChild(img);
+      block.appendChild(wrap);
     }
+
+    container.appendChild(block);
+    photoIndex  += count;
+    layoutIndex += 1;
+  }
+
+  // Reveal images as they scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, root: photobookModal });
+
+  container.querySelectorAll(".zine-img-wrap").forEach((wrap) => {
+    observer.observe(wrap);
   });
-
-  const endPage = Math.min(currentPhotoIndex + 4, photos.length);
-  currentPageEl.textContent = `${currentPhotoIndex + 1}-${endPage}`;
-
-  prevPageBtn.disabled = currentPhotoIndex === 0;
-  nextPageBtn.disabled = currentPhotoIndex >= photos.length - 4;
-}
-
-function nextPhoto() {
-  if (currentPhotoIndex < photos.length - 4) {
-    currentPhotoIndex += 4;
-    displayPhotoSpread();
-    playPageTurnSound();
-  }
-}
-
-function prevPhoto() {
-  if (currentPhotoIndex >= 4) {
-    currentPhotoIndex -= 4;
-    displayPhotoSpread();
-    playPageTurnSound();
-  }
-}
-
-function playPageTurnSound() {
-  // Optional: Add a page turn sound effect
-  // const audio = new Audio('page-turn.mp3');
-  // audio.play();
 }

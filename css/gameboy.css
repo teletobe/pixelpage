@@ -1,0 +1,538 @@
+/* ===========================================
+   gameboy.css — Game Boy-style frame overlay
+   Sits above the game world (z-index 500),
+   below modals (z-index 2000).
+   =========================================== */
+
+/* ---- CSS custom properties for sizing ---- */
+:root {
+  --gb-top-h: 60px;
+  --gb-bottom-h: 78px;
+  --gb-side-w: 55px;
+  --gb-body: #6e78a0; /* lavender-grey body */
+  --gb-dark: #4a5270; /* darker accent */
+  --gb-light: #9ba5c8; /* lighter highlight */
+  --gb-border: #3a4060; /* outer border */
+  --gb-screen-edge: #111118;
+}
+
+/* ---- Overlay wrapper ---- */
+#gameboy-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  pointer-events: none; /* transparent to clicks by default */
+}
+
+#gameboy-overlay.active {
+  display: block;
+}
+
+/* ---- Full-viewport grid ---- */
+.gb-body {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: var(--gb-top-h) 1fr var(--gb-bottom-h);
+}
+
+/* ============================================================
+   TOP STRIP
+   ============================================================ */
+.gb-top {
+  background: linear-gradient(
+    180deg,
+    var(--gb-light) 0%,
+    var(--gb-body) 60%,
+    var(--gb-dark) 100%
+  );
+  border-bottom: 3px solid var(--gb-border);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand — doubles as a "go back" button */
+.gb-brand {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(9px, 1.2vw, 13px);
+  color: #1a1a2e;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 var(--gb-light);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.gb-brand:hover {
+  color: #e94560;
+}
+
+.gb-brand em {
+  color: #e94560;
+  font-style: normal;
+}
+
+.gb-brand:hover em {
+  color: #1a1a2e;
+}
+
+/* Scene indicator: dots + current scene name */
+.gb-scene-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.gb-scene-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.gb-scene-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gb-dark);
+  border: 2px solid var(--gb-border);
+  cursor: pointer;
+  pointer-events: all;
+  transition:
+    background 0.25s,
+    box-shadow 0.25s;
+}
+
+.gb-scene-dot.active {
+  background: #e94560;
+  border-color: #ff8899;
+  box-shadow:
+    0 0 8px #e94560,
+    0 0 14px rgba(233, 69, 96, 0.5);
+}
+
+.gb-scene-dot:hover:not(.active) {
+  background: var(--gb-light);
+}
+
+.gb-scene-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(5px, 0.7vw, 7px);
+  color: #1a1a2e;
+  letter-spacing: 1px;
+  opacity: 0.75;
+  text-align: center;
+  min-width: 60px;
+}
+
+/* Top-right cluster: LED + language toggle */
+.gb-top-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.gb-led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ff66;
+  box-shadow:
+    0 0 8px #00ff66,
+    0 0 18px rgba(0, 255, 102, 0.6);
+  animation: led-breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes led-breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px #00ff66,
+      0 0 18px rgba(0, 255, 102, 0.6);
+  }
+  50% {
+    box-shadow:
+      0 0 4px #00ff66,
+      0 0 8px rgba(0, 255, 102, 0.2);
+  }
+}
+
+.gb-lang-btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(6px, 0.9vw, 8px);
+  background: #533483;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 6px 10px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: background 0.15s;
+  box-shadow: 2px 2px 0 #2a1060;
+}
+
+.gb-lang-btn:hover {
+  background: #7050b0;
+}
+
+.gb-lang-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* ============================================================
+   MIDDLE ROW  (left strip | screen | right strip)
+   ============================================================ */
+.gb-middle {
+  display: grid;
+  grid-template-columns: var(--gb-side-w) 1fr var(--gb-side-w);
+}
+
+/* ---- Shared strip styles ---- */
+.gb-left-strip,
+.gb-right-strip {
+  background: linear-gradient(180deg, var(--gb-body) 0%, var(--gb-dark) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+
+.gb-left-strip {
+  border-right: 3px solid var(--gb-border);
+  box-shadow:
+    inset -4px 0 10px rgba(0, 0, 0, 0.3),
+    inset 2px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.gb-right-strip {
+  border-left: 3px solid var(--gb-border);
+  box-shadow:
+    inset 4px 0 10px rgba(0, 0, 0, 0.3),
+    inset -2px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Screen window (transparent — game shows through) ---- */
+.gb-screen-window {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Inner bezel shadow to simulate a recessed screen */
+.gb-screen-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 12px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Subtle scanlines for the CRT / LCD feel */
+.gb-screen-window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.035) 2px,
+    rgba(0, 0, 0, 0.035) 4px
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ---- Navigation arrow buttons ---- */
+.gb-nav-btn {
+  font-family: "Press Start 2P", monospace;
+  background: #c0192a;
+  color: #fff;
+  border: 3px solid #fff;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #7a0010;
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s,
+    background 0.1s;
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.gb-nav-btn:hover {
+  background: #e04055;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #7a0010;
+}
+
+.gb-nav-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #7a0010;
+}
+
+.gb-nav-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Large directional arrow buttons */
+.gb-btn-left,
+.gb-btn-right {
+  width: 46px;
+  height: 46px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+/* ---- A / B action buttons ---- */
+.gb-ab-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.gb-btn-a,
+.gb-btn-b {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 7px;
+  background: #3d2080;
+  box-shadow: 2px 2px 0 #1a0055;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  pointer-events: all;
+  font-family: "Press Start 2P", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.1s,
+    transform 0.08s;
+}
+
+.gb-btn-a:hover,
+.gb-btn-b:hover {
+  background: #5530a0;
+}
+
+.gb-btn-a:active,
+.gb-btn-b:active {
+  transform: translate(1px, 1px);
+}
+
+/* ============================================================
+   BOTTOM STRIP
+   ============================================================ */
+.gb-bottom {
+  background: linear-gradient(
+    0deg,
+    var(--gb-light) 0%,
+    var(--gb-body) 40%,
+    var(--gb-dark) 100%
+  );
+  border-top: 3px solid var(--gb-border);
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(var(--gb-side-w) + 16px);
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+
+/* SELECT / START buttons */
+.gb-sys-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.gb-sys-btn {
+  background: transparent;
+  color: var(--gb-border);
+  border: 2px solid var(--gb-border);
+  font-family: "Press Start 2P", monospace;
+  font-size: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  pointer-events: all;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.gb-sys-btn:hover {
+  color: var(--gb-light);
+  border-color: var(--gb-light);
+}
+
+/* Speaker grill */
+.gb-speaker {
+  display: grid;
+  grid-template-columns: repeat(4, 9px);
+  grid-template-rows: repeat(2, 9px);
+  gap: 5px;
+  opacity: 0.5;
+}
+
+.gb-speaker-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gb-border);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --gb-top-h: 50px;
+    --gb-bottom-h: 62px;
+    --gb-side-w: 56px;
+  }
+
+  .gb-brand {
+    font-size: 8px;
+  }
+  .gb-btn-left,
+  .gb-btn-right {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  .gb-scene-dot {
+    width: 7px;
+    height: 7px;
+  }
+  .gb-scene-label {
+    font-size: 5px;
+  }
+  .gb-bottom {
+    padding: 0 calc(var(--gb-side-w) + 6px);
+  }
+  .gb-sys-btn {
+    font-size: 4px;
+    padding: 4px 7px;
+  }
+  .gb-btn-a,
+  .gb-btn-b {
+    width: 22px;
+    height: 22px;
+    font-size: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gb-top-h: 44px;
+    --gb-bottom-h: 52px;
+    --gb-side-w: 44px;
+  }
+
+  .gb-brand {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .gb-btn-left,
+  .gb-btn-right {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+    border-width: 2px;
+  }
+  .gb-scene-dots {
+    gap: 5px;
+  }
+  .gb-ab-group {
+    display: none;
+  }
+  .gb-speaker {
+    display: none;
+  }
+  .gb-lang-btn {
+    font-size: 5px;
+    padding: 4px 6px;
+  }
+  .gb-scene-label {
+    display: none;
+  }
+}
+
+/* Large screens */
+@media (min-width: 2000px) {
+  :root {
+    --gb-top-h: 82px;
+    --gb-bottom-h: 100px;
+    --gb-side-w: 104px;
+  }
+
+  .gb-brand {
+    font-size: 17px;
+  }
+  .gb-btn-left,
+  .gb-btn-right {
+    width: 62px;
+    height: 62px;
+    font-size: 22px;
+  }
+  .gb-scene-dot {
+    width: 13px;
+    height: 13px;
+  }
+  .gb-scene-label {
+    font-size: 9px;
+  }
+  .gb-led {
+    width: 13px;
+    height: 13px;
+  }
+  .gb-lang-btn {
+    font-size: 10px;
+    padding: 8px 13px;
+  }
+  .gb-btn-a,
+  .gb-btn-b {
+    width: 36px;
+    height: 36px;
+    font-size: 9px;
+  }
+  .gb-sys-btn {
+    font-size: 7px;
+    padding: 7px 13px;
+  }
+  .gb-speaker-dot {
+    width: 11px;
+    height: 11px;
+  }
+}

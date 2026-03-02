@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Österreichische Titel — Explorativ</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="../experiments.html" class="header-back">← zurück</a>
+      <h1 class="header-title">Österreichische Titel — Explorativ</h1>
+      <span class="header-stamp">PROTOTYP v0.1</span>
+    </header>
+
+    <div class="intro-blurb">
+      <div class="intro-blurb-content">
+        <p class="intro-lead">
+          In Österreich ist der Titel kein bloßer Zusatz zum Namen. Viel mehr
+          ist er eine Lebensleistung, komprimiert auf eine Visitenkarte. Andere
+          Länder begnügen sich mit einem Dropdown. Österreich hat ein System.
+        </p>
+        <p class="intro-sub">
+          Dieses Projekt versucht, diese Logik nachzubilden: akademisch,
+          militärisch, bürokratisch, ehrenhalber, mit einer Sorgfalt, die das
+          Thema zweifellos verdient. Bisherige Formulare bieten lediglich bloße
+          Listen aller Titel, siehe:
+        </p>
+      </div>
+    </div>
+
+    <div class="title-preview">
+      <label for="title-dropdown">Beispiel: Österreichische Titel</label>
+      <select id="title-dropdown" class="title-dropdown">
+        <option value="">— Wählen Sie einen Titel aus —</option>
+      </select>
+    </div>
+
+    <div class="solutions-section">
+      <div class="solutions-content">
+        <p class="solutions-lead">
+          Daher, neue revolutionäre Lösungsmöglichkeiten wären:
+        </p>
+        <ul class="solutions-list">
+          <li>
+            <strong>I. Titelassistent</strong> — Ein interaktiver Assistent, der
+            durch gezielte Fragen den perfekten Titel zusammenstellt.
+          </li>
+          <li>
+            <strong>II. Prestigekarte</strong> — Ein zweidimensionales
+            Koordinatensystem zur Verortung von Titeln im Raum zwischen
+            akademischer Leistung und staatlicher Autorität.
+          </li>
+          <li>
+            <strong>III. Baukasten</strong> — Ein freies Kompositionssystem, um
+            Titel nach eigenem Geschmack zusammenzustellen.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mode-selector">
+      <button
+        class="mode-btn active"
+        id="btn-wizard"
+        onclick="setMode('wizard')"
+      >
+        ▸ I. TITELASSISTENT
+      </button>
+      <button class="mode-btn" id="btn-coord" onclick="setMode('coord')">
+        ▸ II. PRESTIGEKARTE
+      </button>
+      <button class="mode-btn" id="btn-bk" onclick="setMode('baukasten')">
+        ▸ III. BAUKASTEN
+      </button>
+    </div>
+
+    <div class="main">
+      <!-- ══════════════════════════════════════
+           I. TITELASSISTENT
+           ══════════════════════════════════════ -->
+      <div id="wizard-mode" class="active">
+        <div class="wizard-progress" id="wizard-progress"></div>
+
+        <div class="wizard-card" id="wizard-card"></div>
+
+        <div class="wizard-thinking" id="wizard-thinking">
+          <div class="thinking-label">
+            AKTEN WERDEN GEPRÜFT<span class="thinking-dots"></span>
+          </div>
+          <div class="thinking-msg" id="thinking-msg"></div>
+        </div>
+
+        <div class="wizard-result" id="wizard-result"></div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           II. PRESTIGEKARTE
+           ══════════════════════════════════════ -->
+      <div id="coord-mode">
+        <div class="coord-layout">
+          <!-- Map column -->
+          <div class="coord-left">
+            <div class="coord-map-row">
+              <div class="coord-y-lbl">STAATLICHE AUTORITÄT</div>
+              <div class="coord-y-range">
+                <span>Sektionschef ↑</span>
+                <span>Hofrat</span>
+                <span>↓ keiner</span>
+              </div>
+              <div class="coord-map" id="coord-map">
+                <div class="coord-axis-h"></div>
+                <div class="coord-axis-v"></div>
+                <div class="coord-qlabel tl">Beamter ohne<br />Abschluss</div>
+                <div class="coord-qlabel tr">
+                  Gelehrter &amp;<br />Staatsmann
+                </div>
+                <div class="coord-qlabel bl">Privatperson<br />ohne Titel</div>
+                <div class="coord-qlabel br">
+                  Akademiker in der<br />Privatwirtschaft
+                </div>
+                <div class="coord-point" id="coord-point"></div>
+              </div>
+            </div>
+
+            <div class="coord-x-lbl">AKADEMISCHE LEISTUNG</div>
+            <div class="coord-x-range">
+              <span>keiner →</span>
+              <span>← Univ.-Prof. Dr.</span>
+            </div>
+            <div class="coord-readout" id="coord-readout">
+              Akademisch: 50 · Autorität: 50
+            </div>
+
+            <div class="coord-controls">
+              <button class="coord-btn" onclick="coordRandomize()">
+                ZUFÄLLIG
+              </button>
+              <button class="coord-btn" onclick="coordReset()">
+                ZURÜCKSETZEN
+              </button>
+              <button
+                class="coord-btn lock"
+                id="coord-lock-btn"
+                onclick="coordLock()"
+              >
+                FESTSETZEN
+              </button>
+            </div>
+          </div>
+
+          <!-- Result panel -->
+          <div class="coord-result">
+            <div class="coord-result-hdr">
+              <div class="live-dot" id="live-dot"></div>
+              <span id="coord-status">LIVEVORSCHAU</span>
+            </div>
+
+            <div class="coord-title-display" id="coord-title">
+              Max Mustermann
+            </div>
+
+            <div class="coord-prestige-bar">
+              <div class="coord-prestige-top">
+                <span>PRESTIGE</span>
+                <span id="coord-pts">0 Pkt.</span>
+              </div>
+              <div class="coord-prestige-track">
+                <div
+                  class="coord-prestige-fill"
+                  id="coord-fill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="coord-prestige-rank" id="coord-rank"></div>
+            </div>
+
+            <div class="overflow-warn" id="coord-overflow">
+              ⚠ Datenbankfeld auf 40 Zeichen begrenzt.<br />Bitte wenden Sie
+              sich an Ihren Systemadministrator.
+            </div>
+
+            <div class="coord-actions" id="coord-actions" style="display: none">
+              <button
+                class="coord-act-btn coord-act-primary"
+                id="coord-copy-btn"
+                onclick="coordCopy()"
+              >
+                TITEL KOPIEREN
+              </button>
+              <button
+                class="coord-act-btn coord-act-secondary"
+                onclick="coordReset()"
+              >
+                VON VORNE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           III. BAUKASTEN
+           ══════════════════════════════════════ -->
+      <div id="baukasten-mode">
+        <div class="bk-result-bar">
+          <div class="bk-result-left">
+            <div class="bk-result-lbl">IHR ZUSAMMENGESTELLTER TITEL</div>
+            <div class="bk-title-live empty" id="bk-title-live">
+              Noch keine Titel ausgewählt.
+            </div>
+          </div>
+          <div class="bk-result-right">
+            <div class="bk-prestige-row">
+              <span class="bk-pts" id="bk-pts">0 Pkt.</span>
+              <span class="bk-rank" id="bk-rank"></span>
+            </div>
+            <div class="bk-prestige-track">
+              <div
+                class="bk-prestige-fill"
+                id="bk-fill"
+                style="width: 0%"
+              ></div>
+            </div>
+            <div class="bk-btn-row">
+              <button class="bk-action-btn bk-clear" onclick="bkClear()">
+                ALLE LÖSCHEN
+              </button>
+              <button
+                class="bk-action-btn bk-copy"
+                id="bk-copy-btn"
+                onclick="bkCopy()"
+                disabled
+              >
+                KOPIEREN
+              </button>
+            </div>
+            <div class="overflow-warn" id="bk-overflow">
+              ⚠ Datenbankfeld auf 40 Zeichen begrenzt.
+            </div>
+          </div>
+        </div>
+
+        <div class="bk-sections" id="bk-sections">
+          <!-- tiles rendered by baukasten.js -->
+        </div>
+      </div>
+    </div>
+    <!-- end main -->
+
+    <!-- Load order: shared logic first, then each mode, then app -->
+    <script src="js/titles.js"></script>
+    <script src="js/titlesdata.js"></script>
+    <script src="js/wizard.js"></script>
+    <script src="js/coord.js"></script>
+    <script src="js/baukasten.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+      // Populate title dropdown from TITLES_DATA
+      function populateTitleDropdown() {
+        const dropdown = document.getElementById("title-dropdown");
+        const titles = [];
+
+        // Collect all titles from all categories
+        if (TITLES_DATA.akademisch) {
+          if (TITLES_DATA.akademisch.praenominal) {
+            TITLES_DATA.akademisch.praenominal.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+          if (TITLES_DATA.akademisch.postnominal) {
+            TITLES_DATA.akademisch.postnominal.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+        }
+        if (TITLES_DATA.militaerisch) {
+          if (TITLES_DATA.militaerisch.bundesheer) {
+            TITLES_DATA.militaerisch.bundesheer.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+          if (TITLES_DATA.militaerisch.polizei) {
+            TITLES_DATA.militaerisch.polizei.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+        }
+        if (TITLES_DATA.beamte) {
+          if (TITLES_DATA.beamte.bund) {
+            TITLES_DATA.beamte.bund.forEach((t) => titles.push(t.kuerzel));
+          }
+          if (TITLES_DATA.beamte.laender_gemeinden) {
+            TITLES_DATA.beamte.laender_gemeinden.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+        }
+        if (TITLES_DATA.ehren) {
+          if (TITLES_DATA.ehren.kammer) {
+            TITLES_DATA.ehren.kammer.forEach((t) => titles.push(t.kuerzel));
+          }
+          if (TITLES_DATA.ehren.bildung) {
+            TITLES_DATA.ehren.bildung.forEach((t) => titles.push(t.kuerzel));
+          }
+          if (TITLES_DATA.ehren.kunst_kultur) {
+            TITLES_DATA.ehren.kunst_kultur.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+        }
+        if (TITLES_DATA.berufe && TITLES_DATA.berufe.freie_berufe) {
+          TITLES_DATA.berufe.freie_berufe.forEach((t) =>
+            titles.push(t.kuerzel),
+          );
+        }
+        if (TITLES_DATA.kirche) {
+          if (TITLES_DATA.kirche.katholisch) {
+            TITLES_DATA.kirche.katholisch.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+          if (TITLES_DATA.kirche.evangelisch) {
+            TITLES_DATA.kirche.evangelisch.forEach((t) =>
+              titles.push(t.kuerzel),
+            );
+          }
+        }
+        if (TITLES_DATA.historisch && TITLES_DATA.historisch.adel) {
+          TITLES_DATA.historisch.adel.forEach((t) => titles.push(t.kuerzel));
+        }
+
+        // Sort and add to dropdown
+        titles.sort().forEach((title) => {
+          const option = document.createElement("option");
+          option.value = title;
+          option.textContent = title;
+          dropdown.appendChild(option);
+        });
+      }
+
+      // Initialize when DOM is ready
+      document.addEventListener("DOMContentLoaded", populateTitleDropdown);
+    </script>
+  </body>
+</html>

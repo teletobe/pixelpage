@@ -1,0 +1,788 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "beschreibung": "Österreichische Titel und Bezeichnungen — ein inoffizieller Katalog",
+    "hinweis": "Vollständigkeit ist in einem System wie diesem eine Illusion. Ergänzungen willkommen.",
+    "felder": {
+      "kuerzel": "Offizielle Abkürzung oder Schreibweise",
+      "bezeichnung": "Vollständige Bezeichnung auf Deutsch",
+      "typ": "praenominal | postnominal | beides | keines",
+      "prestige": "Numerischer Prestigewert (0–20) für interne Berechnungen",
+      "kombinierbar": "Ob der Titel mit anderen gestapelt werden kann"
+    }
+  },
+  "akademisch": {
+    "_beschreibung": "Von österreichischen Hochschulen verliehene oder anerkannte akademische Grade und Würden.",
+    "praenominal": [
+      {
+        "kuerzel": "Univ.-Prof. Dr.",
+        "bezeichnung": "Universitätsprofessor mit Doktorat",
+        "typ": "praenominal",
+        "prestige": 15,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Ao. Univ.-Prof. Dr.",
+        "bezeichnung": "Außerordentlicher Universitätsprofessor",
+        "typ": "praenominal",
+        "prestige": 13,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Ass.-Prof. Dr.",
+        "bezeichnung": "Assistenzprofessor",
+        "typ": "praenominal",
+        "prestige": 10,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Priv.-Doz. Dr.",
+        "bezeichnung": "Privatdozent",
+        "typ": "praenominal",
+        "prestige": 11,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. med. univ.",
+        "bezeichnung": "Doktor der gesamten Heilkunde (Medizin)",
+        "typ": "praenominal",
+        "prestige": 10,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. med.",
+        "bezeichnung": "Doktor der Medizin (Kurzform)",
+        "typ": "praenominal",
+        "prestige": 10,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. iur.",
+        "bezeichnung": "Doktor der Rechtswissenschaften",
+        "typ": "praenominal",
+        "prestige": 9,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. techn.",
+        "bezeichnung": "Doktor der technischen Wissenschaften",
+        "typ": "praenominal",
+        "prestige": 9,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. phil.",
+        "bezeichnung": "Doktor der Philosophie (Geisteswissenschaften)",
+        "typ": "praenominal",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. rer. nat.",
+        "bezeichnung": "Doktor der Naturwissenschaften",
+        "typ": "praenominal",
+        "prestige": 9,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr. rer. soc. oec.",
+        "bezeichnung": "Doktor der Sozial- und Wirtschaftswissenschaften",
+        "typ": "praenominal",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dr.",
+        "bezeichnung": "Doktor (generisch, Fachrichtung unspezifiziert)",
+        "typ": "praenominal",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "DDr.",
+        "bezeichnung": "Doktor Doktor — Inhaber zweier separater Doktorate",
+        "typ": "praenominal",
+        "prestige": 14,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag. iur.",
+        "bezeichnung": "Magister der Rechtswissenschaften",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag. phil.",
+        "bezeichnung": "Magister der Philosophie (Geisteswissenschaften)",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag. rer. soc. oec.",
+        "bezeichnung": "Magister rerum socialium oeconomicarumque",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag. rer. nat.",
+        "bezeichnung": "Magister der Naturwissenschaften",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag. art.",
+        "bezeichnung": "Magister der künstlerischen Studien",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Mag.",
+        "bezeichnung": "Magister (generisch)",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Dipl.-Ing.",
+        "bezeichnung": "Diplom-Ingenieur",
+        "typ": "praenominal",
+        "prestige": 6,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Ing.",
+        "bezeichnung": "Ingenieur (Berufstitel, kein akademischer Grad)",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      }
+    ],
+    "postnominal": [
+      {
+        "kuerzel": "BSc",
+        "bezeichnung": "Bachelor of Science",
+        "typ": "postnominal",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "BA",
+        "bezeichnung": "Bachelor of Arts",
+        "typ": "postnominal",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "BEd",
+        "bezeichnung": "Bachelor of Education",
+        "typ": "postnominal",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MSc",
+        "bezeichnung": "Master of Science",
+        "typ": "postnominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MA",
+        "bezeichnung": "Master of Arts",
+        "typ": "postnominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MBA",
+        "bezeichnung": "Master of Business Administration",
+        "typ": "postnominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "LL.M.",
+        "bezeichnung": "Master of Laws",
+        "typ": "postnominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MEd",
+        "bezeichnung": "Master of Education",
+        "typ": "postnominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MAS",
+        "bezeichnung": "Master of Advanced Studies",
+        "typ": "postnominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "PhD",
+        "bezeichnung": "Doctor of Philosophy (internationales Format)",
+        "typ": "postnominal",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "h.c.",
+        "bezeichnung": "honoris causa — Ehrendoktorat",
+        "typ": "postnominal",
+        "prestige": 5,
+        "kombinierbar": true
+      }
+    ]
+  },
+  "militaerisch": {
+    "_beschreibung": "Dienstgrade des Österreichischen Bundesheeres und der Bundespolizei. Werden in der formellen Anrede dem Namen vorangestellt.",
+    "bundesheer": [
+      {
+        "kuerzel": "General",
+        "bezeichnung": "General",
+        "typ": "praenominal",
+        "ebene": "Generalsoffizier",
+        "prestige": 17,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "GenLt.",
+        "bezeichnung": "Generalleutnant",
+        "typ": "praenominal",
+        "ebene": "Generalsoffizier",
+        "prestige": 15,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "GenMjr.",
+        "bezeichnung": "Generalmajor",
+        "typ": "praenominal",
+        "ebene": "Generalsoffizier",
+        "prestige": 14,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Bgdr.",
+        "bezeichnung": "Brigadier",
+        "typ": "praenominal",
+        "ebene": "Generalsoffizier",
+        "prestige": 13,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Obst.",
+        "bezeichnung": "Oberst",
+        "typ": "praenominal",
+        "ebene": "Stabsoffizier",
+        "prestige": 9,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Obstlt.",
+        "bezeichnung": "Oberstleutnant",
+        "typ": "praenominal",
+        "ebene": "Stabsoffizier",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Maj.",
+        "bezeichnung": "Major",
+        "typ": "praenominal",
+        "ebene": "Stabsoffizier",
+        "prestige": 6,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Hptm.",
+        "bezeichnung": "Hauptmann",
+        "typ": "praenominal",
+        "ebene": "Subalternoffizier",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OLt.",
+        "bezeichnung": "Oberleutnant",
+        "typ": "praenominal",
+        "ebene": "Subalternoffizier",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Lt.",
+        "bezeichnung": "Leutnant",
+        "typ": "praenominal",
+        "ebene": "Subalternoffizier",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Vzlt.",
+        "bezeichnung": "Vizeleutnant",
+        "typ": "praenominal",
+        "ebene": "Unteroffizier",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "StabzFhr.",
+        "bezeichnung": "Stabszugführer",
+        "typ": "praenominal",
+        "ebene": "Unteroffizier",
+        "prestige": 1,
+        "kombinierbar": true
+      }
+    ],
+    "polizei": [
+      {
+        "kuerzel": "LtdInsp.",
+        "bezeichnung": "Leitender Inspektor",
+        "typ": "praenominal",
+        "ebene": "Exekutivdienst",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "ChefInsp.",
+        "bezeichnung": "Chefinspektor",
+        "typ": "praenominal",
+        "ebene": "Exekutivdienst",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "BezInsp.",
+        "bezeichnung": "Bezirksinspektor",
+        "typ": "praenominal",
+        "ebene": "Exekutivdienst",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "RevInsp.",
+        "bezeichnung": "Revierinspektor",
+        "typ": "praenominal",
+        "ebene": "Exekutivdienst",
+        "prestige": 1,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Insp.",
+        "bezeichnung": "Inspektor",
+        "typ": "praenominal",
+        "ebene": "Exekutivdienst",
+        "prestige": 1,
+        "kombinierbar": true
+      }
+    ]
+  },
+  "beamte": {
+    "_beschreibung": "Dienstgrade und Ehrenbezeichnungen des österreichischen öffentlichen Dienstes. Werden dem Namen vorangestellt. Mit Pensionsanspruch.",
+    "bund": [
+      {
+        "kuerzel": "SektChef",
+        "bezeichnung": "Sektionschef",
+        "typ": "praenominal",
+        "prestige": 15,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MinR",
+        "bezeichnung": "Ministerialrat",
+        "typ": "praenominal",
+        "prestige": 11,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "HR",
+        "bezeichnung": "Hofrat",
+        "typ": "praenominal",
+        "prestige": 8,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "RgR",
+        "bezeichnung": "Regierungsrat",
+        "typ": "praenominal",
+        "prestige": 6,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "ADir.",
+        "bezeichnung": "Amtsdirektor",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "AR",
+        "bezeichnung": "Amtsrat",
+        "typ": "praenominal",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Amtm.",
+        "bezeichnung": "Amtmann",
+        "typ": "praenominal",
+        "prestige": 1,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "B",
+        "bezeichnung": "Beamtin/Beamter",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "AW",
+        "bezeichnung": "Amtswartin/Amtswart",
+        "typ": "praenominal",
+        "prestige": 1,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OAW",
+        "bezeichnung": "Oberamtswartin/Oberamtswart",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Offzl",
+        "bezeichnung": "Offizialin/Offizial",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OOffzl",
+        "bezeichnung": "Oberoffizialin/Oberoffizial",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Kontr",
+        "bezeichnung": "Kontrollorin/Kontrollor",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OKontr",
+        "bezeichnung": "Oberkontrollorin/Oberkontrollor",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "FI",
+        "bezeichnung": "Fachinspektorin/Fachinspektor",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "FOI",
+        "bezeichnung": "Fachoberinspektorin/Fachoberinspektor",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Rev",
+        "bezeichnung": "Revidentin/Revident",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "ORev",
+        "bezeichnung": "Oberrevidentin/Oberrevident",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "ASekr",
+        "bezeichnung": "Amtssekretärin/Amtssekretär",
+        "typ": "praenominal",
+        "prestige": 2,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Kmsr",
+        "bezeichnung": "Kommissärin/Kommissär",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OKmsr",
+        "bezeichnung": "Oberkommissärin/Oberkommissär",
+        "typ": "praenominal",
+        "prestige": 6,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "R",
+        "bezeichnung": "Rätin/Rat",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "OR",
+        "bezeichnung": "Oberrätin/Oberrat",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      }
+    ],
+    "laender_gemeinden": [
+      {
+        "kuerzel": "LR",
+        "bezeichnung": "Landesrat",
+        "typ": "praenominal",
+        "prestige": 10,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Bgm.",
+        "bezeichnung": "Bürgermeister",
+        "typ": "praenominal",
+        "prestige": 7,
+        "kombinierbar": true
+      }
+    ]
+  },
+  "ehren": {
+    "_beschreibung": "Ehrentitel, verliehen für besondere Verdienste — oder für beharrliche Netzwerkpflege. Das System fragt nicht nach dem Unterschied.",
+    "kammer": [
+      {
+        "kuerzel": "KommR",
+        "bezeichnung": "Kommerzialrat",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "ÖR",
+        "bezeichnung": "Ökonomierat",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "MedR",
+        "bezeichnung": "Medizinalrat",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "BR",
+        "bezeichnung": "Baurat",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      }
+    ],
+    "bildung": [
+      {
+        "kuerzel": "OSchR",
+        "bezeichnung": "Oberschulrat",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "SchR",
+        "bezeichnung": "Schulrat",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Prof.",
+        "bezeichnung": "Professor (Ehrentitel, nicht akademisch)",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      }
+    ],
+    "kunst_kultur": [
+      {
+        "kuerzel": "KSäng",
+        "bezeichnung": "Kammersänger / Kammersängerin",
+        "typ": "praenominal",
+        "prestige": 7,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "KSchausp",
+        "bezeichnung": "Kammerschauspieler / Kammerschauspielerin",
+        "typ": "praenominal",
+        "prestige": 7,
+        "kombinierbar": true
+      }
+    ]
+  },
+  "berufe": {
+    "_beschreibung": "Gesetzlich geschützte Berufsbezeichnungen und Standesbezeichnungen freier Berufe. Kein Titelsystem im engeren Sinne, aber in Österreich oft auf der Visitenkarte.",
+    "freie_berufe": [
+      {
+        "kuerzel": "RA",
+        "bezeichnung": "Rechtsanwalt / Rechtsanwältin",
+        "typ": "berufsbezeichnung",
+        "prestige": 6
+      },
+      {
+        "kuerzel": "Notar",
+        "bezeichnung": "Notar / Notarin",
+        "typ": "berufsbezeichnung",
+        "prestige": 7
+      },
+      {
+        "kuerzel": "StB",
+        "bezeichnung": "Steuerberater / Steuerberaterin",
+        "typ": "berufsbezeichnung",
+        "prestige": 5
+      },
+      {
+        "kuerzel": "WP",
+        "bezeichnung": "Wirtschaftsprüfer / Wirtschaftsprüferin",
+        "typ": "berufsbezeichnung",
+        "prestige": 6
+      },
+      {
+        "kuerzel": "ZT",
+        "bezeichnung": "Ziviltechniker / Ziviltechnikerin",
+        "typ": "berufsbezeichnung",
+        "prestige": 5
+      }
+    ]
+  },
+  "kirche": {
+    "_beschreibung": "Kirchliche Würden und Amtsbezeichnungen. In Österreich traditionell öffentlich präsent, wenn auch nicht staatlich verliehen.",
+    "katholisch": [
+      {
+        "kuerzel": "Kard.",
+        "bezeichnung": "Kardinal",
+        "typ": "praenominal",
+        "prestige": 16,
+        "kombinierbar": false
+      },
+      {
+        "kuerzel": "Erzbischof",
+        "bezeichnung": "Erzbischof",
+        "typ": "praenominal",
+        "prestige": 13,
+        "kombinierbar": false
+      },
+      {
+        "kuerzel": "Bischof",
+        "bezeichnung": "Bischof",
+        "typ": "praenominal",
+        "prestige": 11,
+        "kombinierbar": false
+      },
+      {
+        "kuerzel": "Weihbischof",
+        "bezeichnung": "Weihbischof",
+        "typ": "praenominal",
+        "prestige": 9,
+        "kombinierbar": false
+      },
+      {
+        "kuerzel": "Msgr.",
+        "bezeichnung": "Monsignore",
+        "typ": "praenominal",
+        "prestige": 7,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "P.",
+        "bezeichnung": "Pater (Ordensgeistlicher)",
+        "typ": "praenominal",
+        "prestige": 4,
+        "kombinierbar": true
+      },
+      {
+        "kuerzel": "Pfr.",
+        "bezeichnung": "Pfarrer",
+        "typ": "praenominal",
+        "prestige": 3,
+        "kombinierbar": true
+      }
+    ],
+    "evangelisch": [
+      {
+        "kuerzel": "Bischof",
+        "bezeichnung": "Bischof (evangelisch)",
+        "typ": "praenominal",
+        "prestige": 10,
+        "kombinierbar": false
+      },
+      {
+        "kuerzel": "KR",
+        "bezeichnung": "Kirchenrat (evangelisch)",
+        "typ": "praenominal",
+        "prestige": 5,
+        "kombinierbar": true
+      }
+    ]
+  },
+  "historisch": {
+    "_beschreibung": "Titel, die seit der Abschaffung des Adels 1919 (Adelsaufhebungsgesetz) nicht mehr vergeben werden. In Österreich ist die Führung von Adelstiteln gesetzlich verboten — das Gesetz wird allerdings unterschiedlich streng gehandhabt.",
+    "adel": [
+      {
+        "kuerzel": "von",
+        "bezeichnung": "Adelspartikel (niederer Adel)",
+        "typ": "namensbestandteil",
+        "prestige": 5
+      },
+      {
+        "kuerzel": "Ritter",
+        "bezeichnung": "Ritter",
+        "typ": "praenominal",
+        "prestige": 6
+      },
+      {
+        "kuerzel": "Frh.",
+        "bezeichnung": "Freiherr / Baron",
+        "typ": "praenominal",
+        "prestige": 8
+      },
+      {
+        "kuerzel": "Graf",
+        "bezeichnung": "Graf / Gräfin",
+        "typ": "praenominal",
+        "prestige": 11
+      },
+      {
+        "kuerzel": "Fürst",
+        "bezeichnung": "Fürst / Fürstin",
+        "typ": "praenominal",
+        "prestige": 14
+      },
+      {
+        "kuerzel": "Herzog",
+        "bezeichnung": "Herzog / Herzogin",
+        "typ": "praenominal",
+        "prestige": 15
+      }
+    ]
+  }
+}

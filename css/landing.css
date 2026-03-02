@@ -391,6 +391,48 @@ body {
   border-top-color: #c0d4f0;
 }
 
+/* 05 — EXPERIMENTS (teal) — spans full grid width */
+.zone--experiments {
+  grid-column: 1 / -1;
+  border-color: #009090;
+  background: #f0fafa;
+}
+
+.zone--experiments .zone-topbar {
+  background: #e0f5f5;
+  border-bottom-color: #a8dede;
+}
+
+.zone--experiments .zone-title {
+  color: #006060;
+}
+
+.zone--experiments .zone-tags li::before,
+.zone--experiments .zone-tags li {
+  color: #107070;
+}
+
+.zone--experiments .zone-footer {
+  background: #e0f5f5;
+  border-top-color: #a8dede;
+}
+
+.zone--experiments .zone-enter-btn {
+  color: #006060;
+  border: 2px solid #006060;
+  background: transparent;
+  box-shadow: 3px 3px 0 #90d0d0;
+}
+
+.zone--experiments.zone--live:hover .zone-enter-btn {
+  background: #006060;
+  color: #fff;
+}
+
+.zone--experiments .pixel-ascii {
+  color: #60b8b8;
+}
+
 /* ══════════════════════════════════════════════
    PIXEL ART DECORATIONS
    ══════════════════════════════════════════════ */

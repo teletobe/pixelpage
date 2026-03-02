@@ -351,6 +351,18 @@ body {
   border-top-color: #e8d8a8;
 }
 
+.zone--photography .zone-enter-btn {
+  color: #8a5200;
+  border: 2px solid #8a5200;
+  background: transparent;
+  box-shadow: 3px 3px 0 #e6caa0;
+}
+
+.zone--photography.zone--live:hover .zone-enter-btn {
+  background: #8a5200;
+  color: #fff;
+}
+
 /* 03 — BOOKS & GAMES (soft purple) */
 .zone--books {
   border-color: #7040c0;

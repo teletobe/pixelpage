@@ -317,6 +317,91 @@ main {
   color: #4a4a6a;
 }
 
+/* ── Filter phase ────────────────────────────────────────────── */
+.filter-map-wrap {
+  width: 100%;
+  cursor: pointer;
+}
+
+.filter-map-wrap .map-state {
+  transition: fill 0.15s ease;
+}
+
+.filter-map-wrap .map-state:hover {
+  fill: #d4d0c8;
+}
+
+.region-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.region-chip {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  padding: 6px 12px;
+  border: 2px solid #212131;
+  background: transparent;
+  color: #212131;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.region-chip:hover:not([disabled]) {
+  background: #212131;
+  color: #f5f2ec;
+}
+
+.region-chip--active {
+  background: #006060;
+  color: #f5f2ec;
+  border-color: #006060;
+}
+
+.region-chip--disabled {
+  color: #c8c4bc;
+  border-color: #c8c4bc;
+  cursor: not-allowed;
+}
+
+.region-coming-soon {
+  font-size: 10px;
+  color: #aaa8b8;
+  font-style: italic;
+}
+
+.filter-footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn--active {
+  background: #212131;
+  color: #f5f2ec;
+  border-color: #212131;
+}
+
+/* Region indicator button (back to filter) */
+.region-indicator-btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  border: 2px solid #d4d0c8;
+  background: transparent;
+  color: #4a4a6a;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.region-indicator-btn:hover {
+  border-color: #006060;
+  color: #006060;
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 500px) {
   .site-header {

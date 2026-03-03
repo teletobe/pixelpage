@@ -27,4 +27,4 @@ export interface GuessRecord {
   timestamp: number;
 }
 
-export type GamePhase = 'guessing' | 'revealed';
+export type GamePhase = 'filter' | 'guessing' | 'revealed';

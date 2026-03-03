@@ -762,12 +762,6 @@ const TITLES_DATA = {
       "Titel, die seit der Abschaffung des Adels 1919 (Adelsaufhebungsgesetz) nicht mehr vergeben werden. In Österreich ist die Führung von Adelstiteln gesetzlich verboten — das Gesetz wird allerdings unterschiedlich streng gehandhabt.",
     adel: [
       {
-        kuerzel: "von",
-        bezeichnung: "Adelspartikel (niederer Adel)",
-        typ: "namensbestandteil",
-        prestige: 5,
-      },
-      {
         kuerzel: "Ritter",
         bezeichnung: "Ritter",
         typ: "praenominal",

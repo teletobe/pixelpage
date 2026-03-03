@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: experiments/dialektr/package-lock.json
+
+      - name: Build dialektr
+        working-directory: experiments/dialektr
+        run: npm ci && npm run build
+
+      # The rest of the site is plain HTML — just copy everything to an
+      # _site folder, swapping in the Vite-built dialektr dist.
+      - name: Assemble site
+        run: |
+          cp -r . _site
+          rm -rf _site/_site _site/.git _site/.github
+          # replace the raw source folder with the built output
+          rm -rf _site/experiments/dialektr/node_modules
+          rm -rf _site/experiments/dialektr/src
+          cp -r experiments/dialektr/dist/. _site/experiments/dialektr/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
+        id: deployment

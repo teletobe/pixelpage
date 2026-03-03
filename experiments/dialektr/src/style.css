@@ -1,0 +1,339 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f5f2ec;
+  font-family: "Courier New", Courier, monospace;
+  color: #212131;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.site-header {
+  width: 100%;
+  padding: 24px 40px 20px;
+  border-bottom: 2px solid #212131;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-back {
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  color: #006060;
+  text-decoration: none;
+  letter-spacing: 1px;
+  opacity: 0.65;
+  transition: opacity 0.1s;
+  flex-shrink: 0;
+}
+
+.site-back:hover {
+  opacity: 1;
+}
+
+.site-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(10px, 1.5vw, 14px);
+  color: #006060;
+  letter-spacing: 2px;
+}
+
+.site-subtitle {
+  font-size: 11px;
+  color: #4a4a6a;
+  font-style: italic;
+}
+
+/* ── Main layout ─────────────────────────────────────────────── */
+main {
+  width: 100%;
+  max-width: 660px;
+  padding: 48px 32px 80px;
+}
+
+/* ── Game card ───────────────────────────────────────────────── */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.word-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+  color: #4a4a6a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.dialect-word {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(18px, 5vw, 32px);
+  color: #212131;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.dialect-group {
+  font-size: 11px;
+  color: #4a4a6a;
+  font-style: italic;
+}
+
+/* ── Input area ──────────────────────────────────────────────── */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guess-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: #fff;
+  border: 2px solid #212131;
+  color: #212131;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.1s;
+}
+
+.guess-input:focus {
+  border-color: #006060;
+}
+
+.guess-input::placeholder {
+  color: #aaa8b8;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding: 12px 16px;
+  border: 2px solid #212131;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.btn--primary {
+  background: #006060;
+  color: #f5f2ec;
+  border-color: #006060;
+}
+
+.btn--primary:hover {
+  background: #004444;
+  border-color: #004444;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #4a4a6a;
+  border-color: #212131;
+}
+
+.btn--ghost:hover {
+  background: #212131;
+  color: #f5f2ec;
+}
+
+.btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Feedback ────────────────────────────────────────────────── */
+.feedback {
+  padding: 10px 14px;
+  border: 2px solid;
+  font-size: 12px;
+}
+
+.feedback--correct {
+  background: rgba(0, 96, 96, 0.07);
+  color: #006060;
+  border-color: #006060;
+}
+
+.feedback--close {
+  background: rgba(184, 150, 10, 0.08);
+  color: #7a6200;
+  border-color: #b8960a;
+}
+
+.feedback--wrong {
+  background: rgba(139, 0, 0, 0.06);
+  color: #8b0000;
+  border-color: #8b0000;
+}
+
+.feedback--neutral {
+  background: rgba(74, 74, 106, 0.07);
+  color: #4a4a6a;
+  border-color: #d4d0c8;
+}
+
+/* ── Reveal panel ────────────────────────────────────────────── */
+.reveal-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: #fff;
+  border: 2px solid #212131;
+}
+
+.translation-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.translation-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a4a6a;
+  white-space: nowrap;
+}
+
+.translation-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #212131;
+}
+
+.example {
+  font-style: italic;
+  color: #4a4a6a;
+  font-size: 12px;
+  padding-left: 14px;
+  border-left: 3px solid #d4d0c8;
+  line-height: 1.7;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #4a4a6a;
+}
+
+/* ── Austria map ─────────────────────────────────────────────── */
+.map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid #d4d0c8;
+  padding-top: 16px;
+}
+
+.austria-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-state {
+  fill: #ece8e0;
+  stroke: #c8c4bc;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  transition: fill 0.3s ease;
+}
+
+.map-state--active {
+  fill: #006060;
+  stroke: #004444;
+  stroke-width: 1.5;
+}
+
+.map-caption {
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  letter-spacing: 2px;
+  color: #006060;
+  text-transform: uppercase;
+}
+
+/* ── Previous guesses ────────────────────────────────────────── */
+.guesses-panel {
+  border-top: 2px solid #212131;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guesses-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a4a6a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guesses-count {
+  border: 1px solid #d4d0c8;
+  padding: 2px 6px;
+  font-size: 6px;
+  color: #888;
+  background: #f5f2ec;
+}
+
+.guesses-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.guess-chip {
+  background: #f5f2ec;
+  border: 1px solid #d4d0c8;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: #4a4a6a;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .site-header {
+    padding: 18px 20px 16px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  main {
+    padding: 32px 20px 60px;
+  }
+
+  .dialect-word {
+    font-size: 18px;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+}

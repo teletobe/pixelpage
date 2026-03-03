@@ -53,6 +53,8 @@ jobs:
             --exclude=.github \
             --exclude=experiments/dialektr \
             . _site/
+          echo "=== index.html AFTER rsync (should show assets/..., NOT src/main.ts) ==="
+          grep "script" _site/experiments/dialektr/index.html
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

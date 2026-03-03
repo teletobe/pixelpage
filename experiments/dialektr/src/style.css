@@ -103,7 +103,7 @@ main {
   border: 2px solid #212131;
   color: #212131;
   font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.1s;
 }

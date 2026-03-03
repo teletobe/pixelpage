@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  // relative base so the built files work at any path depth
-  base: './',
+  // GitHub Pages serves from /pixpage/experiments/dialektr/
+  base: "/pixpage/experiments/dialektr/",
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     emptyOutDir: true,
   },
 });

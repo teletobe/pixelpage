@@ -34,9 +34,6 @@ jobs:
         run: |
           npm ci
           npm run build
-          echo "=== dist contents ==="
-          ls -la dist/
-          ls -la dist/assets/
 
       # Assemble the site: put the built app in first, then rsync the rest
       # of the static site around it (excluding the dialektr source tree).
@@ -44,17 +41,12 @@ jobs:
         run: |
           mkdir -p _site/experiments/dialektr
           cp -r experiments/dialektr/dist/. _site/experiments/dialektr/
-          echo "=== _site/experiments/dialektr after cp ==="
-          ls -la _site/experiments/dialektr/
-          ls -la _site/experiments/dialektr/assets/ || echo "NO assets dir!"
           rsync -a \
             --exclude=_site \
             --exclude=.git \
             --exclude=.github \
             --exclude=experiments/dialektr \
             . _site/
-          echo "=== index.html AFTER rsync (should show assets/..., NOT src/main.ts) ==="
-          grep "script" _site/experiments/dialektr/index.html
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

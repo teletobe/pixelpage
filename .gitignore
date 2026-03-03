@@ -1,1 +1,7 @@
 .DS_Store
+
+# build output from GitHub Actions (static site)
+_site/
+
+# node modules for experiments/dialektr
+experiments/dialektr/node_modules/

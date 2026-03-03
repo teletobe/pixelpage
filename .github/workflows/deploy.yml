@@ -33,20 +33,18 @@ jobs:
         working-directory: experiments/dialektr
         run: npm ci && npm run build
 
-      # The rest of the site is plain HTML — rsync everything except build
-      # artifacts and the output folder itself, then drop in the built app.
+      # Assemble the site: put the built app in first, then rsync the rest
+      # of the static site around it (excluding the dialektr source tree).
       - name: Assemble site
         run: |
+          mkdir -p _site/experiments/dialektr
+          cp -r experiments/dialektr/dist/. _site/experiments/dialektr/
           rsync -a \
             --exclude=_site \
             --exclude=.git \
             --exclude=.github \
-            --exclude=experiments/dialektr/node_modules \
-            --exclude=experiments/dialektr/src \
-            --exclude=experiments/dialektr/dist \
+            --exclude=experiments/dialektr \
             . _site/
-          # drop the Vite build output in place of the raw source
-          cp -r experiments/dialektr/dist/. _site/experiments/dialektr/
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

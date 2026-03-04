@@ -201,8 +201,22 @@ function initGbControls() {
   updateGbSceneDots(currentScene);
   updateGbSceneName(currentScene);
 
-  // Keyboard: arrow keys control left/right
+  // Keyboard: arrow keys control dialogue when open, else scene navigation
   document.addEventListener("keydown", (e) => {
+    if (roomModal && roomModal.classList.contains("active")) {
+      if (e.key === "ArrowLeft" && dialoguePage > 0) {
+        dialoguePage--;
+        renderDialoguePage();
+      } else if (e.key === "ArrowRight") {
+        if (dialoguePage < dialoguePages.length - 1) {
+          dialoguePage++;
+          renderDialoguePage();
+        } else {
+          closeRoomModal();
+        }
+      }
+      return;
+    }
     if (e.key === "ArrowLeft")  navigatePrevScene();
     if (e.key === "ArrowRight") navigateNextScene();
   });

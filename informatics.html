@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -282,12 +282,39 @@
       </div>
     </div>
 
-    <!-- Room Detail Modal -->
+    <!-- Room Dialogue Modal -->
     <div class="modal" id="room-modal">
-      <div class="modal-content room-detail">
-        <button class="close-btn" id="close-room">×</button>
-        <h2 id="room-title">Room Title</h2>
-        <div class="room-projects" id="room-projects"></div>
+      <div class="dialogue-box">
+        <!-- Character standing beside bubble -->
+        <div class="dialogue-portrait">
+          <img
+            class="dialogue-sprite"
+            src="img/player/playerhead.png"
+            alt="Tobi"
+          />
+          <div class="dialogue-portrait-base">TOBI</div>
+        </div>
+        <!-- Dialogue panel -->
+        <div class="dialogue-panel">
+          <div class="dialogue-header">
+            <span class="dialogue-speaker" id="room-title"></span>
+            <button class="dialogue-close" id="close-room">✕</button>
+          </div>
+          <div class="dialogue-topic-bar">
+            <span class="dialogue-topic-arrow">▶</span>
+            <span class="dialogue-topic" id="dialogue-topic"></span>
+          </div>
+          <div class="dialogue-text" id="room-projects"></div>
+          <div class="dialogue-footer">
+            <span class="dialogue-counter" id="dialogue-counter"></span>
+            <div class="dialogue-nav-btns">
+              <button class="dialogue-nav-btn" id="dialogue-prev">◀</button>
+              <button class="dialogue-nav-btn" id="dialogue-next">
+                NEXT ▶
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -31,12 +31,12 @@ const translations = {
     "experience.title": "EDUCATION & EXPERIENCE",
     "room.bsc.title": "BSc. INFORMATICS",
     "room.bsc.summary":
-      "Computer sciences foundation. (University Innsbruck, 2022).",
+      "Computer Science foundation. (University of Innsbruck, 2022).",
     "room.bsc.desc1":
-      "I completed my bachelor's degree in Computer Science at the University Innsbruck in 2022.<br />",
+      "Bachelor's degree in Computer Science at the University of Innsbruck, completed in 2022.<br />",
     "room.bsc.desc2":
-      "It provided a solid foundation in programming, algorithms, and software development.",
-    "room.bsc.desc3": "Click to explore what it thought me!",
+      "A broad foundation across core informatics disciplines — from algorithms and systems to machine learning and software development.",
+    "room.bsc.desc3": "Click to explore experience, competences & more.",
     "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
     "room.msc.desc.mobile": "Graduated from TU Wien, 2026:",
     "room.msc.desc":
@@ -68,7 +68,7 @@ const translations = {
     "cs.focus.label": "FOCUS:",
     "cs.focus.value": "Interactive Media & UX, Critical Reflection, AI Ethics",
     "cs.footer": "use ◀ and ▶ to explore each chapter",
-    "chapter.1": "CHAPTER 1 \u2014 BACHELOR",
+    "chapter.1": "CHAPTER 1 \u2014 INNSBRUCK",
     "chapter.2": "CHAPTER 2 \u2014 MASTER",
     "chapter.3": "CHAPTER 3 \u2014 WORK EXPERIENCE",
     "cs.work.placeholder": "[MORE COMING SOON]",
@@ -98,10 +98,10 @@ const translations = {
     "room.bsc.summary":
       "Informatik-Grundlagen. (Universit\u00e4t Innsbruck, 2022).",
     "room.bsc.desc1":
-      "Ich habe meinen Bachelor in Informatik an der Universit\u00e4t Innsbruck im Jahr 2022 abgeschlossen.<br />",
+      "Bachelorabschluss in Informatik an der Universit\u00e4t Innsbruck, 2022.<br />",
     "room.bsc.desc2":
-      "Er bot eine solide Grundlage in Programmierung, Algorithmen und Softwareentwicklung.",
-    "room.bsc.desc3": "Klicke, um zu entdecken, was ich gelernt habe!",
+      "Eine breite Grundlage \u00fcber alle Kerndisziplinen der Informatik — von Algorithmen und Systemen bis hin zu maschinellem Lernen und Softwareentwicklung.",
+    "room.bsc.desc3": "Klicke f\u00fcr Erfahrungen, Kompetenzen & mehr.",
     "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
     "room.msc.desc.mobile": "Abschluss an der TU Wien, 2026:",
     "room.msc.desc":
@@ -135,7 +135,7 @@ const translations = {
     "cs.location.label": "WOHNHAFT:",
     "cs.location.value": "Wien, \u00d6sterreich",
     "cs.footer": "◀ und ▶ nutzen, um die Kapitel zu erkunden",
-    "chapter.1": "KAPITEL 1 \u2014 BACHELOR",
+    "chapter.1": "KAPITEL 1 \u2014 INNSBRUCK",
     "chapter.2": "KAPITEL 2 \u2014 MASTER",
     "chapter.3": "KAPITEL 3 \u2014 BERUFSERFAHRUNG",
     "cs.work.placeholder": "[MEHR FOLGT BALD]",
@@ -212,19 +212,24 @@ const universityProjects_en = {
     title: "BSc. INFORMATICS",
     projects: [
       {
+        name: "Experience",
+        description:
+          "I started the CS degree with barely any programming background, which was definitely rough. The lectures and exams were pretty demanding and took up a lot of time.<br><br>On top of that, COVID hit after a few semesters, making uni life (especially any social side of it) even more exhausting. What made it bearable was finding a group of cool people who had to go through the same thing.<br><br>There were definitely moments and nights where quitting seemed like the reasonable choice. In retrospect though, I'm really glad I stuck with it!",
+      },
+      {
         name: "Competences",
         description:
-          "Gained foundational knowledge in data structures & algorithms, math, operating systems, distributed systems. I developed programming skills during small projects in Java, C, Python, and R.",
+          "The degree covered a broad range of core informatics disciplines: networking, operating systems, algorithms & data structures, maths, machine learning, software development, and more.<br><br>It wasn't extremely deep in any one of these areas, but still exactly the kind of foundation that builds a solid overall understanding.",
       },
       {
         name: "Specialisation: Intelligent & Interactive Systems",
         description:
-          "I specialised in the Interactive Graphics and Simulation group, focusing on machine learning and computer vision. During my studies, I also obtained the NVIDIA CUDA Deep Learning Certificate.",
+          "My specialisation focused on machine learning, computer vision, and interactive simulation. I got to take all kinds of courses on these topics and also obtained an NVIDIA CUDA Deep Learning Certificate.<br><br>All of that eventually led to my bachelor thesis: <em>Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks</em>.<br><br>In my thesis I applied GANs to generate 3D worlds from hand-drawn sketches of a playfield. See more <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>on GitHub here</a>.",
       },
       {
-        name: "Bachelor Thesis",
+        name: "Thoughts",
         description:
-          "In my Thesis 'Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks' I applied GANs to intuitively create 3D worlds by sketching out the area of play. <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>View this repo on GitHub</a>",
+          "The degree delivered a certain breadth, but it was also a bit disappointing in places.<br><br>The focus was almost always purely technical, and rarely the question of who systems are being built for or what impact they might have. Ethical questions, for example, were never really on the agenda.<br><br>I did start a Master's in Innsbruck, but couldn't really connect with the specialisations there. Which is what led to Chapter 2 :)",
       },
     ],
   },
@@ -330,19 +335,24 @@ const universityProjects_de = {
     title: "BSc. INFORMATIK",
     projects: [
       {
+        name: "Erfahrung",
+        description:
+          "Ich bin mit kaum Programmierkenntnissen in das Infostudium eingestiegen. Das war Anfangs definitiv ein harter Start. Die Vorlesungen und Pr\u00fcfungen waren ziemlich anspruchsvoll und nahmen viel Zeit in Anspruch.<br><br>Dazu war nach ein paar Semestern COVID womit (vor allem die Freizeit um) das Uni-Leben nur noch anstrengender wurde. Was es ertr\u00e4glich gemacht hat, war eine Gruppe von coolen Leuten zu finden, die dasselbe durchmachen mussten.<br><br>Es gab definitiv ein paar Momente und N\u00e4chte, in denen es ver\u00fcnftig schien, das Studium zu schmeissen. Im Nachhinein bin ich aber sehr gl\u00fccklich, es durchgezogen zu haben!",
+      },
+      {
         name: "Kompetenzen",
         description:
-          "Grundlegende Kenntnisse in Datenstrukturen & Algorithmen, Mathematik, Betriebssystemen, verteilten Systemen erworben. Programmierf\u00e4higkeiten in kleinen Projekten in Java, C, Python und R entwickelt.",
+          "Im Studium wurde ein breites Spektrum an Kerndisziplinen der Informatik vermittelt: Netzwerktechnik, Betriebssysteme, Algorithmen & Datenstrukturen, Mathem, maschinelles Lernen, Softwareentwicklung, usw. war alles dabei.<br><br>Es war zwar nicht extrem tief in einer dieser Bereiche, aber trotzdem genau die Art von Grundlage, die ein solides Verst\u00e4ndnis vermittelte.",
       },
       {
         name: "Spezialisierung: Intelligente & Interaktive Systeme",
         description:
-          "Ich hab meine Spezialisierung in der Gruppe f\u00fcr Interaktive Grafik und Simulation gemacht, mit Fokus auf maschinelles Lernen und Computer Vision. W\u00e4hrend meines Studiums habe ich auch das NVIDIA CUDA Deep Learning Zertifikat erworben.",
+          "Meine Spezialisierung im Studium lag auf maschinellem Lernen, Computer Vision und interaktiver Simulation. Ich konnte verschiedenste LVs zu diesen Themen besuchen und au\u00dferdem auch ein NVIDIA CUDA Deep Learning Zertifikat erwerben. <br><br> All das f\u00fchrte schlussendlich zu meiner Bachelorarbeit: <em>Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks</em>.<br><br> In meiner Arbeit habe ich GANs eingesetzt, um 3D-Welten aus handgezeichneten Skizzen eines Spielfelds zu generieren. Siehe mehr <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>auf Github hier</a>. ",
       },
       {
-        name: "Bachelorarbeit",
+        name: "Gedanken",
         description:
-          "In meiner Bachelorarbeit 'Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks' habe ich GANs angewendet, um intuitiv 3D-Welten durch Skizzieren des Spielbereichs zu erstellen. <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>Dieses Repo auf GitHub ansehen</a>",
+          "Das Studium hat eine gewisse Breite geliefert, aber war an manchen Stellen auch etwas entt\u00e4uschent.<br><br> Im Mittelpunkt stand definitiv stets nur das technische, selten die Frage, f\u00fcr wen Systeme gebaut werden oder welche Auswirkungen sie haben k\u00f6nnten. Ethische Fragen waren z.B. nie ein Thema<br><br> Ich hab zwar den Master in Innsbruck angefangen, konnte mich aber mit den Spezialisierungen nicht wirklich anfreunden. Daher dann Kapitel 2 :)",
       },
     ],
   },

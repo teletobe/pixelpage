@@ -582,6 +582,48 @@
   border-color: #3a3a6e;
 }
 
+/* --- Dialogue Topic Choices --- */
+
+.dialogue-choices {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dialogue-question {
+  font-family: "VT323", monospace;
+  font-size: 21px;
+  color: #2a2a3e;
+  margin: 0 0 6px 0;
+}
+
+.dialogue-choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dialogue-choice-btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 7px;
+  background: transparent;
+  color: #1a1a2e;
+  border: 2px solid rgba(26, 26, 46, 0.25);
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.1s ease,
+    background 0.1s ease;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.dialogue-choice-btn:hover {
+  border-color: #1a1a2e;
+  background: rgba(26, 26, 46, 0.07);
+}
+
 /* Mobile: nearly edge-to-edge, smaller sprite */
 @media (max-width: 640px) {
   .dialogue-box {

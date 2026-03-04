@@ -212,22 +212,22 @@ const universityProjects_en = {
     title: "BSc. INFORMATICS",
     projects: [
       {
-        name: "Experience",
+        name: "Studying in general.",
         description:
           "I started the CS degree with barely any programming background, which was definitely rough. The lectures and exams were pretty demanding and took up a lot of time.<br><br>On top of that, COVID hit after a few semesters, making uni life (especially any social side of it) even more exhausting. What made it bearable was finding a group of cool people who had to go through the same thing.<br><br>There were definitely moments and nights where quitting seemed like the reasonable choice. In retrospect though, I'm really glad I stuck with it!",
       },
       {
-        name: "Competences",
+        name: "The competences I learned.",
         description:
           "The degree covered a broad range of core informatics disciplines: networking, operating systems, algorithms & data structures, maths, machine learning, software development, and more.<br><br>It wasn't extremely deep in any one of these areas, but still exactly the kind of foundation that builds a solid overall understanding.",
       },
       {
-        name: "Specialisation: Intelligent & Interactive Systems",
+        name: "My Specialisation: Intelligent & Interactive Systems",
         description:
           "My specialisation focused on machine learning, computer vision, and interactive simulation. I got to take all kinds of courses on these topics and also obtained an NVIDIA CUDA Deep Learning Certificate.<br><br>All of that eventually led to my bachelor thesis: <em>Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks</em>.<br><br>In my thesis I applied GANs to generate 3D worlds from hand-drawn sketches of a playfield. See more <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>on GitHub here</a>.",
       },
       {
-        name: "Thoughts",
+        name: "Thoughts about the Degree.",
         description:
           "The degree delivered a certain breadth, but it was also a bit disappointing in places.<br><br>The focus was almost always purely technical, and rarely the question of who systems are being built for or what impact they might have. Ethical questions, for example, were never really on the agenda.<br><br>I did start a Master's in Innsbruck, but couldn't really connect with the specialisations there. Which is what led to Chapter 2 :)",
       },
@@ -335,22 +335,22 @@ const universityProjects_de = {
     title: "BSc. INFORMATIK",
     projects: [
       {
-        name: "Erfahrung",
+        name: "Generelle Erfahrungen im Studieren.",
         description:
           "Ich bin mit kaum Programmierkenntnissen in das Infostudium eingestiegen. Das war Anfangs definitiv ein harter Start. Die Vorlesungen und Pr\u00fcfungen waren ziemlich anspruchsvoll und nahmen viel Zeit in Anspruch.<br><br>Dazu war nach ein paar Semestern COVID womit (vor allem die Freizeit um) das Uni-Leben nur noch anstrengender wurde. Was es ertr\u00e4glich gemacht hat, war eine Gruppe von coolen Leuten zu finden, die dasselbe durchmachen mussten.<br><br>Es gab definitiv ein paar Momente und N\u00e4chte, in denen es ver\u00fcnftig schien, das Studium zu schmeissen. Im Nachhinein bin ich aber sehr gl\u00fccklich, es durchgezogen zu haben!",
       },
       {
-        name: "Kompetenzen",
+        name: "Kompetenzen die ich gelernt habe.",
         description:
           "Im Studium wurde ein breites Spektrum an Kerndisziplinen der Informatik vermittelt: Netzwerktechnik, Betriebssysteme, Algorithmen & Datenstrukturen, Mathem, maschinelles Lernen, Softwareentwicklung, usw. war alles dabei.<br><br>Es war zwar nicht extrem tief in einer dieser Bereiche, aber trotzdem genau die Art von Grundlage, die ein solides Verst\u00e4ndnis vermittelte.",
       },
       {
-        name: "Spezialisierung: Intelligente & Interaktive Systeme",
+        name: "Meine Spezialisierung: Intelligente & Interaktive Systeme",
         description:
           "Meine Spezialisierung im Studium lag auf maschinellem Lernen, Computer Vision und interaktiver Simulation. Ich konnte verschiedenste LVs zu diesen Themen besuchen und au\u00dferdem auch ein NVIDIA CUDA Deep Learning Zertifikat erwerben. <br><br> All das f\u00fchrte schlussendlich zu meiner Bachelorarbeit: <em>Map Synthesis for Low-Poly 3D Scenes using Generative Adversarial Networks</em>.<br><br> In meiner Arbeit habe ich GANs eingesetzt, um 3D-Welten aus handgezeichneten Skizzen eines Spielfelds zu generieren. Siehe mehr <a href='https://github.com/teletobe/map-synth-ba' target='_blank'>auf Github hier</a>. ",
       },
       {
-        name: "Gedanken",
+        name: "Gedanken \u00fcbers Studium.",
         description:
           "Das Studium hat eine gewisse Breite geliefert, aber war an manchen Stellen auch etwas entt\u00e4uschent.<br><br> Im Mittelpunkt stand definitiv stets nur das technische, selten die Frage, f\u00fcr wen Systeme gebaut werden oder welche Auswirkungen sie haben k\u00f6nnten. Ethische Fragen waren z.B. nie ein Thema<br><br> Ich hab zwar den Master in Innsbruck angefangen, konnte mich aber mit den Spezialisierungen nicht wirklich anfreunden. Daher dann Kapitel 2 :)",
       },

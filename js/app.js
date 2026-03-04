@@ -204,17 +204,25 @@ function initGbControls() {
   // Keyboard: arrow keys control dialogue when open, else scene navigation
   document.addEventListener("keydown", (e) => {
     if (roomModal && roomModal.classList.contains("active")) {
-      if (e.key === "ArrowLeft" && dialoguePage > 0) {
-        dialoguePage--;
-        renderDialoguePage();
-      } else if (e.key === "ArrowRight") {
-        if (dialoguePage < dialoguePages.length - 1) {
-          dialoguePage++;
-          renderDialoguePage();
-        } else {
-          closeRoomModal();
+      if (currentTopicIndex >= 0) {
+        // In dialogue mode — arrows navigate pages / back to topics
+        if (e.key === "ArrowLeft") {
+          if (dialoguePage > 0) {
+            dialoguePage--;
+            renderDialoguePage();
+          } else {
+            showTopicSelection();
+          }
+        } else if (e.key === "ArrowRight") {
+          if (dialoguePage < dialoguePages.length - 1) {
+            dialoguePage++;
+            renderDialoguePage();
+          } else {
+            showTopicSelection();
+          }
         }
       }
+      // Consume arrow keys whenever the modal is open (selection or dialogue)
       return;
     }
     if (e.key === "ArrowLeft")  navigatePrevScene();

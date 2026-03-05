@@ -1,13 +1,12 @@
 /* ================================================================
-   baukasten.js — Baukasten (Version III)
-   Free-form title composition via toggle tiles.
+   baukasten.js — Baukasten (Version III) — Drag & Drop Canvas
    Depends on: titlesdata.js (TITLES_DATA), titles.js (prestigeRank, DB_LIMIT, MAX_PRESTIGE)
    ================================================================ */
 
 let BK_TILES = [];
 let BK_SECTIONS = [];
 const bkTileMap = {};
-let bkSelected = new Set();
+const bkCanvasChips = {}; // tileId → DOM element
 
 const BK_CATEGORY_ORDER = {
   beamte: 1,
@@ -321,69 +320,208 @@ function processTitlesData(data) {
     }
   });
 
-  // Initialize UI
   bkInit();
 }
 
-// Load titles from data and initialize
 loadTitlesFromJSON();
 
-function bkToggle(id) {
-  if (bkSelected.has(id)) bkSelected.delete(id);
-  else bkSelected.add(id);
-  document
-    .querySelector(`[data-bk-id="${id}"]`)
-    .classList.toggle("active", bkSelected.has(id));
-  bkUpdate();
-}
+// ── Canvas chip management ────────────────────────────────────
 
-function bkUpdate() {
-  const selected = Array.from(bkSelected)
-    .map((id) => bkTileMap[id])
-    .sort((a, b) => a.order - b.order);
-
-  const pre = selected.filter((t) => t.pre).map((t) => t.pre);
-  const post = selected.filter((t) => t.post).map((t) => t.post);
-  const totalPrestige = selected.reduce((s, t) => s + t.prestige, 0);
-
-  const name = "Max Mustermann";
-  const preStr = pre.join(" ");
-  const postStr = post.join(", ");
-
-  let fullTitle = null;
-  if (preStr && postStr) fullTitle = `${preStr} ${name}, ${postStr}`;
-  else if (preStr) fullTitle = `${preStr} ${name}`;
-  else if (postStr) fullTitle = `${name}, ${postStr}`;
-
-  const titleEl = document.getElementById("bk-title-live");
-  if (fullTitle) {
-    titleEl.textContent = fullTitle;
-    titleEl.classList.remove("empty");
-  } else {
-    titleEl.textContent = "Noch keine Titel ausgewählt.";
-    titleEl.classList.add("empty");
+function bkAddToCanvas(tileId) {
+  // Toggle: click again removes the chip
+  if (bkCanvasChips[tileId]) {
+    bkRemoveFromCanvas(tileId);
+    return;
   }
 
-  document.getElementById("bk-pts").textContent = totalPrestige + " Pkt.";
-  const rank = prestigeRank(totalPrestige);
-  document.getElementById("bk-rank").textContent = rank.label;
-  const pct = Math.min(100, Math.round((totalPrestige / MAX_PRESTIGE) * 100));
-  document.getElementById("bk-fill").style.width = pct + "%";
+  const tile = bkTileMap[tileId];
+  const canvas = document.getElementById("bk-canvas");
+  const chip = createCanvasChip(tile);
 
-  const overflow = fullTitle && fullTitle.length > DB_LIMIT;
-  document
-    .getElementById("bk-overflow")
-    .classList.toggle("visible", !!overflow);
+  // Append off-screen first to measure dimensions
+  chip.style.left = "-9999px";
+  canvas.appendChild(chip);
 
-  document.getElementById("bk-copy-btn").disabled = !fullTitle;
+  const chipW = chip.offsetWidth;
+  const chipH = chip.offsetHeight;
+  const cx = canvas.offsetWidth / 2;
+  const cy = canvas.offsetHeight / 2;
+
+  // Place at a random angle + distance from center
+  const angle = Math.random() * Math.PI * 2;
+  const dist = 75 + Math.random() * 85;
+  const left = cx + Math.cos(angle) * dist - chipW / 2;
+  const top = cy + Math.sin(angle) * dist - chipH / 2;
+
+  chip.style.left =
+    Math.max(4, Math.min(canvas.offsetWidth - chipW - 4, left)) + "px";
+  chip.style.top =
+    Math.max(4, Math.min(canvas.offsetHeight - chipH - 4, top)) + "px";
+
+  bkCanvasChips[tileId] = chip;
+
+  document.querySelector(`[data-bk-id="${tileId}"]`)?.classList.add("active");
+  document.getElementById("bk-canvas-hint")?.classList.add("hidden");
+
+  bkUpdateResult();
 }
 
-function bkClear() {
-  bkSelected.clear();
+function bkRemoveFromCanvas(tileId) {
+  const chip = bkCanvasChips[tileId];
+  if (!chip) return;
+  chip.remove();
+  delete bkCanvasChips[tileId];
+
   document
-    .querySelectorAll(".bk-tile.active")
-    .forEach((el) => el.classList.remove("active"));
-  bkUpdate();
+    .querySelector(`[data-bk-id="${tileId}"]`)
+    ?.classList.remove("active");
+
+  if (Object.keys(bkCanvasChips).length === 0) {
+    document.getElementById("bk-canvas-hint")?.classList.remove("hidden");
+  }
+
+  bkUpdateResult();
+}
+
+function createCanvasChip(tile) {
+  const chip = document.createElement("div");
+  chip.className = "bk-canvas-chip";
+  chip.dataset.tileId = tile.id;
+
+  const abbr = document.createElement("span");
+  abbr.className = "bk-chip-abbr";
+  abbr.textContent = tile.label;
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "bk-chip-remove";
+  removeBtn.textContent = "×";
+  removeBtn.title = "Entfernen";
+  removeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    bkRemoveFromCanvas(tile.id);
+  });
+
+  chip.appendChild(abbr);
+  chip.appendChild(removeBtn);
+  makeDraggable(chip);
+  return chip;
+}
+
+function makeDraggable(chip) {
+  let drag = null;
+
+  chip.addEventListener("pointerdown", (e) => {
+    if (e.target.classList.contains("bk-chip-remove")) return;
+    e.preventDefault();
+    chip.setPointerCapture(e.pointerId);
+    drag = {
+      id: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      origLeft: parseFloat(chip.style.left) || 0,
+      origTop: parseFloat(chip.style.top) || 0,
+    };
+    chip.classList.add("dragging");
+  });
+
+  chip.addEventListener("pointermove", (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const canvas = chip.parentElement;
+    const newLeft = Math.max(
+      0,
+      Math.min(
+        canvas.offsetWidth - chip.offsetWidth,
+        drag.origLeft + (e.clientX - drag.startX)
+      )
+    );
+    const newTop = Math.max(
+      0,
+      Math.min(
+        canvas.offsetHeight - chip.offsetHeight,
+        drag.origTop + (e.clientY - drag.startY)
+      )
+    );
+    chip.style.left = newLeft + "px";
+    chip.style.top = newTop + "px";
+    bkUpdateResult();
+  });
+
+  chip.addEventListener("pointerup", () => {
+    drag = null;
+    chip.classList.remove("dragging");
+  });
+
+  chip.addEventListener("lostpointercapture", () => {
+    drag = null;
+    chip.classList.remove("dragging");
+  });
+}
+
+// ── Result: read chips left-to-right, name as anchor ─────────
+
+function bkUpdateResult() {
+  const canvas = document.getElementById("bk-canvas");
+  const nameChip = document.getElementById("bk-name-chip");
+  const chips = Array.from(canvas.querySelectorAll(".bk-canvas-chip"));
+
+  const titleEl = document.getElementById("bk-title-live");
+  const ptsEl = document.getElementById("bk-pts");
+  const rankEl = document.getElementById("bk-rank");
+  const fillEl = document.getElementById("bk-fill");
+  const overflowEl = document.getElementById("bk-overflow");
+  const copyBtn = document.getElementById("bk-copy-btn");
+
+  if (chips.length === 0) {
+    titleEl.textContent = "Titel auf die Fläche ziehen.";
+    titleEl.classList.add("empty");
+    ptsEl.textContent = "0 Pkt.";
+    rankEl.textContent = "";
+    fillEl.style.width = "0%";
+    overflowEl.classList.remove("visible");
+    copyBtn.disabled = true;
+    return;
+  }
+
+  // Measure center-x of each chip and the name anchor relative to canvas
+  const canvasRect = canvas.getBoundingClientRect();
+  const nameRect = nameChip.getBoundingClientRect();
+  const nameCX = nameRect.left - canvasRect.left + nameRect.width / 2;
+
+  const items = chips.map((chip) => {
+    const rect = chip.getBoundingClientRect();
+    const cx = rect.left - canvasRect.left + rect.width / 2;
+    return { cx, tileId: chip.dataset.tileId };
+  });
+  // Insert the name as a position-bearing item
+  items.push({ cx: nameCX, tileId: null });
+  items.sort((a, b) => a.cx - b.cx);
+
+  const parts = items.map((item) =>
+    item.tileId ? bkTileMap[item.tileId].label : "Mika Musterperson"
+  );
+  const fullTitle = parts.join(" ");
+
+  titleEl.textContent = fullTitle;
+  titleEl.classList.remove("empty");
+
+  const totalPrestige = chips.reduce(
+    (sum, chip) => sum + (bkTileMap[chip.dataset.tileId]?.prestige || 0),
+    0
+  );
+  ptsEl.textContent = totalPrestige + " Pkt.";
+  const rank = prestigeRank(totalPrestige);
+  rankEl.textContent = rank.label;
+  fillEl.style.width =
+    Math.min(100, Math.round((totalPrestige / MAX_PRESTIGE) * 100)) + "%";
+
+  overflowEl.classList.toggle("visible", fullTitle.length > DB_LIMIT);
+  copyBtn.disabled = false;
+}
+
+// ── Controls ──────────────────────────────────────────────────
+
+function bkClear() {
+  Object.keys(bkCanvasChips).forEach((id) => bkRemoveFromCanvas(id));
 }
 
 function bkCopy() {
@@ -395,6 +533,8 @@ function bkCopy() {
     btn.textContent = "KOPIEREN";
   }, 2000);
 }
+
+// ── Init ──────────────────────────────────────────────────────
 
 function bkInit() {
   const sectionsEl = document.getElementById("bk-sections");
@@ -416,7 +556,7 @@ function bkInit() {
       const btn = document.createElement("button");
       btn.className = "bk-tile";
       btn.setAttribute("data-bk-id", t.id);
-      btn.onclick = () => bkToggle(t.id);
+      btn.onclick = () => bkAddToCanvas(t.id);
       btn.innerHTML = `<span class="bk-tile-abbr">${t.label}</span><span class="bk-tile-full">${t.labelFull}</span>`;
       tiles.appendChild(btn);
     });
@@ -424,5 +564,5 @@ function bkInit() {
     sectionsEl.appendChild(wrap);
   });
 
-  bkUpdate();
+  bkUpdateResult();
 }

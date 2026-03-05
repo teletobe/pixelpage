@@ -123,7 +123,7 @@ function resolveTitles(state) {
     prestige += 4;
   }
 
-  const name = "Max Mustermann";
+  const name = "Mika Musterperson";
   const preStr = pre.join(" ");
   const postStr = post.join(", ");
 

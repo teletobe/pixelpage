@@ -72,7 +72,7 @@ body {
 }
 
 .intro-lead {
-  font-size: clamp(13px, 1.4vw, 15px);
+  font-size: clamp(14px, 1.5vw, 17px);
   font-weight: bold;
   line-height: 1.65;
   color: #212131;
@@ -80,7 +80,7 @@ body {
 }
 
 .intro-sub {
-  font-size: 11px;
+  font-size: 13px;
   color: #4a4a6a;
   line-height: 1.85;
   font-style: italic;
@@ -1116,6 +1116,109 @@ body {
   max-width: 160px;
 }
 
+/* ── Baukasten Canvas ────────────────────────────────── */
+.bk-canvas {
+  position: relative;
+  height: 300px;
+  border: 2px solid #212131;
+  background-color: #fafaf8;
+  background-image: radial-gradient(circle, #cbc7bf 1px, transparent 1px);
+  background-size: 22px 22px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+}
+
+.bk-name-chip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(13px, 1.5vw, 19px);
+  font-weight: bold;
+  color: #212131;
+  background: #fff;
+  border: 3px solid #212131;
+  padding: 10px 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 4px 4px 0 #212131;
+}
+
+.bk-canvas-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  color: #c0bbb2;
+  letter-spacing: 1px;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.bk-canvas-hint.hidden {
+  opacity: 0;
+}
+
+@keyframes bk-chip-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bk-canvas-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #212131;
+  border: 2px solid #212131;
+  padding: 7px 8px 7px 12px;
+  cursor: grab;
+  touch-action: none;
+  z-index: 20;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.28);
+  animation: bk-chip-pop 0.14s ease-out;
+  white-space: nowrap;
+}
+.bk-canvas-chip.dragging {
+  cursor: grabbing;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.38);
+  z-index: 100;
+}
+
+.bk-chip-abbr {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: #f5f2ec;
+}
+
+.bk-chip-remove {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0 0 3px;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+.bk-chip-remove:hover {
+  color: #ff5555;
+}
+
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 780px) {
   .main {
@@ -1163,6 +1266,13 @@ body {
   }
   .bk-result-right {
     min-width: 100%;
+  }
+  .bk-canvas {
+    height: 230px;
+  }
+  .bk-name-chip {
+    font-size: 12px;
+    padding: 8px 14px;
   }
 }
 

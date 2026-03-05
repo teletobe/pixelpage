@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Österreichische Titel — Explorativ</title>
-    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,7 @@
 
   <body>
     <header class="header">
-      <a href="../experiments.html" class="header-back">← zurück</a>
+      <a href="../../experiments.html" class="header-back">← zurück</a>
       <h1 class="header-title">Österreichische Titel — Explorativ</h1>
       <span class="header-stamp">PROTOTYP v0.1</span>
     </header>
@@ -24,15 +24,14 @@
     <div class="intro-blurb">
       <div class="intro-blurb-content">
         <p class="intro-lead">
-          In Österreich ist der Titel kein bloßer Zusatz zum Namen. Viel mehr
-          ist er eine Lebensleistung, komprimiert auf eine Visitenkarte. Andere
-          Länder begnügen sich mit einem Dropdown. Österreich hat ein System.
+          In Österreich sind Titel aus irgendeinem Grund erstaunlich wichtig.
         </p>
         <p class="intro-sub">
-          Dieses Projekt versucht, diese Logik nachzubilden: akademisch,
-          militärisch, bürokratisch, ehrenhalber, mit einer Sorgfalt, die das
-          Thema zweifellos verdient. Bisherige Formulare bieten lediglich bloße
-          Listen aller Titel, siehe:
+          Egal ob akademisch, militärisch, staatlich, ehrenhalber, in Österreich
+          wird viel Wert auf was <b>vor</b> und <b>nach</b> dem Namen steht
+          gelegt. In digitalen Formularen wird dabei häufig noch auf eine simple
+          Drop-Down Liste zurückgegriffen. Das hinterliegende Problem dieser
+          Titelbessessenheit wird dabei gut veranschaulicht:
         </p>
       </div>
     </div>
@@ -44,23 +43,33 @@
       </select>
     </div>
 
+    <div class="intro-blurb">
+      <div class="intro-blurb-content">
+        <p class="intro-sub">
+          Angesichts der Wertstellung von Traditionen in diesem Land ist nicht
+          zu erwarten, dass sich an der verwendung von Titel demnächst etwas
+          ändern wird.
+        </p>
+      </div>
+    </div>
+
     <div class="solutions-section">
       <div class="solutions-content">
         <p class="solutions-lead">
-          Daher, neue revolutionäre Lösungsmöglichkeiten wären:
+          Daher gibt es nun 3 revolutionäre Titelauswahlmöglichkeiten:
         </p>
         <ul class="solutions-list">
           <li>
-            <strong>I. Titelassistent</strong> — Ein interaktiver Assistent, der
-            durch gezielte Fragen den perfekten Titel zusammenstellt.
+            <strong>1. Titelassistent:</strong> Ein interaktiver Assistent, der
+            durch gezielte Fragen deinen perfekten Titel zusammenstellt.
           </li>
           <li>
-            <strong>II. Prestigekarte</strong> — Ein zweidimensionales
-            Koordinatensystem zur Verortung von Titeln im Raum zwischen
+            <strong>2. Die Prestigekarte:</strong> Ein zweidimensionales
+            Koordinatensystem zur Verortung von Titeln anhand von deren
             akademischer Leistung und staatlicher Autorität.
           </li>
           <li>
-            <strong>III. Baukasten</strong> — Ein freies Kompositionssystem, um
+            <strong>3. Baukasten:</strong> Ein freies Kompositionssystem, um
             Titel nach eigenem Geschmack zusammenzustellen.
           </li>
         </ul>
@@ -165,7 +174,7 @@
             </div>
 
             <div class="coord-title-display" id="coord-title">
-              Max Mustermann
+              Mika Musterperson
             </div>
 
             <div class="coord-prestige-bar">
@@ -215,7 +224,7 @@
           <div class="bk-result-left">
             <div class="bk-result-lbl">IHR ZUSAMMENGESTELLTER TITEL</div>
             <div class="bk-title-live empty" id="bk-title-live">
-              Noch keine Titel ausgewählt.
+              Titel auf die Fläche ziehen.
             </div>
           </div>
           <div class="bk-result-right">
@@ -247,6 +256,12 @@
               ⚠ Datenbankfeld auf 40 Zeichen begrenzt.
             </div>
           </div>
+        </div>
+
+        <!-- Drag canvas -->
+        <div class="bk-canvas" id="bk-canvas">
+          <div class="bk-name-chip" id="bk-name-chip">Mika Musterperson</div>
+          <div class="bk-canvas-hint" id="bk-canvas-hint">Titel unten auswählen — dann hier frei platzieren</div>
         </div>
 
         <div class="bk-sections" id="bk-sections">

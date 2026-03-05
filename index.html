@@ -225,8 +225,15 @@
 
           <!-- ── 05 EXPERIMENTS & PROTOTYPES (LIVE) ── -->
           <article
-            class="hub-zone zone--experiments zone--soon"
-            aria-label="Experiments & Prototypes — currently under maintenance"
+            class="hub-zone zone--experiments zone--live"
+            role="button"
+            tabindex="0"
+            onclick="window.location.href = 'experiments.html'"
+            onkeydown="
+              if (event.key === 'Enter')
+                window.location.href = 'experiments.html';
+            "
+            aria-label="Experiments & Prototypes — enter"
           >
             <div class="zone-topbar">
               <span class="zone-num">05</span>
@@ -253,9 +260,9 @@
             </div>
 
             <div class="zone-footer">
-              <span class="zone-soon-label"
-                >[ UNDER MAINTENANCE - BACK SOON ]</span
-              >
+              <a href="experiments.html" class="zone-enter-btn" tabindex="-1">
+                [ PRESS START ]
+              </a>
             </div>
           </article>
         </main>

@@ -97,7 +97,10 @@
   width: 256px;
   height: 256px;
   z-index: 200;
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    left 0.4s ease,
+    bottom 0.4s ease;
   pointer-events: none;
 }
 
@@ -193,6 +196,7 @@
   bottom: 340px;
   left: 50%;
   transform: translateX(-50%);
+  transition: bottom 0.4s ease, left 0.4s ease, transform 0.4s ease;
   background: #fff;
   color: #000;
   padding: 12px 18px;
@@ -333,5 +337,56 @@
   }
   to {
     background-position: 100% 0%;
+  }
+}
+
+/* --- Mobile character parking (slide to bottom-left when scene has content) --- */
+
+@media (max-width: 768px) {
+  /* Smaller bubble on mobile in general */
+  .speech-bubble {
+    padding: 8px 12px;
+  }
+
+  .bubble-text {
+    font-size: 7px;
+  }
+
+  .character.mobile-parked {
+    left: 28%;
+    bottom: 85px;
+  }
+
+  /* Parked: bubble sits to the RIGHT of the character */
+  .speech-bubble.mobile-parked {
+    left: calc(28% + 42px);
+    bottom: 200px;
+    transform: translateX(0);
+    white-space: normal;
+    max-width: 140px;
+    text-align: left;
+  }
+
+  /* Parked: tail points LEFT toward the character */
+  .speech-bubble.mobile-parked::after {
+    bottom: auto;
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid #000;
+    border-left: 0;
+  }
+
+  .speech-bubble.mobile-parked::before {
+    bottom: auto;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fff;
+    border-left: 0;
   }
 }

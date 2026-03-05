@@ -152,6 +152,9 @@ function showSpeechBubble() {
 
 // ---- Scene Navigation ----
 
+// Scenes where the character parks to the bottom-left on mobile
+const MOBILE_PARK_SCENES = ["about", "university", "contact"];
+
 function navigateToScene(sceneName) {
   if (sceneName === currentScene) return;
   if (isTransitioning) return;
@@ -165,66 +168,88 @@ function navigateToScene(sceneName) {
   }
   speechBubble.classList.remove("visible");
 
-  const currentIndex = sceneOrder[currentScene];
-  const targetIndex = sceneOrder[sceneName];
-  const distance = Math.abs(targetIndex - currentIndex);
-  const direction = targetIndex > currentIndex ? "right" : "left";
+  // If character is parked on mobile, slide it back to centre first
+  const wasParked = character.classList.contains("mobile-parked");
+  if (wasParked) {
+    character.classList.remove("mobile-parked");
+    speechBubble.classList.remove("mobile-parked");
+  }
 
-  const transitionTime = 3000;
-  const speedClass = distance >= 2 ? "speed-fast" : "speed-normal";
-  const movementType = distance >= 2 ? "running" : "walking";
+  setTimeout(beginWalk, wasParked ? 380 : 0);
 
-  // Highlight target nav button
-  navButtons.forEach((btn) => {
-    btn.classList.remove("active");
-    if (btn.dataset.scene === sceneName) {
-      btn.classList.add("active");
-    }
-  });
+  function beginWalk() {
+    const currentIndex = sceneOrder[currentScene];
+    const targetIndex = sceneOrder[sceneName];
+    const distance = Math.abs(targetIndex - currentIndex);
+    const direction = targetIndex > currentIndex ? "right" : "left";
 
-  // Fade out current content
-  contentSections.forEach((content) => content.classList.remove("active"));
+    const transitionTime = 3000;
+    const speedClass = distance >= 2 ? "speed-fast" : "speed-normal";
+    const movementType = distance >= 2 ? "running" : "walking";
 
-  // Flip character & set animation speed
-  character.classList.remove(
-    "face-left",
-    "face-right",
-    "speed-normal",
-    "speed-fast",
-  );
-  character.classList.add(direction === "right" ? "face-right" : "face-left");
-  character.classList.add(speedClass);
+    // Highlight target nav button
+    navButtons.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.dataset.scene === sceneName) {
+        btn.classList.add("active");
+      }
+    });
 
-  // Start walk/run
-  character.classList.remove("idle", "walking", "running");
-  character.classList.add(movementType);
+    // Fade out current content
+    contentSections.forEach((content) => content.classList.remove("active"));
 
-  // Animate world layers
-  animateBackgroundToScene(targetIndex, transitionTime);
-  animateGrassTransition(direction, distance);
-
-  // Arrive at destination
-  setTimeout(() => {
-    resetGrassPosition();
-
-    document.getElementById(`content-${sceneName}`).classList.add("active");
-
+    // Flip character & set animation speed
     character.classList.remove(
-      "walking",
-      "running",
+      "face-left",
+      "face-right",
       "speed-normal",
       "speed-fast",
     );
-    character.classList.add("idle");
+    character.classList.add(direction === "right" ? "face-right" : "face-left");
+    character.classList.add(speedClass);
 
-    updateSpeechBubble(sceneName);
+    // Start walk/run
+    character.classList.remove("idle", "walking", "running");
+    character.classList.add(movementType);
 
-    currentScene = sceneName;
+    // Animate world layers
+    animateBackgroundToScene(targetIndex, transitionTime);
+    animateGrassTransition(direction, distance);
 
-    isTransitioning = false;
-    navButtons.forEach((btn) => btn.classList.remove("disabled"));
+    // Arrive at destination
+    setTimeout(() => {
+      resetGrassPosition();
 
-    // Hook for Game Boy overlay to sync its buttons / scene dots
-    if (typeof onSceneArrival === "function") onSceneArrival(sceneName);
-  }, transitionTime);
+      document.getElementById(`content-${sceneName}`).classList.add("active");
+
+      character.classList.remove(
+        "walking",
+        "running",
+        "speed-normal",
+        "speed-fast",
+      );
+      character.classList.add("idle");
+
+      updateSpeechBubble(sceneName);
+
+      currentScene = sceneName;
+
+      isTransitioning = false;
+      navButtons.forEach((btn) => btn.classList.remove("disabled"));
+
+      // Hook for Game Boy overlay to sync its buttons / scene dots
+      if (typeof onSceneArrival === "function") onSceneArrival(sceneName);
+
+      // On mobile, park character to bottom-left for content-heavy scenes
+      if (
+        window.innerWidth <= 768 &&
+        MOBILE_PARK_SCENES.includes(sceneName)
+      ) {
+        setTimeout(() => {
+          character.classList.add("mobile-parked");
+          speechBubble.classList.add("mobile-parked");
+        }, 200);
+      }
+    }, transitionTime);
+  }
 }

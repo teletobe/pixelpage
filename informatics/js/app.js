@@ -159,6 +159,14 @@ function enterGame() {
 
     // Wire up Game Boy controls now that overlay is visible
     initGbControls();
+
+    // Park character on mobile for the initial scene if applicable
+    if (window.innerWidth <= 768 && MOBILE_PARK_SCENES.includes(currentScene)) {
+      setTimeout(() => {
+        character.classList.add("mobile-parked");
+        speechBubble.classList.add("mobile-parked");
+      }, 300);
+    }
   }, 850);
 }
 

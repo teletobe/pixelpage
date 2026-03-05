@@ -390,6 +390,14 @@
         _placeholder.style.opacity = "0.5";
       }
 
+      // 9. Park character on mobile for the initial scene
+      if (window.innerWidth <= 768 && MOBILE_PARK_SCENES.includes(currentScene)) {
+        setTimeout(function () {
+          if (character) character.classList.add("mobile-parked");
+          if (speechBubble) speechBubble.classList.add("mobile-parked");
+        }, 300);
+      }
+
       // 10. A/B button toast
       let _toastTimer = null;
       const _toast = document.getElementById("ab-toast");

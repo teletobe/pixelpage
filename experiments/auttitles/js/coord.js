@@ -42,10 +42,6 @@ function updateCoordResult() {
   document.getElementById("coord-fill").style.width = pct + "%";
   document.getElementById("coord-rank").textContent = rank.label;
 
-  const overflow = fullTitle.length > DB_LIMIT;
-  document
-    .getElementById("coord-overflow")
-    .classList.toggle("visible", overflow);
 }
 
 function coordRandomize() {

@@ -461,14 +461,12 @@ function makeDraggable(chip) {
 
 function bkUpdateResult() {
   const canvas = document.getElementById("bk-canvas");
-  const nameChip = document.getElementById("bk-name-chip");
   const chips = Array.from(canvas.querySelectorAll(".bk-canvas-chip"));
 
   const titleEl = document.getElementById("bk-title-live");
   const ptsEl = document.getElementById("bk-pts");
   const rankEl = document.getElementById("bk-rank");
   const fillEl = document.getElementById("bk-fill");
-  const overflowEl = document.getElementById("bk-overflow");
   const copyBtn = document.getElementById("bk-copy-btn");
 
   if (chips.length === 0) {
@@ -477,27 +475,31 @@ function bkUpdateResult() {
     ptsEl.textContent = "0 Pkt.";
     rankEl.textContent = "";
     fillEl.style.width = "0%";
-    overflowEl.classList.remove("visible");
     copyBtn.disabled = true;
     return;
   }
 
-  // Measure center-x of each chip and the name anchor relative to canvas
+  // Measure center-x of each chip and both name anchors relative to canvas
   const canvasRect = canvas.getBoundingClientRect();
-  const nameRect = nameChip.getBoundingClientRect();
-  const nameCX = nameRect.left - canvasRect.left + nameRect.width / 2;
+  const firstName = document.getElementById("bk-name-first");
+  const lastName = document.getElementById("bk-name-last");
 
-  const items = chips.map((chip) => {
-    const rect = chip.getBoundingClientRect();
-    const cx = rect.left - canvasRect.left + rect.width / 2;
-    return { cx, tileId: chip.dataset.tileId };
-  });
-  // Insert the name as a position-bearing item
-  items.push({ cx: nameCX, tileId: null });
+  function elCX(el) {
+    const r = el.getBoundingClientRect();
+    return r.left - canvasRect.left + r.width / 2;
+  }
+
+  const items = chips.map((chip) => ({
+    cx: elCX(chip),
+    tileId: chip.dataset.tileId,
+    text: null,
+  }));
+  items.push({ cx: elCX(firstName), tileId: null, text: "Mika" });
+  items.push({ cx: elCX(lastName), tileId: null, text: "Musterperson" });
   items.sort((a, b) => a.cx - b.cx);
 
   const parts = items.map((item) =>
-    item.tileId ? bkTileMap[item.tileId].label : "Mika Musterperson"
+    item.tileId ? bkTileMap[item.tileId].label : item.text
   );
   const fullTitle = parts.join(" ");
 
@@ -514,7 +516,6 @@ function bkUpdateResult() {
   fillEl.style.width =
     Math.min(100, Math.round((totalPrestige / MAX_PRESTIGE) * 100)) + "%";
 
-  overflowEl.classList.toggle("visible", fullTitle.length > DB_LIMIT);
   copyBtn.disabled = false;
 }
 

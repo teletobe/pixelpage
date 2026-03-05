@@ -396,15 +396,6 @@ body {
   letter-spacing: 1px;
 }
 
-.result-overflow {
-  font-size: 10px;
-  color: #8b0000;
-  margin-top: 10px;
-  font-style: italic;
-  border: 1px dashed #8b0000;
-  padding: 6px 10px;
-  background: #fff8f8;
-}
 
 .result-prestige-box {
   border: 2px solid #212131;
@@ -732,7 +723,6 @@ body {
   border: 2px solid #212131;
   background: #fff;
   padding: 28px 24px;
-  min-height: 380px;
 }
 
 .coord-result-hdr {
@@ -769,7 +759,7 @@ body {
 }
 
 .coord-title-display {
-  font-size: clamp(13px, 1.4vw, 17px);
+  font-size: clamp(17px, 1.4vw, 17px);
   font-weight: bold;
   color: #212131;
   line-height: 1.6;
@@ -844,19 +834,6 @@ body {
   padding: 20px 0;
 }
 
-.overflow-warn {
-  display: none;
-  font-size: 10px;
-  color: #8b0000;
-  border: 1px dashed #8b0000;
-  padding: 7px 10px;
-  margin-top: 12px;
-  background: #fff8f8;
-  font-style: italic;
-}
-.overflow-warn.visible {
-  display: block;
-}
 
 .coord-actions {
   display: flex;
@@ -1130,11 +1107,15 @@ body {
   touch-action: none;
 }
 
-.bk-name-chip {
+.bk-name-row {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  gap: 0.35em;
+  pointer-events: none;
+  z-index: 10;
   font-family: "Courier New", Courier, monospace;
   font-size: clamp(13px, 1.5vw, 19px);
   font-weight: bold;
@@ -1143,9 +1124,11 @@ body {
   border: 3px solid #212131;
   padding: 10px 20px;
   white-space: nowrap;
-  pointer-events: none;
-  z-index: 10;
   box-shadow: 4px 4px 0 #212131;
+}
+
+.bk-name-chip {
+  /* plain text anchor — no individual box styling */
 }
 
 .bk-canvas-hint {
@@ -1229,16 +1212,24 @@ body {
   }
   .coord-layout {
     grid-template-columns: 1fr;
+    /* prevent overflowing children from stretching the grid */
+    overflow: hidden;
   }
+  /* hide y-axis range labels on mobile — quadrant labels inside the map suffice */
+  .coord-y-range {
+    display: none;
+  }
+  /* remaining left-side column: y-lbl (20px) + gap (10px) = 30px
+     map max = 100vw - 40px main padding - 30px y-axis = 100vw - 70px */
   .coord-map {
-    width: min(360px, calc(100vw - 80px));
-    height: min(360px, calc(100vw - 80px));
+    width: min(360px, calc(100vw - 70px));
+    height: min(360px, calc(100vw - 70px));
   }
   .coord-x-range,
   .coord-controls,
   .coord-x-lbl,
   .coord-readout {
-    width: min(360px, calc(100vw - 80px));
+    width: min(360px, calc(100vw - 70px));
   }
   .wizard-card,
   .wizard-thinking,
@@ -1270,9 +1261,11 @@ body {
   .bk-canvas {
     height: 230px;
   }
-  .bk-name-chip {
-    font-size: 12px;
-    padding: 8px 14px;
+  .bk-name-row {
+    font-size: 10px;
+    padding: 6px 10px;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 #212131;
   }
 }
 

@@ -351,8 +351,6 @@ function showResult() {
 
   const { fullTitle, prestige, explanations } = resolveTitles(wState);
   const rank = prestigeRank(prestige);
-  const overflow = fullTitle.length > DB_LIMIT;
-
   const result = document.getElementById("wizard-result");
   result.innerHTML = `
     <div class="result-header">— DAS SYSTEM HAT FESTGESTELLT —</div>
@@ -361,7 +359,6 @@ function showResult() {
       <div class="result-title-lbl">IHR OFFIZIELLER ÖSTERREICHISCHER TITEL</div>
       <div class="result-title-text">${fullTitle}</div>
       <div class="result-rank-stamp">${rank.label}</div>
-      ${overflow ? `<div class="result-overflow">⚠ Datenbankfeld auf 40 Zeichen begrenzt. Bitte wenden Sie sich an Ihren Systemadministrator.</div>` : ""}
     </div>
 
     <div class="result-prestige-box">

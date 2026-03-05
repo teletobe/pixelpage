@@ -1,4 +1,5 @@
 .DS_Store
+CLAUDE.md
 
 # build output from GitHub Actions (static site)
 _site/

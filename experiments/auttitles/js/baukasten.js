@@ -431,15 +431,15 @@ function makeDraggable(chip) {
       0,
       Math.min(
         canvas.offsetWidth - chip.offsetWidth,
-        drag.origLeft + (e.clientX - drag.startX)
-      )
+        drag.origLeft + (e.clientX - drag.startX),
+      ),
     );
     const newTop = Math.max(
       0,
       Math.min(
         canvas.offsetHeight - chip.offsetHeight,
-        drag.origTop + (e.clientY - drag.startY)
-      )
+        drag.origTop + (e.clientY - drag.startY),
+      ),
     );
     chip.style.left = newLeft + "px";
     chip.style.top = newTop + "px";
@@ -470,7 +470,8 @@ function bkUpdateResult() {
   const copyBtn = document.getElementById("bk-copy-btn");
 
   if (chips.length === 0) {
-    titleEl.textContent = "Titel auf die Fläche ziehen.";
+    titleEl.textContent =
+      "Titel anklicken um sie auf der Fläche zu sehen. Dann nach belieben anordnen.";
     titleEl.classList.add("empty");
     ptsEl.textContent = "0 Pkt.";
     rankEl.textContent = "";
@@ -499,7 +500,7 @@ function bkUpdateResult() {
   items.sort((a, b) => a.cx - b.cx);
 
   const parts = items.map((item) =>
-    item.tileId ? bkTileMap[item.tileId].label : item.text
+    item.tileId ? bkTileMap[item.tileId].label : item.text,
   );
   const fullTitle = parts.join(" ");
 
@@ -508,7 +509,7 @@ function bkUpdateResult() {
 
   const totalPrestige = chips.reduce(
     (sum, chip) => sum + (bkTileMap[chip.dataset.tileId]?.prestige || 0),
-    0
+    0,
   );
   ptsEl.textContent = totalPrestige + " Pkt.";
   const rank = prestigeRank(totalPrestige);

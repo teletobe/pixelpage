@@ -59,26 +59,9 @@ const GEOJSON_NAME: Record<AustriaState, string | null> = {
 
 let currentWord: DialektWord;
 let phase: GamePhase = 'filter';
-let lastGuess = '';
-let lastNoIdea = false;
 let selectedRegions = new Set<AustriaState>(AVAILABLE_STATES);
 // Explicit "all of Austria" mode
 let allAustria = true;
-
-// ---------------------------------------------------------------------------
-// Answer checking
-// ---------------------------------------------------------------------------
-
-function checkAnswer(guess: string): 'correct' | 'close' | 'wrong' {
-  const g = guess.toLowerCase().trim();
-  const t = currentWord.translation.toLowerCase();
-  const alts = (currentWord.alternates ?? []).map((a) => a.toLowerCase());
-  const allTargets = [t, ...alts];
-
-  if (allTargets.includes(g)) return 'correct';
-  if (allTargets.some((a) => a.includes(g) || g.includes(a))) return 'close';
-  return 'wrong';
-}
 
 // ---------------------------------------------------------------------------
 // Rendering helpers
@@ -189,20 +172,6 @@ function renderGuessing(): string {
 }
 
 function renderRevealed(): string {
-  let feedback = '';
-  if (lastNoIdea) {
-    feedback = `<div class="feedback feedback--neutral">Kein Problem — jetzt weißt du's!</div>`;
-  } else {
-    const result = checkAnswer(lastGuess);
-    if (result === 'correct') {
-      feedback = `<div class="feedback feedback--correct">Richtig! 🎉</div>`;
-    } else if (result === 'close') {
-      feedback = `<div class="feedback feedback--close">Fast! Die Lösung: <strong>${escapeHtml(currentWord.translation)}</strong></div>`;
-    } else {
-      feedback = `<div class="feedback feedback--wrong">Nicht ganz. Die Lösung: <strong>${escapeHtml(currentWord.translation)}</strong></div>`;
-    }
-  }
-
   const example = currentWord.example
     ? `<blockquote class="example">${escapeHtml(currentWord.example)}</blockquote>`
     : '';
@@ -212,8 +181,6 @@ function renderRevealed(): string {
       <p class="word-label">Das Wort war:</p>
       <h1 class="dialect-word">${escapeHtml(currentWord.word)}</h1>
       <p class="dialect-group">${escapeHtml(currentWord.dialectGroup)}</p>
-
-      ${feedback}
 
       <div class="reveal-panel">
         <div class="translation-row">
@@ -316,8 +283,6 @@ function activeRegions(): AustriaState[] {
 function handleStartGame(): void {
   currentWord = getRandomWord(undefined, activeRegions());
   phase = 'guessing';
-  lastGuess = '';
-  lastNoIdea = false;
   render();
 }
 
@@ -334,16 +299,12 @@ function handleSubmit(): void {
     return;
   }
   addGuess(currentWord.id, guess);
-  lastGuess = guess;
-  lastNoIdea = false;
   phase = 'revealed';
   render();
 }
 
 function handleNoIdea(): void {
   addGuess(currentWord.id, '🤷 keine Ahnung');
-  lastGuess = '';
-  lastNoIdea = true;
   phase = 'revealed';
   render();
 }

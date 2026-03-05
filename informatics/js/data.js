@@ -336,12 +336,12 @@ const universityProjects_en = {
       {
         name: "Manual and Automated Testing",
         description:
-          "I gained hands-on experiencein an software quality engineering team during a four-month internship as a <strong>Test Automation Engineer</strong> at a medical technology company. <br /> During it, I worked in an agile Scrum team on end-to-end tests for safety-critical infusion pump software. My responsibilities included manual system testing as well as developing and maintaining automated tests using <strong>C#</strong> and <strong>Cypress</strong> in a regulated environment.",
+          "I gained hands-on experiencein an software quality engineering team during a four-month internship as a <strong>Test Automation Engineer</strong> at a medical technology company. <br><br> During it, I worked in an agile Scrum team on end-to-end tests for safety-critical infusion pump software. My responsibilities included manual system testing as well as developing and maintaining automated tests using <strong>C#</strong> and <strong>Cypress</strong> in a regulated environment.",
       },
       {
         name: "CI/CD DevOps",
         description:
-          "Integrated automated tests into CI pipelines using GitHub Actions and managed test planning, documentation, and traceability with <strong>Azure DevOps</strong>. Participated in a formal verification phase where all test cases were systematically executed and documented, gaining insights into structured test concepts, defect analysis, CI/CD workflows, and DevOps processes.",
+          "I Integrated automated tests into CI pipelines using GitHub Actions and managed test planning, documentation, and traceability with <strong>Azure DevOps</strong>. <br><br> I also participated in a formal verification phase where all test cases were systematically executed and documented, gaining insights into structured test concepts, defect analysis, CI/CD workflows, and DevOps processes.",
       },
     ],
   },

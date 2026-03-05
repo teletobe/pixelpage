@@ -29,6 +29,7 @@ function showTopicSelection() {
 
   const choicesEl = document.getElementById("dialogue-choices");
   const footerEl = document.querySelector(".dialogue-footer");
+  const topicBarEl = document.querySelector(".dialogue-topic-bar");
   const topicEl = document.getElementById("dialogue-topic");
   const topicArrow = document.querySelector(".dialogue-topic-arrow");
   const questionEl = document.getElementById("dialogue-question");
@@ -37,6 +38,7 @@ function showTopicSelection() {
   if (choicesEl) choicesEl.style.display = "flex";
   if (roomProjectsEl) roomProjectsEl.style.display = "none";
   if (footerEl) footerEl.style.display = "none";
+  if (topicBarEl) topicBarEl.style.display = "none";
   if (topicEl) topicEl.textContent = "";
   if (topicArrow) topicArrow.style.visibility = "hidden";
 
@@ -63,11 +65,13 @@ function showTopicSelection() {
 function showDialogueView() {
   const choicesEl = document.getElementById("dialogue-choices");
   const footerEl = document.querySelector(".dialogue-footer");
+  const topicBarEl = document.querySelector(".dialogue-topic-bar");
   const topicArrow = document.querySelector(".dialogue-topic-arrow");
 
   if (choicesEl) choicesEl.style.display = "none";
   if (roomProjectsEl) roomProjectsEl.style.display = "block";
   if (footerEl) footerEl.style.display = "flex";
+  if (topicBarEl) topicBarEl.style.display = "";
   if (topicArrow) topicArrow.style.visibility = "visible";
 }
 
@@ -165,7 +169,7 @@ function renderDialoguePage() {
       ? isSingleTopic
         ? "↩ CLOSE"
         : "↩ TOPICS"
-      : "NEXT ▶";
+      : "NEXT >";
     nextBtn.disabled = false;
   }
 }

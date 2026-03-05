@@ -60,14 +60,14 @@ const translations = {
     "contact.email": "EMAIL",
     "cs.title": "INFORMATICS 'JOURNEY'",
     "cs.description":
-      "This is a little pixel sidescroller through my computer science education and work experience. Use ◀ and ▶ to travel between the chapters.",
+      "This is a little pixel sidescroller through my computer science education and work experience. Use < and > to travel between the chapters.",
     "cs.levelb.label": "BSc.:",
     "cs.levelb.value": "(traditional) Computer Science",
     "cs.levelm.label": "MSc.:",
     "cs.levelm.value": "Media & Human-Centred Computing",
     "cs.focus.label": "FOCUS:",
     "cs.focus.value": "Interactive Media & UX, Critical Reflection, AI Ethics",
-    "cs.footer": "use ◀ and ▶ to explore each chapter",
+    "cs.footer": "use < and > to explore each chapter",
     "chapter.1": "CHAPTER 1 \u2014 INNSBRUCK",
     "chapter.2": "CHAPTER 2 \u2014 MASTER",
     "chapter.3": "CHAPTER 3 \u2014 WORK EXPERIENCE",
@@ -127,7 +127,7 @@ const translations = {
     "contact.email": "E-MAIL",
     "cs.title": "INFORMATIK",
     "cs.description":
-      "Sieh dir meine Erfahrungen in der Informatik an, indem du dich in diesem Sidescroller bewegst. Nutze ◀ und ▶ um zwischen den Kapiteln zu navigieren.",
+      "Sieh dir meine Erfahrungen in der Informatik an, indem du dich in diesem Sidescroller bewegst. Nutze < und > um zwischen den Kapiteln zu navigieren.",
     "cs.levelb.label": "BSc.:",
     "cs.levelb.value": "Informatik",
     "cs.levelm.label": "MSc.:",
@@ -136,7 +136,7 @@ const translations = {
     "cs.focus.value": "Interaktive Medien & UX, Critical Reflection, KI-Ethik",
     "cs.location.label": "WOHNHAFT:",
     "cs.location.value": "Wien, \u00d6sterreich",
-    "cs.footer": "◀ und ▶ nutzen, um die Kapitel zu erkunden",
+    "cs.footer": "< und > nutzen, um die Kapitel zu erkunden",
     "chapter.1": "KAPITEL 1 \u2014 INNSBRUCK",
     "chapter.2": "KAPITEL 2 \u2014 MASTER",
     "chapter.3": "KAPITEL 3 \u2014 BERUFSERFAHRUNG",
@@ -484,12 +484,12 @@ const universityProjects_de = {
       {
         name: "Manuelles und Automatisiertes Testen",
         description:
-          "Hier konnte ich praktische Erfahrung w\u00e4hrend eines viermonatigen Praktikums als <strong>Test Automation Engineer</strong> bei einem Medizintechnik-Unternehmen gesammelt. <br /> In einem agilen Scrum-Team hab ich an End-to-End-Tests f\u00fcr sicherheitskritische Infusionspumpen-Software gearbeitet. Die Aufgaben umfassten manuelles Systemtesten sowie Entwicklung und Wartung automatisierter Tests mit <strong>C#</strong> und <strong>Cypress</strong> in einer regulierten Umgebung.",
+          "Hier konnte ich praktische Erfahrung w\u00e4hrend eines viermonatigen Praktikums als <strong>Test Automation Engineer</strong> bei einem Medizintechnik-Unternehmen gesammelt. <br><br> In einem agilen Scrum-Team hab ich an End-to-End-Tests f\u00fcr sicherheitskritische Infusionspumpen-Software gearbeitet. Die Aufgaben umfassten manuelles Systemtesten sowie Entwicklung und Wartung automatisierter Tests mit <strong>C#</strong> und <strong>Cypress</strong> in einer regulierten Umgebung.",
       },
       {
         name: "CI/CD DevOps",
         description:
-          "Die automatisierte Tests in CI-Pipelines mit GitHub Actions integriert und Testplanung, Dokumentation und R\u00fcckverfolgbarkeit mit <strong>Azure DevOps</strong> verwaltet. Ich habe in meiner Zeit dort an einer formalen Verifikationsphase teilgenommen, bei der alle Testf\u00e4lle systematisch ausgef\u00fchrt und dokumentiert wurden. Einblicke in strukturierte Testkonzepte, Fehleranalyse, CI/CD-Workflows und DevOps-Prozesse konnten dabei gewonnen werden.",
+          "Die automatisierte Tests in CI-Pipelines mit GitHub Actions integriert und Testplanung, Dokumentation und R\u00fcckverfolgbarkeit mit <strong>Azure DevOps</strong> verwaltet. <br><br>Ich habe in meiner Zeit dort an einer formalen Verifikationsphase teilgenommen, bei der alle Testf\u00e4lle systematisch ausgef\u00fchrt und dokumentiert wurden. Einblicke in strukturierte Testkonzepte, Fehleranalyse, CI/CD-Workflows und DevOps-Prozesse konnten dabei gewonnen werden.",
       },
     ],
   },

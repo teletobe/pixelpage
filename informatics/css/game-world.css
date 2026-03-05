@@ -7,9 +7,8 @@
 /* --- Game Viewport --- */
 
 .game-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   background: #87ceeb url("../img/sky.png") center center no-repeat;
   background-size: 1700px auto;

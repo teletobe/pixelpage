@@ -12,9 +12,15 @@
   image-rendering: crisp-edges;
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: "Press Start 2P", cursive;
   overflow: hidden;
+  height: 100%;
   background: #000;
   color: #fff;
 }

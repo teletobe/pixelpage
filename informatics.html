@@ -205,9 +205,14 @@
           <div class="scene-chapter">
             <p class="scene-chapter-label" data-i18n="chapter.2"></p>
             <div class="scene-rooms-inline scene-rooms-inline--master">
+              <!-- Box 1: MSc programme overview (direct dialogue, no topic picker) -->
+              <div class="uni-room edu-msc-degree" id="room-msc">
+                <h3 data-i18n="room.msc.title"></h3>
+                <p class="room-summary" data-i18n="room.msc.summary"></p>
+              </div>
+              <!-- Box 2: Specialisations (3 sub-rooms) -->
               <div class="edu-msc-container scene-msc-block">
-                <h3 class="msc-title" data-i18n="room.msc.title"></h3>
-                <p class="msc-description" data-i18n="room.msc.desc"></p>
+                <h3 class="msc-title" data-i18n="room.specialisations.title"></h3>
                 <div class="msc-modules">
                   <div class="uni-room edu-msc" id="room-userresearch">
                     <h3 data-i18n="room.userresearch.title"></h3>
@@ -220,15 +225,13 @@
                   </div>
                 </div>
               </div>
+              <!-- Box 3: Gender & Diversity (direct dialogue, no topic picker) -->
               <div
                 class="uni-room edu-certificate scene-cert-block"
                 id="room-diversity"
               >
                 <h3 data-i18n="room.diversity.title"></h3>
                 <p class="room-summary" data-i18n="room.diversity.summary"></p>
-                <div class="room-content">
-                  <p data-i18n="room.diversity.desc"></p>
-                </div>
               </div>
             </div>
           </div>
@@ -239,6 +242,10 @@
           <div class="scene-chapter">
             <p class="scene-chapter-label" data-i18n="chapter.3"></p>
             <div class="scene-rooms-inline scene-rooms-inline--work">
+              <div class="uni-room edu-academia" id="room-academia">
+                <h3 data-i18n="room.academia.title"></h3>
+                <p class="room-summary" data-i18n="room.academia.summary"></p>
+              </div>
               <div class="uni-room edu-internship" id="room-automation">
                 <h3 data-i18n="room.automation.title"></h3>
                 <p class="room-summary" data-i18n="room.automation.summary"></p>

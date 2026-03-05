@@ -51,7 +51,7 @@ function showTopicSelection() {
     roomData.projects.forEach((project, index) => {
       const btn = document.createElement("button");
       btn.className = "dialogue-choice-btn";
-      btn.textContent = project.name;
+      btn.innerHTML = project.name;
       btn.onclick = () => selectDialogueTopic(index);
       choiceListEl.appendChild(btn);
     });
@@ -95,7 +95,12 @@ function wireDialogueButtons() {
         dialoguePage--;
         renderDialoguePage();
       } else {
-        showTopicSelection();
+        const roomData = universityProjects[currentRoomId];
+        if (roomData && roomData.projects.length === 1) {
+          closeRoomModal();
+        } else {
+          showTopicSelection();
+        }
       }
     };
   }
@@ -106,7 +111,12 @@ function wireDialogueButtons() {
         dialoguePage++;
         renderDialoguePage();
       } else {
-        showTopicSelection();
+        const roomData = universityProjects[currentRoomId];
+        if (roomData && roomData.projects.length === 1) {
+          closeRoomModal();
+        } else {
+          showTopicSelection();
+        }
       }
     };
   }
@@ -133,7 +143,7 @@ function renderDialoguePage() {
   const prevBtn = document.getElementById("dialogue-prev");
   const nextBtn = document.getElementById("dialogue-next");
 
-  if (topicEl) topicEl.textContent = page.name;
+  if (topicEl) topicEl.innerHTML = page.name;
   if (counterEl)
     counterEl.textContent = `${dialoguePage + 1} / ${dialoguePages.length}`;
 
@@ -149,7 +159,13 @@ function renderDialoguePage() {
   }
   if (nextBtn) {
     const isLast = dialoguePage === dialoguePages.length - 1;
-    nextBtn.textContent = isLast ? "↩ TOPICS" : "NEXT ▶";
+    const roomData = universityProjects[currentRoomId];
+    const isSingleTopic = roomData && roomData.projects.length === 1;
+    nextBtn.textContent = isLast
+      ? isSingleTopic
+        ? "↩ CLOSE"
+        : "↩ TOPICS"
+      : "NEXT ▶";
     nextBtn.disabled = false;
   }
 }
@@ -174,6 +190,9 @@ function openRoomModal(roomId) {
     wireDialogueButtons();
     showDialogueView();
     renderDialoguePage();
+  } else if (roomData.projects.length === 1) {
+    // Single-topic room — skip selection screen, open dialogue immediately
+    selectDialogueTopic(0);
   } else {
     // New room, or was already on selection screen
     currentTopicIndex = -1;

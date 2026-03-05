@@ -37,19 +37,19 @@ const translations = {
     "room.bsc.desc2":
       "A broad foundation across core informatics disciplines — from algorithms and systems to machine learning and software development.",
     "room.bsc.desc3": "Click to explore experience, competences & more.",
-    "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
-    "room.msc.desc.mobile": "Graduated from TU Wien, 2026:",
-    "room.msc.desc":
-      "I graduated from this multidisciplinary master's program at TU Wien in 2026.",
+    "room.msc.title": "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
+    "room.msc.summary":
+      "I graduated from TU Wien in 2026. Click here to here my thoughts about the programme.",
+    "room.specialisations.title": "SPECIALISATIONS",
     "room.userresearch.title": "USER RESEARCH",
     "room.interactive.title": "INTERACTIVE MEDIA",
     "room.critical.title": "CRITICAL REFLECTION",
+    "room.academia.title": "GLIMPSE INTO ACADEMIA",
+    "room.academia.summary": "EduLab Vienna & TU Wien research.",
     "room.automation.title": "TEST AUTOMATION",
     "room.automation.summary": "Internship at Becton Dickinson.",
     "room.automation.desc1":
       "Click to see where I obtained professional work experience in IT.",
-    "room.automation.desc2":
-      "Experience in automated testing frameworks and quality assurance during an internship at a medical technology company.",
     "room.diversity.title": "GENDER & DIVERSITY COMPETENCES",
     "room.diversity.summary": "Certificate at TU Wien with STS classes.",
     "room.diversity.desc":
@@ -73,7 +73,8 @@ const translations = {
     "chapter.3": "CHAPTER 3 \u2014 WORK EXPERIENCE",
     "cs.work.placeholder": "[MORE COMING SOON]",
     "cs.work.placeholder.summary": "Placeholder for future entries.",
-    "cs.work.placeholder.desc": "Additional work experience will appear here.",
+    "cs.work.placeholder.desc":
+      "Additional work experience will appear here - whenever I find a job lol",
   },
   de: {
     "nav.about": "\u00dcBER MICH",
@@ -102,19 +103,20 @@ const translations = {
     "room.bsc.desc2":
       "Eine breite Grundlage \u00fcber alle Kerndisziplinen der Informatik — von Algorithmen und Systemen bis hin zu maschinellem Lernen und Softwareentwicklung.",
     "room.bsc.desc3": "Klicke f\u00fcr Erfahrungen, Kompetenzen & mehr.",
-    "room.msc.title": "MSc. HUMAN-CENTRED COMPUTING",
-    "room.msc.desc.mobile": "Abschluss an der TU Wien, 2026:",
-    "room.msc.desc":
-      "Ich habe dieses interdisziplin\u00e4re Masterprogramm an der TU Wien im Jahr 2026 abgeschlossen.",
-    "room.userresearch.title": "NUTZERFORSCHUNG",
+    "room.msc.title": "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
+    "room.msc.summary":
+      "Abgeschlossen an der TU Wien in 2026. Klick hier f\u00fcr meine Gedanken über diesen Master.",
+    "room.specialisations.title": "SPEZIALISIERUNGEN",
+    "room.userresearch.title": "NUTZER:INNENFORSCHUNG",
     "room.interactive.title": "INTERAKTIVE MEDIEN",
     "room.critical.title": "KRITISCHE REFLEXION",
-    "room.automation.title": "TESTAUTOMATISIERUNG",
+    "room.academia.title": "EINBLICK IN ACADEMIA",
+    "room.academia.summary":
+      "Beim EduLab TU Wien, Theory & Logic Group, and HCI Group.",
+    "room.automation.title": "SQE ENGINEER INTERNSHIP",
     "room.automation.summary": "Praktikum bei Becton Dickinson.",
     "room.automation.desc1":
       "Klicke, um zu sehen, wo ich professionelle Berufserfahrung in der IT gesammelt habe.",
-    "room.automation.desc2":
-      "Erfahrung in automatisierten Test-Frameworks und Qualit\u00e4tssicherung w\u00e4hrend eines Praktikums bei einem Medizintechnik-Unternehmen.",
     "room.diversity.title": "GENDER & DIVERSIT\u00c4TSKOMPETENZEN",
     "room.diversity.summary": "Zertifikat an der TU Wien mit STS-Kursen.",
     "room.diversity.desc":
@@ -233,23 +235,38 @@ const universityProjects_en = {
       },
     ],
   },
+  "room-msc": {
+    title: "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
+    projects: [
+      {
+        name: "Informatics is more than Computer Science...",
+        description:
+          "After a bachelor that was essentially just technical, it felt really refreshing to find a programme this programme. With a focus on interactive media, it was already super interesting..<br><br>But it also put humans and society into context, and acknoledges that the impacts of technology are never neutral.",
+      },
+      {
+        name: "Why I liked this programme",
+        description:
+          "The curricula allowed me to chose from a pretty large list of electives. It also didn't feel like just some humanities electives in an otherwise technical programme.<br><br>I was able to combine research methods, critical theory, and hands-on interactive projects in a way that felt genuinely integrated.<br><br>While it was definitely not 'perfect' (what is?), the programme and professors made a real effort to focus on humans, exactly what was missing from the bachelor and exactly what I was looking for.",
+      },
+    ],
+  },
   "room-userresearch": {
     title: "USER RESEARCH",
     projects: [
       {
-        name: "Vienna Cycling Infrastrcture",
+        name: "Project about <strong>analysing the cycling infrastrcture in Vienna</strong>",
         description:
-          "Conducted a mixed-methods analysis of Vienna's cycling infrastructure by combining forum discourse, quantitative infrastructure data, and Strava sensor data to evaluate cyclist experiences, identify improvement areas, and propose a transferable framework for urban mobility research.",
+          "We conducted a mixed-methods analysis of Vienna's cycling infrastructure. <br><br>By combining forum discourse on Reddit, quantitative infrastructure data from available city maps, and Strava sensor data from actual participants in a user study, we aimed to evaluate the experiences of cyclist commuting in Vienna. We identified improvement areas and propose our approach as a transferable framework for urban mobility research.",
       },
       {
-        name: "HCI in Health Care",
+        name: "<strong>Designing EHR</strong> for HCI in Health Care",
         description:
-          "Empowering Patients through research towards a roadmap for developing an interactive patient-centered EHR system. Conducted Interviews and desiged a framework.",
+          "In this project, I desgined a roadmap for developing an patient-centred electronical health record system.<br><br>I conducted interviews and designed a framework to <em>empower patients.</em>",
       },
       {
-        name: "Technology Integration in Cognitive Behavioural Therapy",
+        name: "<strong>Technology Integration in Cognitive Behavioural Therapy</strong>",
         description:
-          "Scoping review to evaluate the implications of assisting technologies in CBT to explore potential strategies to address identified limitations.",
+          "I conducted a scoping review to evaluate the implications of assisting technologies in cognitive behavioural therapy. In it, I investigate the challenges critically and identify potential strategies to address identified limitations.",
       },
     ],
   },
@@ -257,12 +274,22 @@ const universityProjects_en = {
     title: "INTERACTIVE MEDIA",
     projects: [
       {
-        name: "Interactive Design Projects",
+        name: "<strong>PresentWrist:</strong> a gesture based hands-free presentation control.",
         description:
-          "<strong>PresentWrist:</strong> Hands-free presentation slide control using a M5StackC as a smartwatch. Project included IMU data processing and handheld design. <br/><br/><strong>Open Source Smart Thermostat Project:</strong> Using 3D prints and PCB boards to create a personal thermostat that can be programmed to individual likings. Included prototyping and publishing models. <br/><br/><strong>Bike Intent Signalling:</strong> Prototyping an intent signalling technology for bicycles. Features an app plus a microcontroller with buttons, vibration and sound to communicate turn signals and warn of dangers.",
+          "In this project we developed Present Wrist. It is a hands-free presentation slide control where presenters control their slides through gestures like waving back or forth. <br><br> We used a M5StackC as the equivalent of a programmable smartwatch. By processing live IMU data, we analysed the signals and identified patterns in them for when the slide presentation should be advanced.<br/><br/>Additional features were automatically notifying the presenter when a person in the crowd raises their hand to ask a quesiton. Tasks included: data processing, programming the M5Stack, and filming. A demo can be seen on: <a href='https://youtu.be/MCXeQ9j_rCE' target='_blank'>PresentWrist Demo Video</a>",
       },
       {
-        name: "Emergent Technologies",
+        name: "<strong>BeFilm:</strong> Film camera that takes pictures at front and back simultaneously.",
+        description:
+          "Inspired by the app BeReal, we designed and 3D-printed a film camera which takes a photo towards the front and the back at the same time. <strong>Bike Intent Signalling:</strong> Prototyping an intent signalling technology for bicycles. Features an app plus a microcontroller with buttons, vibration and sound to communicate turn signals and warn of dangers.",
+      },
+      {
+        name: "<strong>Bike Intent Signalling:</strong> Prototyping intuitive turn and warn signals on bikes.",
+        description:
+          "We designed a prototyping for signalling intends on bikes in traffic. With buttons, users can communicate turns on their bikes to other traffic members. <br><br> Additioanlly, users are warned from dangers through audititive and haptic feedback. It features the design of the components and a small user study to analyse the intuitiveness of the signals. Tasks included: prototyping, programming, user study design and conduction.",
+      },
+      {
+        name: "Some smaller projects on <em>Emergent Technologies<em>",
         description:
           "<strong>Text2Image:</strong> lets users scan content they are reading (e.g. books or newspaper) and automatically generates an image that corresponds to the content. Using LLMs and image generation APIs. <br/><br /><strong>VR:</strong> Two player collaborative puzzle game in virtual reality. <br /><br/><strong>AR:</strong> Geography country guessing app in augmented reality.",
       },
@@ -272,44 +299,44 @@ const universityProjects_en = {
     title: "CRITICAL REFLECTION",
     projects: [
       {
-        name: "Socio-Technical-Systems",
+        name: "<em>Socio-Technical-Systems?</em>",
         description:
-          "Studied critical theory, socio-technical systems, and media communication to understand how technology, culture, and power interact. Gained tools to critically assess digital systems, social narratives, and their real-world impacts.",
+          "Some of my favourite classes were on critical theory and theory of media communication. These classes thought how to question how technology, culture, amd power intersect.<br/><br/> Additionally, I can now brag to everyone that I read and discussed Baudrillard.",
       },
       {
-        name: "Master Thesis: AI Ethics Auditing",
+        name: "<strong>Master Thesis: <strong>AI Ethics Auditing</strong>",
         description:
-          "Employed in a research project at TU Wien to develop a stakeholder-centred approach in evaluation the ethics of AI. Created a methodology featuring a workshop and a webtool to elicit and translate ethical concerns from stakeholders into auditable artefacts, viewable in a prototype dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>View this repo on GitHub</a><br/>Co-authored a workshop paper at CHI25 workshop, attended conferences and reviewed academic paper. ",
+          "I was employed in a research project at TU Wien to develop a stakeholder-centred approach in the evaluation the ethics of AI. <br><br>In this project, I created a methodology featuring a workshop and a webtool to elicit and translate ethical concerns from stakeholders into auditable artefacts, viewable in a prototype dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>View this repo on GitHub</a><br/><br><br> I also Co-authored a workshop paper at CHI25 workshop, attended conferences and reviewed academic paper. Overall, this experience was an amazing insight into academia.",
       },
     ],
   },
-  "room-ai": {
-    title: "AI ETHICS",
+  "room-academia": {
+    title: "GLIMPSE INTO ACADEMIA",
     projects: [
       {
-        name: "Algorithmic Bias Research",
+        name: "<strong>Informatics Workshops for Schoolchildren</strong> at EduLab Vienna",
         description:
-          "Examined bias in machine learning models and proposed frameworks for more equitable AI systems.",
+          "I was employed at the <a href='https://edulab.ifs.tuwien.ac.at' target='_blank'>EduLab</a> in Vienna to hold informatics workshops for schoolchildren of all ages.<br><br>The workshops were built around an explorative learning approach. So rather than lecturing, the children were guided to discover concepts themselves in unplugged workshop expercises.<br><br>. I was able to develop my own workshop methods and gained genuine didactics experience in the process.",
       },
       {
-        name: "AI Transparency Project",
+        name: "Employed as a <strong>Researcher at TU Wien</strong>",
         description:
-          "Developed visualization tools to make AI decision-making processes more interpretable and accountable.",
+          "For about a year, I was employed in a research project at TU Wien focused on AI ethics auditing.<br><br>Beyond the research itself, this gave me a real taste of academic life: I attended conferences, collaborated closely with researchers, and co-authored a workshop paper that was published at a CHI 2025 workshop.",
       },
       {
-        name: "Ethics Guidelines",
+        name: "<em>My thoughts about doing a PhD...</em>",
         description:
-          "Co-authored ethical guidelines for responsible AI development in educational contexts.",
+          "The experiences working at TU Wien gave me a genuine glimpse into academia. During those, I did seriously contemplate following up with a PhD.<br><br>In the end I decided against it. Not because the research wasn't interesting. The collegues were also really amazing...<br><br> But ultimately, the systemic pressures that come with academic life did not feel enyojable: a publish-or-perish culture, the expectation to produce papers that don't always add real value, and a system that often prioritises output over impact.<br><br>That's not really an environment I want to build my career in, or at least not right now :)",
       },
     ],
   },
   "room-automation": {
-    title: "TEST AUTOMATION",
+    title: "TEST AUTOMATION INTERNSHIP",
     projects: [
       {
         name: "Manual and Automated Testing",
         description:
-          "Gained hands-on experience during a four-month internship as a <strong>Test Automation Engineer</strong> at a medical technology company. <br /> Worked in an agile Scrum team on end-to-end tests for safety-critical infusion pump software. Responsibilities included manual system testing as well as developing and maintaining automated tests using <strong>C#</strong> and <strong>Cypress</strong> in a regulated environment.",
+          "I gained hands-on experiencein an software quality engineering team during a four-month internship as a <strong>Test Automation Engineer</strong> at a medical technology company. <br /> During it, I worked in an agile Scrum team on end-to-end tests for safety-critical infusion pump software. My responsibilities included manual system testing as well as developing and maintaining automated tests using <strong>C#</strong> and <strong>Cypress</strong> in a regulated environment.",
       },
       {
         name: "CI/CD DevOps",
@@ -356,23 +383,38 @@ const universityProjects_de = {
       },
     ],
   },
-  "room-userresearch": {
-    title: "USER-FORSCHUNG",
+  "room-msc": {
+    title: "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
     projects: [
       {
-        name: "Wiener Radinfrastruktur",
+        name: "Ein moderner (zeitgerechter) Ansatz an die Informatik.",
         description:
-          "Eine Mixed-Methods-Analyse der Wiener Radinfrastruktur durchgef\u00fchrt, durch Kombination von Forumsdiskursen, quantitativen Infrastrukturdaten und Strava-Sensordaten zur Bewertung von Radfahrerlebnissen, Identifizierung von Verbesserungsbereichen und Vorschlag eines \u00fcbertragbaren Frameworks f\u00fcr urbane Mobilit\u00e4tsforschung.",
+          "Nach einem Bachelor, der fast rein technisch ausgerichtet war, war eine Wechsel zu diesem Master eine passende Entscheidung. Interaktive Medien haben mich immer schon interessiert, doch das Curriculum bat sogar noch mehr...<br><br>Es wird annerkennt, dass Systeme nie neutral sind: in dem Master stehen Menschen, ihre Bed\u00fcrfnisse, und die gesselschaftlichen Auswirkungen von Technologien im Mittelpunkt. <br><br>Es wird durchgehend vermittelt, dass gutes Design bedeutet zu fragen, <em>f\u00fcr wen</em> und <em>warum</em> man gestaltet \u2014 nicht nur <em>wie</em>.",
       },
       {
-        name: "HCI im Gesundheitswesen",
+        name: "Über den Master.",
         description:
-          "Das Projekt sollte Patient:innen st\u00e4rken, durch Forschung an einer Roadmap zur Entwicklung eines interaktiven, patient:innenzentrierten EHR-Systems. Interviews durchgef\u00fchrt und ein Framework entworfen.",
+          "Das Programm verband Forschungsmethoden, kritische Theorie und praktische interaktive Projekte auf eine Weise, die sich wirklich stimmig anf\u00fchlte. Es war nicht 'Informatik plus ein paar Geisteswissenschaften als Wahlfach'. Meist fühlte es sich wie ein koh\u00e4rentes Studium, das eine menschenzentrierte Perspektive in den Lehrveranstaltung ernst nahm.<br><br>Eine Kombination von Design Thinking, User Research, Ethik und das tats\u00e4chliche Erstellen von Technologien die Endnutzer:innen und weitere Stakeholder miteinbeziehen war genau das, was im Bachelor gefehlt hatte.",
+      },
+    ],
+  },
+  "room-userresearch": {
+    title: "NUTZER:INNENFORSCHUNG",
+    projects: [
+      {
+        name: "Projekt zur <strong>Analyse der Radinfrastruktur in Wien</strong>",
+        description:
+          "In einem Gruppenprojekt f\u00fchrten wir eine Mixed-Methods-Analyse der Wiener Radinfrastruktur durch.<br><br>Wir kombinierten Forumsdiskursen auf Reddit, quantitative Infrastrukturdaten aus verf\u00fcgbaren Stadtpl\u00e4nen und Strava-Sensordaten von Teilnehmer:innen einer Nutzerstudie, und bewerteten damit die Erfahrungen von Radpendler:innen in Wien. Schlussendlich identifizierten wir Verbesserungsbereiche und schlugen unseren Ansatz als \u00fcbertragbares Framework f\u00fcr urbane Mobilit\u00e4tsforschung vor.",
       },
       {
-        name: "Technologien in CBT",
+        name: "<strong>EHR-Design</strong> f\u00fcr HCI im Gesundheitswesen",
         description:
-          "Scoping Review zur Bewertung der Auswirkungen unterst\u00fctzender Technologien in der kognitiven Verhaltenstherapie, um potenzielle Strategien zur Bew\u00e4ltigung identifizierter Einschr\u00e4nkungen zu erforschen.",
+          "In diesem Projekt entwarf ich eine Roadmap f\u00fcr die Entwicklung eines patient:innenzentrierten elektronischen Patientenaktensystems.<br><br>Ich f\u00fchrte Interviews durch und entwickelte das Framework, um <em>Patient:innen zu st\u00e4rken.</em>",
+      },
+      {
+        name: "<strong>Technologieeinsatz in der kognitiven Verhaltenstherapie</strong>",
+        description:
+          "Ich schrieb ein Scoping Review Paper, um die Auswirkungen von Assistenztechnologien in der kognitiven Verhaltenstherapie zu bewerten. Dabei untersuchte ich die Herausforderungen kritisch und identifizierte potenzielle Strategien zur Bew\u00e4ltigung erkannter Einschr\u00e4nkungen.",
       },
     ],
   },
@@ -380,14 +422,24 @@ const universityProjects_de = {
     title: "INTERAKTIVE MEDIEN",
     projects: [
       {
-        name: "UX",
+        name: "<strong>PresentWrist:</strong> gestenbasierte, freih\u00e4ndige Pr\u00e4sentationssteuerung.",
         description:
-          "<strong>PresentWrist:</strong> Freih\u00e4ndige Pr\u00e4sentationssteuerung mit einem M5StackC als Smartwatch. Projekt umfasste IMU-Datenverarbeitung und Handheld-Design. <br/><br/><strong>Open Source Smart Thermostat Projekt:</strong> Mit 3D-Drucken und PCB-Platinen einen pers\u00f6nlichen Thermostat erstellt, der individuell programmiert werden kann. Prototyping und Ver\u00f6ffentlichung der Modelle. <br/><br/><strong>Fahrrad Absichten Signalisierung:</strong> Prototypen f\u00fcr Fahrr\u00e4der. Mit App plus Mikrocontroller mit Tasten, Vibration und Sound zur Kommunikation von Abbiegesignalen und Gefahrenwarnungen.",
+          "In einem Projekt entwickelten meine Gruppe und ich <strong>PresentWrist</strong>. Es ist eine freih\u00e4ndige Pr\u00e4sentationssteuerung, mit der Vortragende ihre Folien durch Gesten wie Vor- oder R\u00fcckw\u00e4rtswedeln steuern. <br><br> Als Basis diente ein M5StackC als programmierbares Smartwatch-\u00c4quivalent. Durch die Verarbeitung von Live-IMU-Daten analysierten wir Signale und identifizierten Muster, die das Weiterschalten der Pr\u00e4sentation ausl\u00f6sen sollen.<br/><br/>Zus\u00e4tzlich wurden Vortragende automatisch benachrichtigt, wenn jemand im Publikum die Hand hebt. Aufgaben: Datenverarbeitung, Programmierung des M5Stack und Filmaufnahmen. Demo: <a href='https://youtu.be/MCXeQ9j_rCE' target='_blank'>PresentWrist Video</a>",
       },
       {
-        name: "VR/AR und KI",
+        name: "<strong>BeFilm:</strong> Filmkamera, die gleichzeitig vorne und hinten fotografiert.",
         description:
-          "<strong>Text2Image:</strong> Erm\u00f6glicht Nutzern, gelesene Inhalte (z.B. B\u00fccher oder Zeitungen) zu scannen und automatisch ein passendes Bild zu generieren. Mit LLMs und Bildgenerierungs-APIs. <br/><br/><strong>VR:</strong> Kooperatives Zwei-Spieler-Puzzlespiel in virtueller Realit\u00e4t. <br/><br/><strong>AR:</strong> Geografie-L\u00e4nder-Ratespiel in erweiterter Realit\u00e4t.",
+          "Inspiriert von der App BeReal, haben wir eine Filmkamera entworfen und per 3D-Druck gebaut, die gleichzeitig ein Foto nach vorne und nach hinten aufnimmt.",
+      },
+      {
+        name: "<strong>Fahrrad-Absichtsanzeige:</strong> Prototypen f\u00fcr intuitive Abbiege- und Warnsignale.",
+        description:
+          "Wir entwickelten einen Prototypen zum Signalisieren der Absichten von Fahrenden auf Fahrr\u00e4dern im Stra\u00dfenverkehr. Mit Tasten k\u00f6nnen Fahrer:innen anderen Verkehrsteilnehmer:innen ihre Abbiegeabsicht mitteilen.<br><br>Zus\u00e4tzlich werden Nutzer:innen durch akustisches und haptisches Feedback vor Gefahren gewarnt. Das Projekt umfasst die Gestaltung der Komponenten sowie eine kleine Nutzerstudie zur Analyse der Intuitivit\u00e4t der Signale. Aufgaben: Prototyping, Programmierung, Nutzerstudiendesign und -durchf\u00fchrung.",
+      },
+      {
+        name: "Kleinere Projekte zu <em>Emergent Technologies</em>",
+        description:
+          "<strong>Text2Image:</strong> Erm\u00f6glicht es Nutzer:innen, Inhalte die sie lesen (z.B. B\u00fccher oder Zeitungen) zu scannen und automatisch ein passendes Bild zu generieren. (Mithilfe von LLMs und Bildgenerierungs-APIs) <br/><br /><strong>VR:</strong> Kooperatives Zwei-Spieler-Puzzlespiel in virtueller Realit\u00e4t. <br /><br/><strong>AR:</strong> Geografie-L\u00e4nder-Ratespiel in erweiterter Realit\u00e4t.",
       },
     ],
   },
@@ -395,34 +447,34 @@ const universityProjects_de = {
     title: "KRITISCHE REFLEXION",
     projects: [
       {
-        name: "Sozio-Technische-Systeme",
+        name: "<em>Sozio-Technische Systeme?</em>",
         description:
-          "Auseinandersetzung mit Critical Theory, sozio-technische Systeme und Medienkommunikation, um zu verstehen, wie Technologie, Kultur und Macht interagieren. Dabei konnte ich Skills erlernen, um digitale Systeme, soziale Narrative und deren reale Auswirkungen kritisch zu bewerten.",
+          "Einige meiner liebsten Lehrveranstaltungen behandelten kritische Theorie und Medientheorie. Diese Kurse lehrten mich zu hinterfragen, wie Technologie, Kultur und Macht miteinander zusammenh\u00e4ngen.<br/><br/> Au\u00dferdem kann ich jetzt damit angeben, dass ich Baudrillard gelesen und dar\u00fcber diskutiert habe.",
       },
       {
-        name: "Masterarbeit: KI-Ethik-Auditing",
+        name: "<strong>Masterarbeit: KI-Ethik-Auditing</strong>",
         description:
-          "Ich war in einem Forschungsprojekt an der TU Wien angestellt, um einen stakeholder-zentrierten Ansatz zur Bewertung der Ethik von KI zu entwickeln. Eine Methodik mit Workshop und Webtool erstellt, um ethische Bedenken von Stakeholdern zu erheben und in \u00fcberpr\u00fcfbare Artefakte zu \u00fcbersetzen, darstellbar in einem Prototyp-Dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>Dieses Repo auf GitHub ansehen</a><br/>Co-Autor eines Workshop-Papers bei CHI25, Konferenzteilnahme und akademische Paper-Reviews.",
+          "Ich war in einem Forschungsprojekt an der TU Wien angestellt, um einen stakeholder-zentrierten Ansatz zur Bewertung der Ethik von KI zu entwickeln. <br><br>Ich erstellte eine Methodik mit Workshop und Webtool, um ethische Bedenken von Stakeholdern zu erheben und in \u00fcberpr\u00fcfbare Artefakte zu \u00fcbersetzen, einsehbar in einem Prototyp-Dashboard. <a href='https://github.com/teletobe/audit-share' target='_blank'>Dieses Repo auf GitHub ansehen</a><br/><br><br> Au\u00dferdem co-autorisierte ich ein Workshop-Paper beim CHI25 Workshop, nahm an Konferenzen teil und reviewte akademische Paper. Insgesamt war das ein unglaublicher Einblick in die Wissenschaft.",
       },
     ],
   },
-  "room-ai": {
-    title: "KI-ETHIK",
+  "room-academia": {
+    title: "EINBLICK IN DIE WISSENSCHAFT",
     projects: [
       {
-        name: "Forschung zu algorithmischer Voreingenommenheit",
+        name: "<strong>Informatik-Workshops</strong> f\u00fcr Schulkinder im EduLab",
         description:
-          "Untersuchung von Bias in Machine-Learning-Modellen und Vorschlag von Frameworks f\u00fcr gerechtere KI-Systeme.",
+          "Ich war am <a href='https://edulab.ifs.tuwien.ac.at' target='_blank'>EduLab</a> an der TU Wien angestellt, um Informatik-Workshops f\u00fcr Schulkinder aller Altersstufen durchzuf\u00fchren.<br><br>Die Workshops basierten auf einem explorativen Lernansatz. Anstatt frontal zu unterrichten, wurden die Sch\u00fcler:innen dabei begleitet, informatische Konzepte selbst zu entdecken. Ich konnte ausserdem eigene Workshop-Methoden entwickeln und dabei Didaktikerfahrung sammeln.",
       },
       {
-        name: "KI-Transparenzprojekt",
+        name: "<strong>Forschen an einem Projekt</strong> an der TU Wien",
         description:
-          "Visualisierungstools entwickelt, um KI-Entscheidungsprozesse interpretierbarer und nachvollziehbarer zu machen.",
+          "F\u00fcr etwa ein Jahr war ich in einem Forschungsprojekt an der TU Wien im Bereich KI-Ethik-Auditing angestellt.<br><br>Neben der eigentlichen Forschung gab mir das einen echten Einblick in das akademische Leben: Ich nahm an Konferenzen teil, arbeitete eng mit Forscher:innen zusammen und co-autorisierte ein Workshop-Paper, das bei einem CHI 2025 Workshop ver\u00f6ffentlicht wurde.",
       },
       {
-        name: "Ethik-Richtlinien",
+        name: "<em>Gedanken zu einem PhD...</em>",
         description:
-          "Co-Autor ethischer Richtlinien f\u00fcr verantwortungsvolle KI-Entwicklung im Bildungskontext.",
+          "Die Erfahrungen an der TU gaben mir einen echten Einblick in die Wissenschaft. Ich habe ernsthaft dr\u00fcber nachgedacht, einen PhD dranzuh\u00e4ngen...<br><br>Am Ende entschied ich mich dagegen. Nicht weil die Forschung nicht interessant war, sondern wegen des systemischen Drucks im akademischen Betrieb: eine Kultur mit dem Erwartungsdruck, Paper zu produzieren, die nicht immer echten Mehrwert liefern, und ein System, das Quantit\u00e4t oft \u00fcber Wirkung stellt...<br><br>Das ist nicht wirklich eine Umgebung, in der ich meine Karriere aufbauen m\u00f6chte (zumindest nicht jetzt) :)",
       },
     ],
   },
@@ -432,12 +484,12 @@ const universityProjects_de = {
       {
         name: "Manuelles und Automatisiertes Testen",
         description:
-          "Praktische Erfahrung w\u00e4hrend eines viermonatigen Praktikums als <strong>Test Automation Engineer</strong> bei einem Medizintechnik-Unternehmen gesammelt. <br /> In einem agilen Scrum-Team an End-to-End-Tests f\u00fcr sicherheitskritische Infusionspumpen-Software gearbeitet. Aufgaben umfassten manuelles Systemtesten sowie Entwicklung und Wartung automatisierter Tests mit <strong>C#</strong> und <strong>Cypress</strong> in einer regulierten Umgebung.",
+          "Hier konnte ich praktische Erfahrung w\u00e4hrend eines viermonatigen Praktikums als <strong>Test Automation Engineer</strong> bei einem Medizintechnik-Unternehmen gesammelt. <br /> In einem agilen Scrum-Team hab ich an End-to-End-Tests f\u00fcr sicherheitskritische Infusionspumpen-Software gearbeitet. Die Aufgaben umfassten manuelles Systemtesten sowie Entwicklung und Wartung automatisierter Tests mit <strong>C#</strong> und <strong>Cypress</strong> in einer regulierten Umgebung.",
       },
       {
         name: "CI/CD DevOps",
         description:
-          "Automatisierte Tests in CI-Pipelines mit GitHub Actions integriert und Testplanung, Dokumentation und R\u00fcckverfolgbarkeit mit <strong>Azure DevOps</strong> verwaltet. An einer formalen Verifikationsphase teilgenommen, bei der alle Testf\u00e4lle systematisch ausgef\u00fchrt und dokumentiert wurden. Einblicke in strukturierte Testkonzepte, Fehleranalyse, CI/CD-Workflows und DevOps-Prozesse gewonnen.",
+          "Die automatisierte Tests in CI-Pipelines mit GitHub Actions integriert und Testplanung, Dokumentation und R\u00fcckverfolgbarkeit mit <strong>Azure DevOps</strong> verwaltet. Ich habe in meiner Zeit dort an einer formalen Verifikationsphase teilgenommen, bei der alle Testf\u00e4lle systematisch ausgef\u00fchrt und dokumentiert wurden. Einblicke in strukturierte Testkonzepte, Fehleranalyse, CI/CD-Workflows und DevOps-Prozesse konnten dabei gewonnen werden.",
       },
     ],
   },

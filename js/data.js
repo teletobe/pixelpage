@@ -127,7 +127,7 @@ const translations = {
     "contact.email": "E-MAIL",
     "cs.title": "INFORMATIK",
     "cs.description":
-      "Sieh dir meine Erfahrungen in der Informatik an, indem du in diesem Sidescroller an. Nutze ◀ und ▶ um zwischen den Kapiteln zu navigieren.",
+      "Sieh dir meine Erfahrungen in der Informatik an, indem du dich in diesem Sidescroller bewegst. Nutze ◀ und ▶ um zwischen den Kapiteln zu navigieren.",
     "cs.levelb.label": "BSc.:",
     "cs.levelb.value": "Informatik",
     "cs.levelm.label": "MSc.:",

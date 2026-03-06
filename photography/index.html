@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zines — Tobi's Page</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/exhibition.css" />
+  </head>
+  <body>
+
+    <!-- ── EXHIBITION ── -->
+    <div id="exhibition">
+
+      <header class="ex-header">
+        <a href="../index.html" class="ex-back">← back</a>
+        <h1 class="ex-title">ZINES</h1>
+        <span class="ex-count">3 zines</span>
+      </header>
+
+      <main class="ex-floor" id="exhibition-floor" role="main">
+        <!-- Zine cards injected by exhibition.js -->
+      </main>
+
+    </div>
+
+    <!-- ── READER OVERLAY ── -->
+    <div id="reader" class="reader" aria-hidden="true" role="dialog" aria-modal="true">
+
+      <div class="reader-header">
+        <span class="reader-zine-title" id="reader-title"></span>
+        <button
+          class="reader-close"
+          id="reader-close"
+          aria-label="Close zine reader"
+        >×</button>
+      </div>
+
+      <div class="reader-body" id="reader-body">
+        <div class="zine-content" id="zine-content"></div>
+      </div>
+
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/exhibition.js"></script>
+    <script src="js/reader.js"></script>
+
+  </body>
+</html>

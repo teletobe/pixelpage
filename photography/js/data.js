@@ -56,7 +56,7 @@ const ZINES = [
     subtitle: "streety stuff",
     cover: "img/zines/street/street1.jpg",
     photos: Array.from({ length: 22 }, (_, i) => ({
-      src: `img/zines/portrastreetit/street${i + 1}.jpg`,
+      src: `img/zines/street/street${i + 1}.jpg`,
     })),
   },
 ];

@@ -15,8 +15,7 @@
   // Cycles so neither the left nor right edge is ever a straight line.
   const SHIFTS = [0, 44, -36, 28, -52, 18, 40, -28, 56, -40, 24, -48];
 
-  // Editorial layout sequence — cycles through all photos.
-  // "count" = how many images this block consumes.
+  // Editorial layout sequence — desktop: full variety including heroes and solos.
   const LAYOUTS = [
     { type: "hero",       count: 1 },
     { type: "duo-offset", count: 2 },
@@ -26,14 +25,30 @@
     { type: "duo-even",   count: 2 },
   ];
 
+  // Mobile layout sequence — mix of 2/3-up and offset singles for variety.
+  const MOBILE_LAYOUTS = [
+    { type: "duo-even",   count: 2 },
+    { type: "trio",       count: 3 },
+    { type: "solo-left",  count: 1 },
+    { type: "duo-even",   count: 2 },
+    { type: "trio",       count: 3 },
+    { type: "solo-right", count: 1 },
+    { type: "duo-offset", count: 2 },
+    { type: "duo-even",   count: 2 },
+    { type: "solo-left",  count: 1 },
+    { type: "trio",       count: 3 },
+  ];
+
   function buildZine(photos) {
     zineContent.innerHTML = "";
 
     let photoIndex  = 0;
     let layoutIndex = 0;
 
+    const activeLayouts = window.innerWidth <= 640 ? MOBILE_LAYOUTS : LAYOUTS;
+
     while (photoIndex < photos.length) {
-      const layout = LAYOUTS[layoutIndex % LAYOUTS.length];
+      const layout = activeLayouts[layoutIndex % activeLayouts.length];
       const count  = Math.min(layout.count, photos.length - photoIndex);
 
       const block = document.createElement("div");

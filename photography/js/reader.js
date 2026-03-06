@@ -25,18 +25,20 @@
     { type: "duo-even",   count: 2 },
   ];
 
-  // Mobile layout sequence — mix of 2/3-up and offset singles for variety.
+  // Mobile layout sequence — duos and offset singles only; hero appears rarely.
   const MOBILE_LAYOUTS = [
     { type: "duo-even",   count: 2 },
-    { type: "trio",       count: 3 },
     { type: "solo-left",  count: 1 },
-    { type: "duo-even",   count: 2 },
-    { type: "trio",       count: 3 },
+    { type: "duo-offset", count: 2 },
     { type: "solo-right", count: 1 },
+    { type: "duo-even",   count: 2 },
+    { type: "solo-left",  count: 1 },
     { type: "duo-offset", count: 2 },
     { type: "duo-even",   count: 2 },
+    { type: "solo-right", count: 1 },
+    { type: "duo-even",   count: 2 },
     { type: "solo-left",  count: 1 },
-    { type: "trio",       count: 3 },
+    { type: "hero",       count: 1 },
   ];
 
   function buildZine(photos) {

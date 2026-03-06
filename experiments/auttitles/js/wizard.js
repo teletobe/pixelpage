@@ -32,17 +32,17 @@ const STEPS = [
     sub: "Ihr Fach gilt als seriös. Das System registriert das.",
     options: [
       {
-        label: "Bakkalaureat — die solide Grundlage ist gelegt",
+        label: "Bachelor, die solide Grundlage ist gelegt",
         next: "q4_extra",
         data: { degreeLevel: "bachelor", degreeField: "tech" },
       },
       {
-        label: "Master oder Diplom — zumindest auf dem Papier fertig",
+        label: "Master oder Diplom, zumindest auf dem Papier fertig",
         next: "q4_extra",
         data: { degreeLevel: "master", degreeField: "tech" },
       },
       {
-        label: "Doktorat — Großvater hat es in der Weihnachtskarte erwähnt",
+        label: "Doktorat, Großvater hat es in der Weihnachtskarte erwähnt",
         next: "q4_extra",
         data: { degreeLevel: "doctorate", degreeField: "tech" },
       },
@@ -60,18 +60,18 @@ const STEPS = [
     sub: "Rein für die Titelvergabe. Das System urteilt nicht. Das Formular schon.",
     options: [
       {
-        label: "Jus — das versteht er dann doch noch",
+        label: "Jus, das versteht er dann doch noch",
         next: "q3_level",
         data: { degreeField: "law" },
       },
       {
-        label: "Medizin — er ist sofort stolz, aber auch besorgt",
+        label: "Medizin, er ist sofort stolz, aber auch besorgt",
         next: "q4_extra",
         data: { degreeLevel: "master", degreeField: "med" },
       },
       {
         label:
-          "Wirtschaft — er findet es irgendwie kapitalistisch, akzeptiert es aber",
+          "Wirtschaft, er findet es irgendwie kapitalistisch, akzeptiert es aber",
         next: "q3_level",
         data: { degreeField: "other" },
       },
@@ -88,17 +88,17 @@ const STEPS = [
     sub: "Vollständige Aufrichtigkeit ist nicht erforderlich. Das System fragt trotzdem.",
     options: [
       {
-        label: "Bakkalaureat — ein ehrlicher Anfang",
+        label: "Bachelor, ein ehrlicher Anfang",
         next: "q4_extra",
         data: { degreeLevel: "bachelor" },
       },
       {
-        label: "Master oder Magister — fertig, zumindest offiziell",
+        label: "Master oder Magister, fertig, zumindest offiziell",
         next: "q4_extra",
         data: { degreeLevel: "master" },
       },
       {
-        label: "Doktorat — vom eigenen Fach tief überzeugt",
+        label: "Doktorat, vom eigenen Fach tief überzeugt",
         next: "q4_extra",
         data: { degreeLevel: "doctorate" },
       },

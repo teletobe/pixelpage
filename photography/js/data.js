@@ -10,7 +10,7 @@ const ZINES = [
     title: "Portfolio",
     subtitle: "selected works · 2022–2024",
     cover: "img/zines/portfolio/pf1.jpg",
-    photos: Array.from({ length: 32 }, (_, i) => ({
+    photos: Array.from({ length: 96 }, (_, i) => ({
       src: `img/zines/portfolio/pf${i + 1}.jpg`,
     })),
   },
@@ -36,7 +36,7 @@ const ZINES = [
     id: "berg",
     title: "Berg",
     subtitle: "hikes · 2019–2025",
-    cover: "img/zines/berg/berg1.jpg",
+    cover: "img/zines/berg/berg22.jpg",
     photos: Array.from({ length: 95 }, (_, i) => ({
       src: `img/zines/berg/berg${i + 1}.jpg`,
     })),
@@ -45,7 +45,7 @@ const ZINES = [
     id: "japan",
     title: "Japan",
     subtitle: "trip to japan in · 2024",
-    cover: "img/zines/japan/japan1.jpg",
+    cover: "img/zines/japan/japan22.jpg",
     photos: Array.from({ length: 53 }, (_, i) => ({
       src: `img/zines/japan/japan${i + 1}.jpg`,
     })),
@@ -54,7 +54,7 @@ const ZINES = [
     id: "street",
     title: "Street",
     subtitle: "streety stuff",
-    cover: "img/zines/street/street1.jpg",
+    cover: "img/zines/street/street5.jpg",
     photos: Array.from({ length: 22 }, (_, i) => ({
       src: `img/zines/street/street${i + 1}.jpg`,
     })),

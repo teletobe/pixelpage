@@ -457,6 +457,9 @@ body {
 }
 
 @media (max-width: 640px) {
+  /* Lock the exhibition page to exactly one screen — no scroll */
+  body { overflow: hidden; }
+
   .ex-header {
     padding: 14px 16px;
     gap: 14px;
@@ -502,14 +505,14 @@ body {
   .zine-duo-offset {
     grid-template-columns: 3fr 2fr;
   }
-  /* Show all 3 in a trio */
-  .zine-trio {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  /* Solo images: narrower so the offset to left/right is visible */
+  /* Solo images: narrower so the offset left/right is clearly visible */
   .zine-solo-left .zine-img-wrap,
   .zine-solo-right .zine-img-wrap {
-    width: 65%;
+    width: 60%;
+  }
+  /* Rare hero: pull it in a little so it doesn't feel overwhelming */
+  .zine-hero .zine-img-wrap {
+    width: 88%;
   }
   .reader-header {
     padding: 14px 20px;

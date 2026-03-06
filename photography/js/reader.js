@@ -64,9 +64,10 @@
         wrap.style.transitionDelay = `${i * 0.09}s`;
 
         const img = document.createElement("img");
-        img.src     = photo.src;
-        img.alt     = "";
-        img.loading = "lazy";
+        img.src      = photo.src;
+        img.alt      = "";
+        img.loading  = "lazy";
+        img.decoding = "async";
 
         wrap.appendChild(img);
         block.appendChild(wrap);
@@ -87,7 +88,7 @@
           }
         });
       },
-      { threshold: 0.08, root: readerBody }
+      { threshold: 0.08, root: readerBody, rootMargin: "500px 0px" }
     );
 
     zineContent.querySelectorAll(".zine-img-wrap").forEach((w) =>

@@ -150,9 +150,17 @@
     });
   }
 
+  function preloadZine(zine) {
+    zine.photos.slice(0, 8).forEach((p) => {
+      const img = new Image();
+      img.src = p.src;
+    });
+  }
+
   function goTo(i) {
     activeIndex = ((i % ZINES.length) + ZINES.length) % ZINES.length;
     update();
+    preloadZine(ZINES[activeIndex]);
   }
 
   prevBtn.addEventListener("click", () => goTo(activeIndex - 1));
@@ -178,4 +186,5 @@
   }, { passive: true });
 
   update();
+  preloadZine(ZINES[activeIndex]);
 })();

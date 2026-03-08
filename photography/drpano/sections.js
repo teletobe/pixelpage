@@ -18,7 +18,6 @@ const SECTIONS = [
     imgX: 0.5,
     imgY: 0.5,
     scale: 1.4,
-    cta: "VIEW PORTFOLIO →",
   },
   {
     name: "ZINES",

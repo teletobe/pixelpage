@@ -159,7 +159,7 @@ function renderDialoguePage() {
 
   if (prevBtn) {
     prevBtn.disabled = false;
-    prevBtn.textContent = dialoguePage === 0 ? "◀ BACK" : "◀";
+    prevBtn.textContent = dialoguePage === 0 ? "< BACK" : "<";
   }
   if (nextBtn) {
     const isLast = dialoguePage === dialoguePages.length - 1;
@@ -167,8 +167,8 @@ function renderDialoguePage() {
     const isSingleTopic = roomData && roomData.projects.length === 1;
     nextBtn.textContent = isLast
       ? isSingleTopic
-        ? "↩ CLOSE"
-        : "↩ TOPICS"
+        ? "CLOSE"
+        : "TOPICS"
       : "NEXT >";
     nextBtn.disabled = false;
   }

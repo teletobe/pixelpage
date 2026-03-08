@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Darkroom — Tobi's Photography</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="darkroom.css" />
+  </head>
+  <body>
+    <!-- Loading screen -->
+    <div id="loader">
+      <div id="loader-icon">🔴</div>
+      <div id="loader-title">DARKROOM</div>
+      <div id="loader-sub">loading scene</div>
+      <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+    </div>
+
+    <!-- Panorama + atmosphere -->
+    <div id="pano"></div>
+    <div id="vignette"></div>
+    <div id="safelight"></div>
+
+    <!-- Left nav zone -->
+    <div class="nav-zone" id="nav-left" onclick="navigate(-1)">
+      <div class="nav-inner">
+        <div class="nav-arrow">◄</div>
+        <div class="nav-label" id="prev-name">—</div>
+      </div>
+    </div>
+
+    <!-- Right nav zone -->
+    <div class="nav-zone" id="nav-right" onclick="navigate(1)">
+      <div class="nav-inner">
+        <div class="nav-arrow">►</div>
+        <div class="nav-label" id="next-name">—</div>
+      </div>
+    </div>
+
+    <!-- Top bar -->
+    <div id="topbar">
+      <a href="../../index.html" id="back-btn">← back</a>
+      <div id="topbar-title">DARKROOM</div>
+      <div id="topbar-right">← → to explore</div>
+    </div>
+
+    <!-- Welcome section text -->
+    <div id="welcome-text">
+      feel free to look around this room to check out some of my work and gear.
+      Have fun! :)
+    </div>
+
+    <!-- Portfolio section button -->
+    <button
+      id="portfolio-btn"
+      onclick="window.openPortfolioReader && window.openPortfolioReader()"
+    >
+      <span>OPEN MY PORTFOLIO</span>
+    </button>
+
+    <!-- Gear section button -->
+    <button
+      id="gear-btn"
+      onclick="document.getElementById('gear-modal').classList.add('visible')"
+    >
+      <span>WHAT I'M CURRENTLY SHOOTING WITH</span>
+    </button>
+
+    <!-- Gear modal -->
+    <div id="gear-modal">
+      <div id="gear-modal-box">
+        <button
+          id="gear-modal-close"
+          onclick="
+            document.getElementById('gear-modal').classList.remove('visible')
+          "
+          aria-label="Close"
+        >
+          ×
+        </button>
+        <div id="gear-modal-content">
+          I'm currently shooting mostly digital, for that I'm using an X-Pro 3.
+          Will post more here soon!
+        </div>
+      </div>
+    </div>
+
+    <!-- Leave darkroom overlay button -->
+    <a
+      href="https://www.instagram.com/tobichristoph"
+      target="_blank"
+      rel="noopener"
+      id="leave-btn"
+      ><span>CONTACT ME ON IG</span></a
+    >
+
+    <!-- Section info (bottom) -->
+    <div id="section-info">
+      <div id="section-dots"></div>
+      <div id="section-name"></div>
+      <div id="section-desc"></div>
+      <div id="section-cta"></div>
+    </div>
+
+    <!-- sections.js must load before darkroom.js -->
+    <!-- data.js (zine definitions) must load before zine-carousel.js -->
+    <script src="../js/data.js"></script>
+    <script src="sections.js"></script>
+    <script src="darkroom.js"></script>
+    <script src="zine-carousel.js"></script>
+  </body>
+</html>

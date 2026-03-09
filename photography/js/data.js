@@ -8,7 +8,7 @@ const ZINES = [
   {
     id: "portfolio",
     title: "Portfolio",
-    subtitle: "selected works · 2022–2024",
+    subtitle: "selected works, till 2024",
     cover: "img/zines/portfolio/pf1.jpg",
     photos: Array.from({ length: 96 }, (_, i) => ({
       src: `img/zines/portfolio/pf${i + 1}.jpg`,
@@ -17,7 +17,7 @@ const ZINES = [
   {
     id: "portrait",
     title: "Portraits",
-    subtitle: "people & faces · 2023",
+    subtitle: "people & faces",
     cover: "img/zines/portrait/portrait1.jpg",
     photos: Array.from({ length: 28 }, (_, i) => ({
       src: `img/zines/portrait/portrait${i + 1}.jpg`,
@@ -26,7 +26,7 @@ const ZINES = [
   {
     id: "artsy",
     title: "Artsy",
-    subtitle: "experimental · 2024",
+    subtitle: "experimental stuff",
     cover: "img/zines/artsy/art1.jpg",
     photos: Array.from({ length: 17 }, (_, i) => ({
       src: `img/zines/artsy/art${i + 1}.jpg`,
@@ -35,7 +35,7 @@ const ZINES = [
   {
     id: "berg",
     title: "Berg",
-    subtitle: "hikes · 2019–2025",
+    subtitle: "hikes, 2019–2025",
     cover: "img/zines/berg/berg22.jpg",
     photos: Array.from({ length: 95 }, (_, i) => ({
       src: `img/zines/berg/berg${i + 1}.jpg`,
@@ -44,7 +44,7 @@ const ZINES = [
   {
     id: "japan",
     title: "Japan",
-    subtitle: "trip to japan in · 2024",
+    subtitle: "trip to japan in, 2024",
     cover: "img/zines/japan/japan22.jpg",
     photos: Array.from({ length: 53 }, (_, i) => ({
       src: `img/zines/japan/japan${i + 1}.jpg`,
@@ -124,8 +124,8 @@ const ZINES = [
   },
   {
     id: "winterwien",
-    title: "Tenerife 2026",
-    subtitle: "sonne tanken im winter",
+    title: "White Vienna",
+    subtitle: "Wintereinbruch in Wien, Feber 2026",
     cover: "img/zines/winterinwien/winterwien32.jpg",
     photos: Array.from({ length: 33 }, (_, i) => ({
       src: `img/zines/winterinwien/winterwien${i + 1}.jpg`,

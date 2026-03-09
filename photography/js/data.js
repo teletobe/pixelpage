@@ -59,4 +59,76 @@ const ZINES = [
       src: `img/zines/street/street${i + 1}.jpg`,
     })),
   },
+  {
+    id: "balkan",
+    title: "Balkan Roadtrip",
+    subtitle: "autumn 2025",
+    cover: "img/zines/balkan/balkan1.jpg",
+    photos: Array.from({ length: 40 }, (_, i) => ({
+      src: `img/zines/balkan/balkan${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "barcelona",
+    title: "Barcelona Citytrip",
+    subtitle: "february 2026",
+    cover: "img/zines/barcelona/barcelona14.jpg",
+    photos: Array.from({ length: 27 }, (_, i) => ({
+      src: `img/zines/barcelona/barcelona${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "iceland",
+    title: "Iceland 2025",
+    subtitle: "short visit in march",
+    cover: "img/zines/iceland2025/ice10.jpg",
+    photos: Array.from({ length: 21 }, (_, i) => ({
+      src: `img/zines/iceland2025/ice${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "nyc",
+    title: "USA 2025",
+    subtitle: "NYC + new england visiting stella",
+    cover: "img/zines/nyc/nyc23.jpg",
+    photos: Array.from({ length: 54 }, (_, i) => ({
+      src: `img/zines/nyc/nyc${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "paris",
+    title: "Paris",
+    subtitle: "visiting hannah",
+    cover: "img/zines/paris/paris28.jpg",
+    photos: Array.from({ length: 49 }, (_, i) => ({
+      src: `img/zines/paris/paris${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "tdf",
+    title: "Tour de France",
+    subtitle: "minitrip ins jura",
+    cover: "img/zines/tdf/tdf19.jpg",
+    photos: Array.from({ length: 19 }, (_, i) => ({
+      src: `img/zines/tdf/tdf${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "tenerife",
+    title: "Tenerife 2026",
+    subtitle: "sonne tanken im winter",
+    cover: "img/zines/tenerife/tenerife9.jpg",
+    photos: Array.from({ length: 25 }, (_, i) => ({
+      src: `img/zines/tenerife/tenerife${i + 1}.jpg`,
+    })),
+  },
+  {
+    id: "winterwien",
+    title: "Tenerife 2026",
+    subtitle: "sonne tanken im winter",
+    cover: "img/zines/winterinwien/winterwien32.jpg",
+    photos: Array.from({ length: 33 }, (_, i) => ({
+      src: `img/zines/winterinwien/winterwien${i + 1}.jpg`,
+    })),
+  },
 ];

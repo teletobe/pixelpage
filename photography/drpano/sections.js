@@ -8,7 +8,7 @@
 const SECTIONS = [
   {
     name: "WELCOME",
-    desc: "step inside the darkroom",
+    desc: "explore my photography",
     imgX: 0.22,
     imgY: 0.5,
   },
@@ -29,14 +29,14 @@ const SECTIONS = [
   },
   {
     name: "GEAR",
-    desc: "cameras · lenses · film",
+    desc: "cameras, lenses, film",
     imgX: 0.75,
     imgY: 0.7,
     scale: 1.3,
   },
   {
     name: "LEAVE DARKROOM",
-    desc: "back to the light",
+    desc: "lets go out and shoot!",
     imgX: 0.975,
     imgY: 0.5,
     scale: 1.8,

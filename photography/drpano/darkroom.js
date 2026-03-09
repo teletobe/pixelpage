@@ -79,6 +79,7 @@ function navigate(dir) {
   busy = true;
 
   // hide carousel and section overlays first, then pan after they fade out
+  document.getElementById("section-cta").textContent = "";
   if (typeof window.hideZineCarousel === "function") window.hideZineCarousel();
   ["welcome-text", "portfolio-btn", "gear-btn", "leave-btn"].forEach((id) => {
     const el = document.getElementById(id);

@@ -25,7 +25,6 @@ const SECTIONS = [
     imgX: 0.72,
     imgY: 0.4,
     scale: 1.8,
-    cta: "BROWSE ALBUMS →",
   },
   {
     name: "GEAR",

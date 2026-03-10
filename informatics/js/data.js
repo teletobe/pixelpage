@@ -31,12 +31,10 @@ const translations = {
     "experience.title": "EDUCATION & EXPERIENCE",
     "room.bsc.title": "BSc. INFORMATICS",
     "room.bsc.summary":
-      "Computer Science foundation. (University of Innsbruck, 2022).",
-    "room.bsc.desc1":
-      "Bachelor's degree in Computer Science at the University of Innsbruck, completed in 2022.<br />",
-    "room.bsc.desc2":
-      "A broad foundation across core informatics disciplines — from algorithms and systems to machine learning and software development.",
-    "room.bsc.desc3": "Click to explore experience, competences & more.",
+      "My degree in computer science at the University of Innsbruck.",
+    "room.bsc.desc1": "It provided a great foundation in informatics!<br />",
+    "room.bsc.desc2": "And I graduated from it in 2022.",
+    "room.bsc.desc3": "Click to explore what I learned there.",
     "room.msc.title": "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
     "room.msc.summary":
       "I graduated from TU Wien in 2026. Click here to here my thoughts about the programme.",
@@ -68,9 +66,9 @@ const translations = {
     "cs.focus.label": "FOCUS:",
     "cs.focus.value": "Interactive Media & UX, Critical Reflection, AI Ethics",
     "cs.footer": "use < and > to explore each chapter",
-    "chapter.1": "CHAPTER 1 \u2014 INNSBRUCK",
-    "chapter.2": "CHAPTER 2 \u2014 MASTER",
-    "chapter.3": "CHAPTER 3 \u2014 WORK EXPERIENCE",
+    "chapter.1": "CHAPTER 1: INNSBRUCK",
+    "chapter.2": "CHAPTER 2: VIENNA",
+    "chapter.3": "CHAPTER 3: WORK EXPERIENCE",
     "cs.work.placeholder": "[MORE COMING SOON]",
     "cs.work.placeholder.summary": "Placeholder for future entries.",
     "cs.work.placeholder.desc":
@@ -97,12 +95,12 @@ const translations = {
     "experience.title": "AUSBILDUNG & ERFAHRUNG",
     "room.bsc.title": "BSc. INFORMATIK",
     "room.bsc.summary":
-      "Informatik-Grundlagen. (Universit\u00e4t Innsbruck, 2022).",
+      "An der Universit\u00e4t Innsbruck hab ich einen meinen Informatik-Bachelor gemacht!",
     "room.bsc.desc1":
-      "Bachelorabschluss in Informatik an der Universit\u00e4t Innsbruck, 2022.<br />",
-    "room.bsc.desc2":
-      "Eine breite Grundlage \u00fcber alle Kerndisziplinen der Informatik — von Algorithmen und Systemen bis hin zu maschinellem Lernen und Softwareentwicklung.",
-    "room.bsc.desc3": "Klicke f\u00fcr Erfahrungen, Kompetenzen & mehr.",
+      "Er bot eine breite Grundlage \u00fcber alle Kerndisziplinen der Informatik<br />",
+    "room.bsc.desc2": "und ich hab ihn 2022 abgeschlossen.",
+    "room.bsc.desc3":
+      "Klicke um mehr zu Erfahren, was ich dort so gelernt hab.",
     "room.msc.title": "MSc. MEDIA & HUMAN-CENTRED COMPUTING",
     "room.msc.summary":
       "Abgeschlossen an der TU Wien in 2026. Klick hier f\u00fcr meine Gedanken über diesen Master.",
@@ -137,9 +135,9 @@ const translations = {
     "cs.location.label": "WOHNHAFT:",
     "cs.location.value": "Wien, \u00d6sterreich",
     "cs.footer": "< und > nutzen, um die Kapitel zu erkunden",
-    "chapter.1": "KAPITEL 1 \u2014 INNSBRUCK",
-    "chapter.2": "KAPITEL 2 \u2014 MASTER",
-    "chapter.3": "KAPITEL 3 \u2014 BERUFSERFAHRUNG",
+    "chapter.1": "1. STATION: INNSBRUCK",
+    "chapter.2": "2. STATION: WIEN",
+    "chapter.3": "3. STATION: BERUFSERFAHRUNG",
     "cs.work.placeholder": "[MEHR FOLGT BALD]",
     "cs.work.placeholder.summary":
       "Platzhalter f\u00fcr zuk\u00fcnftige Eintr\u00e4ge.",

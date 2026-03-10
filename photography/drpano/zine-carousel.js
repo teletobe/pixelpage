@@ -23,6 +23,7 @@
         <button class="zc-btn zc-btn--next" aria-label="Next album">&#8250;</button>
       </div>
       <div id="zc-dots"></div>
+      <button id="zc-back" aria-label="Close album browser">← BACK</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -235,20 +236,31 @@
     if (e.key === "ArrowRight") goTo(activeIndex + 1);
   });
 
-  window.showZineCarousel = function () {
+  window.openZineCarousel = function () {
     overlay.classList.add("visible");
     window.zineCarouselActive = true;
     document.getElementById("section-info").classList.add("carousel-mode");
     document.body.classList.add("carousel-active");
+    const zinesBtn = document.getElementById("zines-btn");
+    if (zinesBtn) zinesBtn.classList.remove("visible");
     update();
   };
 
+  // kept for darkroom.js navigate() calls; does NOT restore zines-btn
   window.hideZineCarousel = function () {
     overlay.classList.remove("visible");
     window.zineCarouselActive = false;
     document.getElementById("section-info").classList.remove("carousel-mode");
     document.body.classList.remove("carousel-active");
   };
+
+  // back button: close carousel and return to the zines section view
+  const backBtn = document.getElementById("zc-back");
+  backBtn.addEventListener("click", () => {
+    window.hideZineCarousel();
+    const zinesBtn = document.getElementById("zines-btn");
+    if (zinesBtn) zinesBtn.classList.add("visible");
+  });
 
   update();
 })();

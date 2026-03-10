@@ -57,10 +57,6 @@ function updateUI() {
   prevName.textContent = SECTIONS[(((currentSection - 1) % N) + N) % N].name;
   nextName.textContent = SECTIONS[(currentSection + 1) % N].name;
 
-  if (s.name === "ZINES" && typeof window.showZineCarousel === "function") {
-    window.showZineCarousel();
-  }
-
   const leaveBtn = document.getElementById("leave-btn");
   if (leaveBtn) leaveBtn.classList.toggle("visible", s.name === "LEAVE DARKROOM");
 
@@ -69,6 +65,9 @@ function updateUI() {
 
   const gearBtn = document.getElementById("gear-btn");
   if (gearBtn) gearBtn.classList.toggle("visible", s.name === "GEAR");
+
+  const zinesBtn = document.getElementById("zines-btn");
+  if (zinesBtn) zinesBtn.classList.toggle("visible", s.name === "ZINES");
 
   const welcomeText = document.getElementById("welcome-text");
   if (welcomeText) welcomeText.classList.toggle("visible", s.name === "WELCOME");
@@ -81,7 +80,7 @@ function navigate(dir) {
   // hide carousel and section overlays first, then pan after they fade out
   document.getElementById("section-cta").textContent = "";
   if (typeof window.hideZineCarousel === "function") window.hideZineCarousel();
-  ["welcome-text", "portfolio-btn", "gear-btn", "leave-btn"].forEach((id) => {
+  ["welcome-text", "portfolio-btn", "gear-btn", "zines-btn", "leave-btn"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.classList.remove("visible");
   });
